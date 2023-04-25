@@ -1,0 +1,40 @@
+﻿<Window x:Class="DBibliaTec.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DBibliaTec"
+        FontFamily="Roboto"
+        mc:Ignorable="d"
+        Title="МАУК «Кунгурская ЦБС»" MinHeight="450" MinWidth="1024">
+    <Grid>
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="0.8*"/>
+
+        </Grid.RowDefinitions>
+
+        <Image Source="LogoAndImages/Images/tarjei-skaarsmoen-library-render-01-fixed-lightroom-export (1).jpg" Grid.Row="1" Stretch="Fill" Grid.RowSpan="2"/>
+
+        <Grid Grid.Row="0">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="{StaticResource Main}" Offset="0.6"/>
+                    <GradientStop Color="#FFF4EDED" Offset="0"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+        </Grid>
+
+        <Image Source="LogoAndImages\Logo\BibliaC.jpg" HorizontalAlignment="Left" Height="auto" Width="auto"/>
+
+        <TextBlock Text="{Binding ElementName=MainFrame, Path=Content.Title}" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource TBlockGlav}"/>
+
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Grid.Row="1"/>
+
+        <Button x:Name="Back" Style="{StaticResource ButtonExit}" HorizontalAlignment="Right" Width="80" Height="50" Margin="5 5" Click="Back_Click">
+            <Image Source="Icons/Back.png"/>
+        </Button>
+    </Grid>
+</Window>

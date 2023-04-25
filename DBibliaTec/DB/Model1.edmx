@@ -1,0 +1,602 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище BIbliaModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Books">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="FAuthor" Type="nvarchar" MaxLength="50" />
+          <Property Name="NAuthor" Type="nvarchar" MaxLength="50" />
+          <Property Name="OAuthor" Type="nvarchar" MaxLength="50" />
+          <Property Name="Genre" Type="int" />
+          <Property Name="Count" Type="nvarchar" MaxLength="50" />
+          <Property Name="Category" Type="int" />
+          <Property Name="Date_Vipusk" Type="date" />
+          <Property Name="ImageBook" Type="image" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Familiya" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Otchestvo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Date_rojd" Type="date" />
+          <Property Name="Gender" Type="int" />
+          <Property Name="Photo" Type="image" />
+        </EntityType>
+        <EntityType Name="Formular_Books">
+          <Key>
+            <PropertyRef Name="ID_Books" />
+            <PropertyRef Name="ID_Formulars" />
+          </Key>
+          <Property Name="ID_Books" Type="int" Nullable="false" />
+          <Property Name="ID_Formulars" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Formulars">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Clients" Type="int" />
+          <Property Name="ID_Personals" Type="int" />
+          <Property Name="Date_Vidachi" Type="date" />
+          <Property Name="Date_Sdachi" Type="date" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Genre">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Personal">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Familiya" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Otchestvo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Role" Type="int" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Books_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Books" Type="Self.Books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Books">
+              <PropertyRef Name="Category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Books_Genre">
+          <End Role="Genre" Type="Self.Genre" Multiplicity="0..1" />
+          <End Role="Books" Type="Self.Books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genre">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Books">
+              <PropertyRef Name="Genre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clients_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
+          <End Role="Clients" Type="Self.Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="Gender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Formular_Books_Books">
+          <End Role="Books" Type="Self.Books" Multiplicity="1" />
+          <End Role="Formular_Books" Type="Self.Formular_Books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Formular_Books">
+              <PropertyRef Name="ID_Books" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Formular_Books_Formulars">
+          <End Role="Formulars" Type="Self.Formulars" Multiplicity="1" />
+          <End Role="Formular_Books" Type="Self.Formular_Books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Formulars">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Formular_Books">
+              <PropertyRef Name="ID_Formulars" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Formulars_Clients">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
+          <End Role="Formulars" Type="Self.Formulars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Formulars">
+              <PropertyRef Name="ID_Clients" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Formulars_Personal">
+          <End Role="Personal" Type="Self.Personal" Multiplicity="0..1" />
+          <End Role="Formulars" Type="Self.Formulars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Formulars">
+              <PropertyRef Name="ID_Personals" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personal_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="Personal" Type="Self.Personal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Personal">
+              <PropertyRef Name="Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище BIbliaModelContainer">
+          <EntitySet Name="Books" EntityType="Self.Books" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Formular_Books" EntityType="Self.Formular_Books" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Formulars" EntityType="Self.Formulars" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Genre" EntityType="Self.Genre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personal" EntityType="Self.Personal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Books_Category" Association="Self.FK_Books_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Books" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Books_Genre" Association="Self.FK_Books_Genre">
+            <End Role="Genre" EntitySet="Genre" />
+            <End Role="Books" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clients_Gender" Association="Self.FK_Clients_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Formular_Books_Books" Association="Self.FK_Formular_Books_Books">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="Formular_Books" EntitySet="Formular_Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Formular_Books_Formulars" Association="Self.FK_Formular_Books_Formulars">
+            <End Role="Formulars" EntitySet="Formulars" />
+            <End Role="Formular_Books" EntitySet="Formular_Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Formulars_Clients" Association="Self.FK_Formulars_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Formulars" EntitySet="Formulars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Formulars_Personal" Association="Self.FK_Formulars_Personal">
+            <End Role="Personal" EntitySet="Personal" />
+            <End Role="Formulars" EntitySet="Formulars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personal_Role" Association="Self.FK_Personal_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Personal" EntitySet="Personal" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BIbliaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BIbliaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Books" EntityType="BIbliaModel.Book" />
+          <EntitySet Name="Categories" EntityType="BIbliaModel.Category" />
+          <EntitySet Name="Clients" EntityType="BIbliaModel.Client" />
+          <EntitySet Name="Formulars" EntityType="BIbliaModel.Formular" />
+          <EntitySet Name="Genders" EntityType="BIbliaModel.Gender" />
+          <EntitySet Name="Genres" EntityType="BIbliaModel.Genre" />
+          <EntitySet Name="Personals" EntityType="BIbliaModel.Personal" />
+          <EntitySet Name="Roles" EntityType="BIbliaModel.Role" />
+          <EntitySet Name="sysdiagrams" EntityType="BIbliaModel.sysdiagram" />
+          <AssociationSet Name="FK_Books_Category" Association="BIbliaModel.FK_Books_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Book" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Books_Genre" Association="BIbliaModel.FK_Books_Genre">
+            <End Role="Genre" EntitySet="Genres" />
+            <End Role="Book" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clients_Gender" Association="BIbliaModel.FK_Clients_Gender">
+            <End Role="Gender" EntitySet="Genders" />
+            <End Role="Client" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Formulars_Clients" Association="BIbliaModel.FK_Formulars_Clients">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="Formular" EntitySet="Formulars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Formulars_Personal" Association="BIbliaModel.FK_Formulars_Personal">
+            <End Role="Personal" EntitySet="Personals" />
+            <End Role="Formular" EntitySet="Formulars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personal_Role" Association="BIbliaModel.FK_Personal_Role">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="Personal" EntitySet="Personals" />
+          </AssociationSet>
+          <AssociationSet Name="Formular_Books" Association="BIbliaModel.Formular_Books">
+            <End Role="Book" EntitySet="Books" />
+            <End Role="Formular" EntitySet="Formulars" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FAuthor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NAuthor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OAuthor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Genre" Type="Int32" />
+          <Property Name="Count" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="Int32" />
+          <Property Name="Date_Vipusk" Type="DateTime" Precision="0" />
+          <Property Name="ImageBook" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Category1" Relationship="BIbliaModel.FK_Books_Category" FromRole="Book" ToRole="Category" />
+          <NavigationProperty Name="Genre1" Relationship="BIbliaModel.FK_Books_Genre" FromRole="Book" ToRole="Genre" />
+          <NavigationProperty Name="Formulars" Relationship="BIbliaModel.Formular_Books" FromRole="Book" ToRole="Formular" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Books" Relationship="BIbliaModel.FK_Books_Category" FromRole="Category" ToRole="Book" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Familiya" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Otchestvo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Date_rojd" Type="DateTime" Precision="0" />
+          <Property Name="Gender" Type="Int32" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Gender1" Relationship="BIbliaModel.FK_Clients_Gender" FromRole="Client" ToRole="Gender" />
+          <NavigationProperty Name="Formulars" Relationship="BIbliaModel.FK_Formulars_Clients" FromRole="Client" ToRole="Formular" />
+        </EntityType>
+        <EntityType Name="Formular">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Clients" Type="Int32" />
+          <Property Name="ID_Personals" Type="Int32" />
+          <Property Name="Date_Vidachi" Type="DateTime" Precision="0" />
+          <Property Name="Date_Sdachi" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Client" Relationship="BIbliaModel.FK_Formulars_Clients" FromRole="Formular" ToRole="Client" />
+          <NavigationProperty Name="Personal" Relationship="BIbliaModel.FK_Formulars_Personal" FromRole="Formular" ToRole="Personal" />
+          <NavigationProperty Name="Books" Relationship="BIbliaModel.Formular_Books" FromRole="Formular" ToRole="Book" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Clients" Relationship="BIbliaModel.FK_Clients_Gender" FromRole="Gender" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="Genre">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Books" Relationship="BIbliaModel.FK_Books_Genre" FromRole="Genre" ToRole="Book" />
+        </EntityType>
+        <EntityType Name="Personal">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Familiya" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Otchestvo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Role" Type="Int32" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Formulars" Relationship="BIbliaModel.FK_Formulars_Personal" FromRole="Personal" ToRole="Formular" />
+          <NavigationProperty Name="Role1" Relationship="BIbliaModel.FK_Personal_Role" FromRole="Personal" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Personals" Relationship="BIbliaModel.FK_Personal_Role" FromRole="Role" ToRole="Personal" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Books_Category">
+          <End Type="BIbliaModel.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="BIbliaModel.Book" Role="Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="Category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Books_Genre">
+          <End Type="BIbliaModel.Genre" Role="Genre" Multiplicity="0..1" />
+          <End Type="BIbliaModel.Book" Role="Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genre">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="Genre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clients_Gender">
+          <End Type="BIbliaModel.Gender" Role="Gender" Multiplicity="0..1" />
+          <End Type="BIbliaModel.Client" Role="Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="Gender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Formulars_Clients">
+          <End Type="BIbliaModel.Client" Role="Client" Multiplicity="0..1" />
+          <End Type="BIbliaModel.Formular" Role="Formular" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Formular">
+              <PropertyRef Name="ID_Clients" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Formulars_Personal">
+          <End Type="BIbliaModel.Personal" Role="Personal" Multiplicity="0..1" />
+          <End Type="BIbliaModel.Formular" Role="Formular" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Formular">
+              <PropertyRef Name="ID_Personals" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personal_Role">
+          <End Type="BIbliaModel.Role" Role="Role" Multiplicity="0..1" />
+          <End Type="BIbliaModel.Personal" Role="Personal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Personal">
+              <PropertyRef Name="Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Formular_Books">
+          <End Type="BIbliaModel.Book" Role="Book" Multiplicity="*" />
+          <End Type="BIbliaModel.Formular" Role="Formular" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище BIbliaModelContainer" CdmEntityContainer="BIbliaEntities">
+          <EntitySetMapping Name="Books">
+            <EntityTypeMapping TypeName="BIbliaModel.Book">
+              <MappingFragment StoreEntitySet="Books">
+                <ScalarProperty Name="ImageBook" ColumnName="ImageBook" />
+                <ScalarProperty Name="Date_Vipusk" ColumnName="Date_Vipusk" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Genre" ColumnName="Genre" />
+                <ScalarProperty Name="OAuthor" ColumnName="OAuthor" />
+                <ScalarProperty Name="NAuthor" ColumnName="NAuthor" />
+                <ScalarProperty Name="FAuthor" ColumnName="FAuthor" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="BIbliaModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="BIbliaModel.Client">
+              <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Date_rojd" ColumnName="Date_rojd" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Otchestvo" ColumnName="Otchestvo" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Familiya" ColumnName="Familiya" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Formulars">
+            <EntityTypeMapping TypeName="BIbliaModel.Formular">
+              <MappingFragment StoreEntitySet="Formulars">
+                <ScalarProperty Name="Date_Sdachi" ColumnName="Date_Sdachi" />
+                <ScalarProperty Name="Date_Vidachi" ColumnName="Date_Vidachi" />
+                <ScalarProperty Name="ID_Personals" ColumnName="ID_Personals" />
+                <ScalarProperty Name="ID_Clients" ColumnName="ID_Clients" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genders">
+            <EntityTypeMapping TypeName="BIbliaModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genres">
+            <EntityTypeMapping TypeName="BIbliaModel.Genre">
+              <MappingFragment StoreEntitySet="Genre">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personals">
+            <EntityTypeMapping TypeName="BIbliaModel.Personal">
+              <MappingFragment StoreEntitySet="Personal">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Otchestvo" ColumnName="Otchestvo" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Familiya" ColumnName="Familiya" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="BIbliaModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BIbliaModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Formular_Books" TypeName="BIbliaModel.Formular_Books" StoreEntitySet="Formular_Books">
+            <EndProperty Name="Formular">
+              <ScalarProperty Name="ID" ColumnName="ID_Formulars" />
+            </EndProperty>
+            <EndProperty Name="Book">
+              <ScalarProperty Name="ID" ColumnName="ID_Books" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

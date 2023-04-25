@@ -1,0 +1,78 @@
+﻿<Page x:Class="DBibliaTec.Pages.Add.AddBooksPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DBibliaTec.Pages.Add"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Добавление/редактирование книг">
+
+    <Grid>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+
+            <StackPanel Margin="30" HorizontalAlignment="Right">
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 0 0">
+                    <TextBlock Text="Название книги" Style="{StaticResource TBlock15}"/>
+                    <TextBox x:Name="TboxNameBook" Style="{StaticResource TBox15}" Width="200"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
+                    <TextBlock Text="Фамилия автора" Style="{StaticResource TBlock15}"/>
+                    <TextBox x:Name="TboxFAthor" Style="{StaticResource TBox15}" Width="200"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
+                    <TextBlock Text="Имя автора" Style="{StaticResource TBlock15}"/>
+                    <TextBox x:Name="TboxNAuthor" Style="{StaticResource TBox15}" Width="200"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
+                    <TextBlock Text="Отчество автора" Style="{StaticResource TBlock15}"/>
+                    <TextBox x:Name="TboxOAuthor" Style="{StaticResource TBox15}" Width="200"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
+                    <TextBlock Text="Жанр" Style="{StaticResource TBlock15}"/>
+                    <ComboBox x:Name="CboxGenre" Style="{StaticResource Cbox15}" Width="200" 
+                              DisplayMemberPath="Name" SelectedValuePath="ID"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
+                    <TextBlock Text="Кол-во" Style="{StaticResource TBlock15}"/>
+                    <TextBox x:Name="TboxCount" Style="{StaticResource TBox15}" Width="200"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
+                    <TextBlock Text="Категория" Style="{StaticResource TBlock15}"/>
+                    <ComboBox x:Name="CboxCategory" Style="{StaticResource Cbox15}" Width="200" DisplayMemberPath="Name" SelectedValuePath="ID"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
+                    <TextBlock Text="Дата выпуска" Style="{StaticResource TBlock15}"/>
+                    <DatePicker x:Name="DPDateVihoda" Style="{StaticResource DatePicker15}" Width="200"/>
+                </StackPanel>
+
+                <Button x:Name="BtnSave" Content="Сохранить" HorizontalAlignment="Right" Margin="0 10 0 0" Click="BtnSave_Click" 
+                        Style="{StaticResource TButton}" Width="100" Height="30" Background="LightGreen"/>
+
+            </StackPanel>
+
+
+            <StackPanel  Margin="20">
+
+                <TextBlock Text="Картинка" Style="{StaticResource TBlock15}"/>
+
+                <Border BorderBrush="Black" BorderThickness="1" Width="150" Height="135">
+                    <Image x:Name="BooksImage"/>
+                </Border>
+
+                <Button Content="Добавить" x:Name="BtnSelectImg" Click="BtnSelectImg_Click" Background="LightGreen"
+                        Width="100" Height="30" Style="{StaticResource TButton}" Margin="0 10 0 0"/>
+
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+</Page>
