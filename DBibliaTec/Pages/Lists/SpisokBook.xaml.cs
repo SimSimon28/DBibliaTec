@@ -1,6 +1,8 @@
 ﻿using DBibliaTec.DB;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -12,7 +14,7 @@ namespace DBibliaTec.Pages.Lists
         {
             InitializeComponent();
 
-
+            // Для вкладки "Все" чтобы отображать все категории
             List<Category> categ = new List<Category>
             {
                 new Category { ID = 9999, Name = "Все" }
@@ -20,9 +22,6 @@ namespace DBibliaTec.Pages.Lists
             categ.AddRange(App.Context.Categories.ToList());
 
             ComboSortBy3.ItemsSource = categ;
-
-            ComboSortBy.SelectedIndex = 0;
-            ComboSortBy2.SelectedIndex = 0;
         }
 
         // Строка для прогрузки страницы
@@ -35,25 +34,22 @@ namespace DBibliaTec.Pages.Lists
         {
             var book = App.Context.Books.ToList();
 
-
-            // Сортировка по названию книг
-
-            if (ComboSortBy.SelectedIndex == 1)
-                book = book.OrderBy(p => p.Name).ToList();
-            if (ComboSortBy.SelectedIndex == 2)
-                book = book.OrderByDescending(p => p.Name).ToList();
+            //Соритировка по категории
 
             if (ComboSortBy3.SelectedIndex != 0)
             {
                 book = book.Where(p => p.Category1.ID == (int)ComboSortBy3.SelectedValue).ToList();
             }
 
-            //Сортировка по жанру
+            //Поиск по жанру
 
-            if (ComboSortBy2.SelectedIndex == 1)
-                book = book.OrderBy(p => p.Genre).ToList();
-            if (ComboSortBy2.SelectedIndex == 2)
-                book = book.OrderByDescending(p => p.Genre).ToList();
+            book = book.Where(p => p.Genre1.Name.ToLower().Contains(TboxSGenre.Text.ToLower())).ToList();
+
+            //Поиск по ФИО автора
+
+            book = book.Where(p => p.NAuthor.ToLower().Contains(TboxSAuthor.Text.ToLower()) || p.FAuthor.ToLower().Contains(TboxSAuthor.Text.ToLower()) || p.OAuthor.ToLower().Contains(TboxSAuthor.Text)).ToList();
+
+            //Поиск по названию книги
 
             book = book.Where(p => p.Name.ToLower().Contains(TboxSerch.Text.ToLower())).ToList();
 
@@ -94,12 +90,6 @@ namespace DBibliaTec.Pages.Lists
             UpBook();
         }
 
-        // Комбобокс сортировки групп
-        private void ComboSortBy2_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            UpBook();
-        }
-
         private void ComboSortBy3_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             UpBook();
@@ -111,8 +101,32 @@ namespace DBibliaTec.Pages.Lists
             UpBook();
         }
 
+        private void TboxSAuthor_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpBook();
+        }
 
+        private void TboxSGenre_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpBook();
+        }
 
-        
+        #region INPC
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string PropertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
+        }
+
+        protected virtual bool Set<T>(ref T field, T value, [CallerMemberName] string PropertyName = null)
+        {
+            if (Equals(field, value)) return false;
+            field = value;
+            OnPropertyChanged(PropertyName);
+            return true;
+        }
+
+        #endregion
     }
 }

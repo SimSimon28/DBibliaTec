@@ -54,5 +54,10 @@ namespace DBibliaTec.Pages.Others
         {
             NavigationService.Navigate(new Pages.Add.AddFormularPage());
         }
+
+        private void BInfo_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new Pages.Others.OBibliaInfo());
+        }
     }
 }

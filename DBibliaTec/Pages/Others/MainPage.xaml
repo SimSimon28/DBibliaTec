@@ -74,7 +74,7 @@
                                 <Expander IsExpanded="False" Header="Информация" Style="{StaticResource EXMain}" Width="300">
                                     <Grid>
                                         <StackPanel Margin="5 5">
-                                            <Button Width="300" Padding="5" Height="40" Style="{StaticResource BMain}" HorizontalContentAlignment="Left" x:Name="BInfo" MouseDoubleClick="BClientsAdd_MouseDoubleClick">
+                                            <Button Width="300" Padding="5" Height="40" Style="{StaticResource BMain}" HorizontalContentAlignment="Left" x:Name="BInfo" MouseDoubleClick="BInfo_MouseDoubleClick">
                                                 <StackPanel Orientation="Horizontal">
                                                     <Image Source="\Icons\Clients.png" Width="20" Height="20"/>
                                                     <TextBlock Text="О библиотеке"/>

@@ -12,42 +12,66 @@
         <Grid.RowDefinitions>
 
             <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="50*"/>
             <RowDefinition Height="50"/>
 
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="80,0,0,0" Width="640">
-            <ComboBox Margin="5" Width="150" Name="ComboSortBy" SelectionChanged="ComboSortBy_SelectionChanged" Style="{StaticResource Cbox15}">
-                <ComboBoxItem Content="все книги"></ComboBoxItem>
-                <ComboBoxItem Content="Название по возростанию"></ComboBoxItem>
-                <ComboBoxItem Content="Название по убыванию"></ComboBoxItem>
-            </ComboBox>
-
-            <ComboBox Margin="5" Width="150" Name="ComboSortBy2" SelectionChanged="ComboSortBy2_SelectionChanged" Style="{StaticResource Cbox15}">
-                <ComboBoxItem Content="все жанры"></ComboBoxItem>
-                <ComboBoxItem Content="Жанры по возрастанию"></ComboBoxItem>
-                <ComboBoxItem Content="Жанры по убыванию"></ComboBoxItem>
-            </ComboBox>
-
-            <ComboBox Margin="5" Width="150" Name="ComboSortBy3" SelectionChanged="ComboSortBy3_SelectionChanged" Style="{StaticResource Cbox15}" 
+        <GroupBox Height="96" HorizontalAlignment="Stretch" Grid.RowSpan="2" Header="Поиск" Style="{StaticResource GBSF}" Margin="10 5 10 10">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel HorizontalAlignment="Left">
+                    <TextBlock Style="{StaticResource TBlock14SF}" HorizontalAlignment="Left" Margin="10 5 0 0" Text="По названию"/>
+                    <TextBox x:Name="TboxSerch" Width="150" Height="30" Margin="10 5 0 0" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                             TextChanged="TboxSerch_TextChanged" Style="{StaticResource TBox15SF}" HorizontalAlignment="Left" CaretBrush="{StaticResource BrushBlueLight}">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left">
+                    <TextBlock Margin="5 5 0 0" Text="По категории"/>
+                    <ComboBox Margin="5" Width="150" Name="ComboSortBy3" SelectionChanged="ComboSortBy3_SelectionChanged" Style="{StaticResource CBox15BS}"
                       SelectedValuePath="ID" DisplayMemberPath="Name" SelectedIndex="0">
-            </ComboBox>
+                        
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left">
+                    <TextBlock Margin="5 5 0 0" Text="По ФИО автора"/>
+                    <TextBox Margin="5"  Width="150" Height="30" Name="TboxSAuthor" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                             TextChanged="TboxSAuthor_TextChanged" Style="{StaticResource TBox15SF}" HorizontalAlignment="Left" CaretBrush="{StaticResource BrushBlueLight}">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left">
+                    <TextBlock Margin="10 5 0 0" Text="По жанру"/>
+                    <TextBox Margin="5"  Width="150" Height="30" Name="TboxSGenre" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                             TextChanged="TboxSGenre_TextChanged" Style="{StaticResource TBox15SF}" HorizontalAlignment="Left" CaretBrush="{StaticResource BrushBlueLight}">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
 
-            <TextBox x:Name="TboxSerch" Width="150" Margin="5" 
-                        TextChanged="TboxSerch_TextChanged" Style="{StaticResource TBox15}"/>
-        </StackPanel>
-        
-        <ListView Grid.Row="2" Name="LView">
+        <ListView Grid.Row="2" Name="LView" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapPanel Orientation="Vertical" HorizontalAlignment="Left"/>
+                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Border BorderBrush="Black" BorderThickness="2">
+                    <Border BorderBrush="{StaticResource BrushBlueLightTest}" BorderThickness="1" Background="{StaticResource BrushBlueLight}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="100"/>
@@ -56,37 +80,37 @@
                             
                             <Image Source="{Binding ImageBook}"/>
 
-                            <StackPanel Width="500" Height="200" Grid.Column="1">
+                            <StackPanel Width="400" Height="200" Grid.Column="1" Margin="10">
 
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding NameS}" Style="{StaticResource TBlock15}" Margin="5 0 0 0"/>
+                                    <TextBlock Text="{Binding NameS}" Style="{StaticResource TBlock16SB}" Margin="5 10 0 0"/>
                                 </StackPanel>
 
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding FIO}" Style="{StaticResource TBlock15}" Margin="5 0 0 0"/>
-                                    <TextBlock Text="{Binding NAuthor}" Style="{StaticResource TBlock15}" Margin="5 0 0 0"/>
-                                    <TextBlock Text="{Binding OAuthor}" Style="{StaticResource TBlock15}" Margin="5 0 0 0" HorizontalAlignment="Right"/>
+                                    <TextBlock Text="{Binding FIO}" Style="{StaticResource TBlock16SB}" Margin="5 0 0 0"/>
+                                    <TextBlock Text="{Binding NAuthor}" Style="{StaticResource TBlock16SB}" Margin="5 0 0 0"/>
+                                    <TextBlock Text="{Binding OAuthor}" Style="{StaticResource TBlock16SB}" Margin="5 0 0 0" HorizontalAlignment="Right"/>
                                 </StackPanel>
 
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding Genre1.Genres}" Style="{StaticResource TBlock15}" Margin="5 0 0 0"/>
+                                    <TextBlock Text="{Binding Genre1.Genres}" Style="{StaticResource TBlock16SB}" Margin="5 0 0 0"/>
                                 </StackPanel>
                                 
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding Counts}" Style="{StaticResource TBlock15}" Margin="5 0 0 0"/>
+                                    <TextBlock Text="{Binding Counts}" Style="{StaticResource TBlock16SB}" Margin="5 0 0 0"/>
                                 </StackPanel>
 
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding Category1.Categorys}" Style="{StaticResource TBlock15}" Margin="5 0 0 0"/>
+                                    <TextBlock Text="{Binding Category1.Categorys}" Style="{StaticResource TBlock16SB}" Margin="5 0 0 0"/>
                                 </StackPanel>
 
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding DateVipuska}" Style="{StaticResource TBlock15}" Margin="5 0 0 0" Width="250"/>
+                                    <TextBlock Text="{Binding DateVipuska}" Style="{StaticResource TBlock16SB}" Margin="5 0 0 0" Width="220"/>
                                 </StackPanel>
 
                                 <StackPanel Orientation="Horizontal">
-                                    <Button x:Name="ChengeButton" Style="{StaticResource TButton}" Background="YellowGreen" Content="Редактирование" Margin="5 5" Click="ChengeButton_Click"/>
-                                    <Button x:Name="DeleteButton" Style="{StaticResource TButton}" Background="{StaticResource GridBack}" Content="Удалить" Margin="5 5" Click="DeleteButton_Click"/>
+                                    <Button x:Name="ChengeButton" Style="{StaticResource ButtonBlueTest1}" Content="Редактирование" Margin="5 5" Click="ChengeButton_Click" Width="110" Height="30"/>
+                                    <Button x:Name="DeleteButton" Style="{StaticResource ButtonBlueTest1}"  Content="Удалить" Margin="5 5" Click="DeleteButton_Click" Width="60" Height="30"/>
                                 </StackPanel>
 
                             </StackPanel>
@@ -96,7 +120,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Button x:Name="AddButton" Grid.Row="3" Style="{StaticResource TButton}" Background="GreenYellow" Content="Добавить книгу" 
-                Width="150" Height="40" HorizontalAlignment="Right" Grid.Column="1" Margin="0 0 10 0" Click="AddButton_Click"/>
+        <Button x:Name="AddButton" Grid.Row="3" Style="{StaticResource ButtonBlueTest1}" Content="Добавить" 
+                Width="100" Height="30" HorizontalAlignment="Right" Grid.Column="1" Margin="10 0" Click="AddButton_Click"/>
     </Grid>
 </Page>

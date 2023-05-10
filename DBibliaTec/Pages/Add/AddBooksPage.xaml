@@ -10,68 +10,123 @@
 
     <Grid>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Border BorderThickness="3" BorderBrush="{StaticResource BrushBlueLightTest}" CornerRadius="10 10 10 10" Background="{StaticResource BrushBlueLight}">
+                <Grid>
+                    <StackPanel Orientation="Horizontal">
 
-            <StackPanel Margin="30" HorizontalAlignment="Right">
+                    <StackPanel Margin="30" HorizontalAlignment="Right">
 
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 0 0">
-                    <TextBlock Text="Название книги" Style="{StaticResource TBlock15}"/>
-                    <TextBox x:Name="TboxNameBook" Style="{StaticResource TBox15}" Width="200"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 0 0">
+                        <TextBlock Text="Название книги:" Style="{StaticResource TBlock19ABP}"/>
+                                <TextBox x:Name="TboxNameBook" Style="{StaticResource TBox19ABP}" Width="200" 
+                             Margin="10 0 0 0" CaretBrush="GhostWhite">
+                                    <TextBox.Resources>
+                                        <Style TargetType="{x:Type Border}">
+                                            <Setter Property="CornerRadius" Value="10"/>
+                                        </Style>
+                                    </TextBox.Resources>
+                                </TextBox>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
+                        <TextBlock Text="Фамилия автора:" Style="{StaticResource TBlock19ABP}"/>
+                                <TextBox x:Name="TboxFAthor" Style="{StaticResource TBox19ABP}" Width="200" 
+                             Margin="10 0 0 0" CaretBrush="GhostWhite">
+                                    <TextBox.Resources>
+                                        <Style TargetType="{x:Type Border}">
+                                            <Setter Property="CornerRadius" Value="10"/>
+                                        </Style>
+                                    </TextBox.Resources>
+                                </TextBox>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
+                        <TextBlock Text="Имя автора:" Style="{StaticResource TBlock19ABP}"/>
+                                <TextBox x:Name="TboxNAuthor" Style="{StaticResource TBox19ABP}" Width="200" 
+                             Margin="10 0 0 0" CaretBrush="GhostWhite">
+                                    <TextBox.Resources>
+                                        <Style TargetType="{x:Type Border}">
+                                            <Setter Property="CornerRadius" Value="10"/>
+                                        </Style>
+                                    </TextBox.Resources>
+                                </TextBox>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
+                        <TextBlock Text="Отчество автора:" Style="{StaticResource TBlock19ABP}"/>
+                                <TextBox x:Name="TboxOAuthor" Style="{StaticResource TBox19ABP}" Width="200" 
+                             Margin="10 0 0 0" CaretBrush="GhostWhite">
+                                    <TextBox.Resources>
+                                        <Style TargetType="{x:Type Border}">
+                                            <Setter Property="CornerRadius" Value="10"/>
+                                        </Style>
+                                    </TextBox.Resources>
+                                </TextBox>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
+                        <TextBlock Text="Жанр:" Style="{StaticResource TBlock19ABP}" Margin="10 0 0 0"/>
+                                <ComboBox x:Name="CboxGenre" Style="{StaticResource CBox19ABP}" Width="200" 
+                              DisplayMemberPath="Name" SelectedValuePath="ID" Margin="10 0 0 0">
+                                    <ComboBox.Resources>
+                                        <Style TargetType="{x:Type Border}">
+                                            <Setter Property="CornerRadius" Value="10"/>
+                                        </Style>
+                                    </ComboBox.Resources>
+                                </ComboBox>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
+                        <TextBlock Text="Кол-во:" Style="{StaticResource TBlock19ABP}"/>
+                                <TextBox x:Name="TboxCount" Style="{StaticResource TBox19ABP}" Width="200" 
+                             Margin="10 0 0 0" CaretBrush="GhostWhite">
+                                    <TextBox.Resources>
+                                        <Style TargetType="{x:Type Border}">
+                                            <Setter Property="CornerRadius" Value="10"/>
+                                        </Style>
+                                    </TextBox.Resources>
+                                </TextBox>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
+                        <TextBlock Text="Категория:" Style="{StaticResource TBlock19ABP}"/>
+                        <ComboBox x:Name="CboxCategory" Style="{StaticResource CBox19ABP}" Width="200" 
+                              DisplayMemberPath="Name" SelectedValuePath="ID" Margin="10 0 0 0"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
+                        <TextBlock Text="Дата выпуска:" Style="{StaticResource TBlock19ABP}"/>
+                                <DatePicker x:Name="DPDateVihoda" Style="{StaticResource DP19ABP}" Width="200" Margin="10 0 0 0">
+                                    <DatePicker.Resources>
+                                        <Style TargetType="{x:Type Border}">
+                                            <Setter Property="CornerRadius" Value="5"/>
+                                        </Style>
+                                    </DatePicker.Resources>
+                                </DatePicker>
+                    </StackPanel>
+
+                    <Button x:Name="BtnSave" Content="Сохранить" HorizontalAlignment="Right" Margin="0 10 0 0" Click="BtnSave_Click" 
+                        Style="{StaticResource ButtonBlueTest1}" Width="100" Height="30" Background="LightGreen"/>
+
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
-                    <TextBlock Text="Фамилия автора" Style="{StaticResource TBlock15}"/>
-                    <TextBox x:Name="TboxFAthor" Style="{StaticResource TBox15}" Width="200"/>
+
+                <StackPanel  Margin="20">
+
+                    <TextBlock Text="Картинка" Style="{StaticResource TBlock19ABP}"/>
+
+                    <Border BorderBrush="{StaticResource BrushBlueLightTest}" BorderThickness="1" Width="150" Height="135">
+                        <Image x:Name="BooksImage"/>
+                    </Border>
+
+                    <Button Content="Добавить" x:Name="BtnSelectImg" Click="BtnSelectImg_Click"
+                        Width="100" Height="30" Style="{StaticResource ButtonBlueTest1}" Margin="0 10 0 0"/>
+
                 </StackPanel>
+                    </StackPanel>
+                </Grid>
 
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
-                    <TextBlock Text="Имя автора" Style="{StaticResource TBlock15}"/>
-                    <TextBox x:Name="TboxNAuthor" Style="{StaticResource TBox15}" Width="200"/>
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
-                    <TextBlock Text="Отчество автора" Style="{StaticResource TBlock15}"/>
-                    <TextBox x:Name="TboxOAuthor" Style="{StaticResource TBox15}" Width="200"/>
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
-                    <TextBlock Text="Жанр" Style="{StaticResource TBlock15}"/>
-                    <ComboBox x:Name="CboxGenre" Style="{StaticResource Cbox15}" Width="200" 
-                              DisplayMemberPath="Name" SelectedValuePath="ID"/>
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
-                    <TextBlock Text="Кол-во" Style="{StaticResource TBlock15}"/>
-                    <TextBox x:Name="TboxCount" Style="{StaticResource TBox15}" Width="200"/>
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
-                    <TextBlock Text="Категория" Style="{StaticResource TBlock15}"/>
-                    <ComboBox x:Name="CboxCategory" Style="{StaticResource Cbox15}" Width="200" DisplayMemberPath="Name" SelectedValuePath="ID"/>
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
-                    <TextBlock Text="Дата выпуска" Style="{StaticResource TBlock15}"/>
-                    <DatePicker x:Name="DPDateVihoda" Style="{StaticResource DatePicker15}" Width="200"/>
-                </StackPanel>
-
-                <Button x:Name="BtnSave" Content="Сохранить" HorizontalAlignment="Right" Margin="0 10 0 0" Click="BtnSave_Click" 
-                        Style="{StaticResource TButton}" Width="100" Height="30" Background="LightGreen"/>
-
-            </StackPanel>
-
-
-            <StackPanel  Margin="20">
-
-                <TextBlock Text="Картинка" Style="{StaticResource TBlock15}"/>
-
-                <Border BorderBrush="Black" BorderThickness="1" Width="150" Height="135">
-                    <Image x:Name="BooksImage"/>
-                </Border>
-
-                <Button Content="Добавить" x:Name="BtnSelectImg" Click="BtnSelectImg_Click" Background="LightGreen"
-                        Width="100" Height="30" Style="{StaticResource TButton}" Margin="0 10 0 0"/>
-
-            </StackPanel>
+            </Border>
 
         </StackPanel>
     </Grid>

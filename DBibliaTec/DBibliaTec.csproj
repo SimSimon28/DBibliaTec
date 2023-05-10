@@ -159,6 +159,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Others\OBibliaInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pages\Add\AddBooksPage.xaml.cs">
@@ -187,6 +191,9 @@
     </Compile>
     <Compile Include="Pages\Others\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Others\OBibliaInfo.xaml.cs">
+      <DependentUpon>OBibliaInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -246,6 +253,8 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Icons\Delete.png" />
+    <Resource Include="Icons\Add.png" />
     <Resource Include="Icons\BookAdd.png" />
     <Resource Include="Icons\Books.png" />
     <Resource Include="Icons\ClientAdd.png" />

@@ -30,7 +30,7 @@ namespace DBibliaTec.Pages.Others
             if (currentUser != null)
             {
                 App.CurrentUser = currentUser;
-                NavigationService.Navigate(new Pages.Lists.SpisokFormularPage());
+                NavigationService.Navigate(new Pages.Others.MainPage());
             }
             else
             {

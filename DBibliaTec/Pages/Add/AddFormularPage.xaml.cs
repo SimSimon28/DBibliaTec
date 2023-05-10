@@ -1,4 +1,6 @@
 ﻿using DBibliaTec.DB;
+using DBibliaTec.Pages.Lists;
+using DBibliaTec.Pages.Others;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

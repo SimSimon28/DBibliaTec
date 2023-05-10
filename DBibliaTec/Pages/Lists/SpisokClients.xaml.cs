@@ -31,6 +31,7 @@ namespace DBibliaTec.Pages.Lists
             || p.Name.ToLower().Contains(TboxSerch.Text.ToLower())
             || p.Otchestvo.ToLower().Contains(TboxSerch.Text.ToLower())).ToList();
 
+
             DGFormulars.ItemsSource = clients;
         }
 

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:DBibliaTec.Pages.Others"
         mc:Ignorable="d"
         Title="Сведения" MinHeight="600" MinWidth="565" MaxHeight="600" MaxWidth="565" WindowStartupLocation="CenterScreen"
-        ResizeMode="CanMinimize">
+        ResizeMode="CanMinimize" Loaded="Window_Loaded">
     <Grid>
 
         <Grid.RowDefinitions>
@@ -29,7 +29,7 @@
             <Image Source="\Icons\Back.png" Width="40" Height="31" HorizontalAlignment="Center"/>
         </Button>
 
-        <TextBlock Text="{Binding CurrentFormular.Client.Familiya,StringFormat={}Информация о текущем формуляре {0}}" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource TBlockGlav}"/>
+        <TextBlock Text="{Binding CurrentFormular.Client.Familiya,StringFormat={}Информация о текущем формуляре {0}}" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource TBMain}"/>
 
         <Image Source="/LogoAndImages/Images/tarjei-skaarsmoen-library-render-01-fixed-lightroom-export (1).jpg" Grid.Row="1" Stretch="Fill" Grid.RowSpan="2"/>
 
@@ -42,32 +42,32 @@
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 0 0">
                         <TextBlock Text="Фамилия: " Style="{StaticResource TBlockOF}"/>
-                        <TextBox x:Name="TBlockFamiliya" IsReadOnly="{Binding IsReadOnly}" Style="{StaticResource TBox15}" 
-                                 Width="200" Text="{Binding CurrentFormular.Client.Familiya}"/>
+                        <TextBox x:Name="TBlockFamiliya" IsReadOnly="{Binding IsReadOnly}" Style="{StaticResource TBox15OF}" 
+                                 Width="200" Text="{Binding CurrentFormular.Client.Familiya}" CaretBrush="DeepSkyBlue"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
                         <TextBlock Text="Имя: " Style="{StaticResource TBlockOF}"/>
-                        <TextBox x:Name="TBlockName" IsReadOnly="{Binding IsReadOnly}" Style="{StaticResource TBox15}" 
-                                 Width="200" Text="{Binding CurrentFormular.Client.Name}"/>
+                        <TextBox x:Name="TBlockName" IsReadOnly="{Binding IsReadOnly}" Style="{StaticResource TBox15OF}" 
+                                 Width="200" Text="{Binding CurrentFormular.Client.Name}" CaretBrush="DeepSkyBlue"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
                         <TextBlock Text="Отчество: " Style="{StaticResource TBlockOF}"/>
-                        <TextBox x:Name="TBlockOtchestvo" IsReadOnly="{Binding IsReadOnly}" Style="{StaticResource TBox15}" 
-                                 Width="200" Text="{Binding CurrentFormular.Client.Otchestvo}"/>
+                        <TextBox x:Name="TBlockOtchestvo" IsReadOnly="{Binding IsReadOnly}" Style="{StaticResource TBox15OF}" 
+                                 Width="200" Text="{Binding CurrentFormular.Client.Otchestvo}" CaretBrush="DeepSkyBlue"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
                         <TextBlock Text="Возраст: " Style="{StaticResource TBlockOF}"/>
                         <TextBox x:Name="TBlockAge" IsReadOnly="{Binding IsReadOnly}" Style="{StaticResource TBox15OF}" 
-                                 Width="200" Text="{Binding CurrentFormular.Client.Age}" />
+                                 Width="200" Text="{Binding CurrentFormular.Client.Age}" CaretBrush="DeepSkyBlue"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
                         <TextBlock Text="Д. р.: " Style="{StaticResource TBlockOF}"/>
-                        <TextBox x:Name="TBlockDateRojd" IsReadOnly="{Binding IsReadOnly}" Style="{StaticResource TBox15}" Width="200" 
-                                    Text="{Binding CurrentFormular.Client.Date_rojd, StringFormat={}{0:dd.MM.yyyy}}"/>
+                        <TextBox x:Name="TBlockDateRojd" IsReadOnly="{Binding IsReadOnly}" Style="{StaticResource TBox15OF}" Width="200" 
+                                    Text="{Binding CurrentFormular.Client.Date_rojd, StringFormat={}{0:dd.MM.yyyy}}" CaretBrush="DeepSkyBlue"/>
                     </StackPanel>
 
                 </StackPanel>
@@ -90,14 +90,15 @@
 
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="1" Margin="10 20 0 0">
 
-            <GroupBox BorderThickness="0.5" BorderBrush="GhostWhite" Margin="10 0 0 0" Header="Взятые книги"  Style="{StaticResource GBOF}">
+            <GroupBox BorderThickness="0.5" BorderBrush="GhostWhite" Margin="7 0 0 0" Header="Взятые книги"  Style="{StaticResource GBOF}">
 
                 <StackPanel HorizontalAlignment="Right" Width="295">
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10 5 0 0">
 
-                        <ListBox BorderThickness="0" ItemsSource="{Binding CurrentFormular.Books}" DisplayMemberPath="Name" Name="LBoxMain" 
-                                 HorizontalAlignment="Left" Width="275"  Height="105" Background="Transparent" Style="{StaticResource LBoxOF}">
+                        <ListBox BorderThickness="0" DisplayMemberPath="Name" x:Name="LBoxVziat"
+                                 HorizontalAlignment="Left" Width="275"  Height="105" Background="Transparent" Style="{StaticResource LBoxOF}" 
+                                 SelectedItem="{Binding SelectedBook}"  ItemsSource="{Binding SelectedBooks}">
                             <ListBox.ItemContainerStyle>
                                 <Style TargetType="ListBoxItem">
                                     <Setter Property="Focusable" Value="False" />
@@ -117,10 +118,13 @@
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
 
-                        <TextBlock x:Name="TBlockPhone" Style="{StaticResource TBlockOF}" Text="{Binding CurrentFormular.Client.Phone}"/>
+                        <TextBox x:Name="TBlockPhone" Style="{StaticResource TBox15OF}" Text="{Binding CurrentFormular.Client.Phone}"
+                                   IsReadOnly="{Binding IsReadOnly}" CaretBrush="DeepSkyBlue"/>
 
                     </StackPanel>
+                    
                 </GroupBox>
+                
             </StackPanel>
 
         </StackPanel>
@@ -130,6 +134,29 @@
                 <Button Width="130" Height="30" Style="{StaticResource ButtonConfirm}" Content="Редактировать" Name="EditButton" Click="EditButton_Click"/>
                 <Button Width="130" Height="30" Style="{StaticResource ButtonDelete}" Content="Удалить" Name="DelteButton" Margin="0 5 0 0" Click="DelteButton_Click"/>
             </StackPanel>
+        </StackPanel>
+        <StackPanel Margin="10 10" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="1">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Right">
+                <Button Width="30" Height="30" Style="{StaticResource ButtonConfirm}" Name="AddBooks" Margin="0 0 40 0" Click="AddBooks_Click" Visibility="Hidden">
+                    <Image Source="\Icons\Add.png"/>
+                </Button>
+                <Button Width="30" Height="30" Style="{StaticResource ButtonDelete}" Name="DeleteBook" Margin="0 5 40 0" Click="DeleteBook_Click" Visibility="Hidden">
+                    <Image Source="\Icons\Delete.png"/>
+                </Button>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <Button Width="130" Height="30" Style="{StaticResource ButtonConfirm}" Content="Сохранить" Name="SaveButton" Visibility="Hidden" Click="SaveButton_Click"/>
+                <Button Width="130" Height="30" Style="{StaticResource ButtonDelete}" Content="Отменить" Name="CancelButton" Margin="0 5 0 0" Visibility="Hidden" Click="CancelButton_Click"/>
+            </StackPanel>
+        </StackPanel>
+        
+        <StackPanel  Margin="10 10" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="1" x:Name="SpisokBooks" Visibility="Hidden">
+            <GroupBox BorderThickness="0.5" BorderBrush="GhostWhite" Margin="7 0 0 0" Header="Список книг"  Style="{StaticResource GBOF}" Grid.Row="1">
+                <StackPanel Margin="10 10" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                    <ListBox BorderThickness="0" DisplayMemberPath="Name" x:Name="LBoxView"
+                                 HorizontalAlignment="Left" Width="275"  Height="105" Background="Transparent" Style="{StaticResource LBoxOF}" SelectedItem="{Binding SelectedBook}"/>
+                </StackPanel>
+            </GroupBox>
         </StackPanel>
     </Grid>
 </Window>
