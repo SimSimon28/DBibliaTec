@@ -26,7 +26,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <TextBlock Text="Пароль" Style="{StaticResource TBlock19ABP}" Foreground="{StaticResource BrushBlueLight}" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                            <PasswordBox Style="{DynamicResource PBoxTem}" x:Name="Password" Margin="10" Width="200" Height="30" VerticalAlignment="Center" PasswordChar="*"
+                            <PasswordBox Style="{DynamicResource PBox19ABP}" x:Name="Password" Margin="10" Width="200" Height="30" VerticalAlignment="Center" PasswordChar="*"
                                          HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                         </StackPanel>
                     </StackPanel>
