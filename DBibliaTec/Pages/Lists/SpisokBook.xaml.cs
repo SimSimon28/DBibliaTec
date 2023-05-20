@@ -1,15 +1,20 @@
 ﻿using DBibliaTec.DB;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace DBibliaTec.Pages.Lists
 {
-    public partial class SpisokBook : Page
+    public partial class SpisokBook : Page, INotifyPropertyChanged
     {
+
         public SpisokBook()
         {
             InitializeComponent();
@@ -22,6 +27,7 @@ namespace DBibliaTec.Pages.Lists
             categ.AddRange(App.Context.Categories.ToList());
 
             ComboSortBy3.ItemsSource = categ;
+            ComboNal.SelectedIndex = 0;
         }
 
         // Строка для прогрузки страницы
@@ -41,6 +47,11 @@ namespace DBibliaTec.Pages.Lists
                 book = book.Where(p => p.Category1.ID == (int)ComboSortBy3.SelectedValue).ToList();
             }
 
+            if (ComboNal.SelectedIndex == 1)
+                book = book.Where(p => p.Count > 0).ToList();
+            if (ComboNal.SelectedIndex == 2)
+                book = book.Where(p => p.Count <= 0).ToList();
+
             //Поиск по жанру
 
             book = book.Where(p => p.Genre1.Name.ToLower().Contains(TboxSGenre.Text.ToLower())).ToList();
@@ -56,6 +67,7 @@ namespace DBibliaTec.Pages.Lists
             LView.ItemsSource = book;
         }
 
+       
         // Кнопка редактирования
         private void ChengeButton_Click(object sender, RoutedEventArgs e)
         {
@@ -75,6 +87,12 @@ namespace DBibliaTec.Pages.Lists
                 App.Context.SaveChanges();
                 UpBook();
             }
+        }
+
+        // Чек наличия книг
+        private void CheckBox_CheckChanged(object sender, RoutedEventArgs e)
+        {
+            UpBook();
         }
 
         // Кнопка добавление контрактов
@@ -111,6 +129,11 @@ namespace DBibliaTec.Pages.Lists
             UpBook();
         }
 
+        private void ComboNal_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpBook();
+        }
+
         #region INPC
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -127,6 +150,9 @@ namespace DBibliaTec.Pages.Lists
             return true;
         }
 
+
         #endregion
+
+
     }
 }

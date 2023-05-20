@@ -66,8 +66,8 @@
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
                         <TextBlock Text="Жанр:" Style="{StaticResource TBlock19ABP}" Margin="10 0 0 0"/>
-                                <ComboBox x:Name="CboxGenre" Style="{StaticResource CBox19ABP}" Width="200" 
-                              DisplayMemberPath="Name" SelectedValuePath="ID" Margin="10 0 0 0">
+                                <ComboBox x:Name="CboxGenre" Style="{StaticResource CBoxTem}" Width="200" 
+                              DisplayMemberPath="Name" SelectedValuePath="ID" Margin="10 0 0 0" Foreground="{StaticResource BrushBlueLight}" FontSize="19" FontFamily="Roboto">
                                     <ComboBox.Resources>
                                         <Style TargetType="{x:Type Border}">
                                             <Setter Property="CornerRadius" Value="10"/>
@@ -90,16 +90,17 @@
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
                         <TextBlock Text="Категория:" Style="{StaticResource TBlock19ABP}"/>
-                        <ComboBox x:Name="CboxCategory" Style="{StaticResource CBox19ABP}" Width="200" 
-                              DisplayMemberPath="Name" SelectedValuePath="ID" Margin="10 0 0 0"/>
+                        <ComboBox x:Name="CboxCategory" Style="{StaticResource CBoxTem}" Width="200" 
+                              DisplayMemberPath="Name" SelectedValuePath="ID" Margin="10 0 0 0" Foreground="{StaticResource BrushBlueLight}" FontSize="19" FontFamily="Roboto"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
                         <TextBlock Text="Дата выпуска:" Style="{StaticResource TBlock19ABP}"/>
-                                <DatePicker x:Name="DPDateVihoda" Style="{StaticResource DP19ABP}" Width="200" Margin="10 0 0 0">
+                                <DatePicker x:Name="DPDateVihoda" Style="{StaticResource DPSdBook}" Width="200" Margin="10 0 0 0" 
+                                            Background="{StaticResource BrushBlueLightTest}" BorderBrush="{StaticResource MainColor}">
                                     <DatePicker.Resources>
                                         <Style TargetType="{x:Type Border}">
-                                            <Setter Property="CornerRadius" Value="5"/>
+                                            <Setter Property="CornerRadius" Value="10"/>
                                         </Style>
                                     </DatePicker.Resources>
                                 </DatePicker>

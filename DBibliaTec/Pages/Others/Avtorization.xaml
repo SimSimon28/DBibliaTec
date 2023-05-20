@@ -10,25 +10,35 @@
 
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Border BorderThickness="4" BorderBrush="{StaticResource BrushBlueLightTest}"  Margin="10 10" Background="{StaticResource MainColor}" CornerRadius="10">
+                <Grid>
+                    <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <TextBlock Text="Логин" Style="{StaticResource TBlock15}" Margin="5" VerticalAlignment="Center"></TextBlock>
-                <TextBox x:Name="Login" Style="{StaticResource TBox15}" Margin="10" Width="100" Height="25" VerticalAlignment="Center"></TextBox>
+                <TextBlock Text="Логин" Style="{StaticResource TBlock19ABP}" Foreground="{StaticResource BrushBlueLight}" Margin="5" VerticalAlignment="Center"></TextBlock>
+                <TextBox x:Name="Login" Style="{StaticResource TBox19ABP}"  
+                         Margin="10" Width="200" Height="30" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                    <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                    </TextBox.Resources>
+                </TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <TextBlock Text="Пароль" Style="{StaticResource TBlock15}" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                <PasswordBox x:Name="Password" Style="{StaticResource PBox15}" Margin="10" Width="100" Height="25" VerticalAlignment="Center" PasswordChar="*"/>
+                <TextBlock Text="Пароль" Style="{StaticResource TBlock19ABP}" Foreground="{StaticResource BrushBlueLight}" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                            <PasswordBox Style="{DynamicResource PBoxTem}" x:Name="Password" Margin="10" Width="200" Height="30" VerticalAlignment="Center" PasswordChar="*"
+                                         HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </Border>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="Avtoriz" Style="{StaticResource ButtonBlueTest1}" Width="160" Height="35" 
+                        Margin="10" Content="Авторизироваться" Click="Avtoriz_Click" FontSize="16" ></Button>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name="Avtoriz" Style="{StaticResource TButton}" Width="auto" Height="30" 
-                        Margin="10" Content="Авторизироваться" Background="GreenYellow" 
-                        Click="Avtoriz_Click" ></Button>
-            </StackPanel>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name="Avtoria" Style="{StaticResource TButton}" Width="auto" Height="30" 
-                        Margin="10" Content="Авторизироваться" Background="GreenYellow" 
-                        Click="Avtoria_Click" ></Button>
             </StackPanel>
         </StackPanel>
     </Grid>

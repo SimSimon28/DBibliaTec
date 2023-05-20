@@ -80,6 +80,13 @@
                                                     <TextBlock Text="О библиотеке"/>
                                                 </StackPanel>
                                             </Button>
+                                            <Button Width="300" Padding="5" Height="40" Style="{StaticResource BMain}" HorizontalContentAlignment="Left" x:Name="RatingBook" 
+                                                    MouseDoubleClick="RatingBook_MouseDoubleClick">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Image Source="\Icons\Clients.png" Width="20" Height="20"/>
+                                                    <TextBlock Text="Топ книг"/>
+                                                </StackPanel>
+                                            </Button>
                                         </StackPanel>
                                     </Grid>
                                 </Expander>

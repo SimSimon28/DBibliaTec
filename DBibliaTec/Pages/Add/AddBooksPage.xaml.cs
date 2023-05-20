@@ -72,7 +72,7 @@ namespace DBibliaTec.Pages.Add
                         FAuthor = TboxFAthor.Text,
                         OAuthor = TboxOAuthor.Text,
                         NAuthor = TboxNAuthor.Text,
-                        Count = TboxCount.Text,
+                        Count = int.Parse(TboxCount.Text),
                         Date_Vipusk = DateTime.Parse(DPDateVihoda.Text),
                         ImageBook = _imageBooks
                     };
@@ -87,7 +87,7 @@ namespace DBibliaTec.Pages.Add
                     _currentBook.FAuthor = TboxFAthor.Text;
                     _currentBook.NAuthor = TboxNAuthor.Text;
                     _currentBook.OAuthor = TboxOAuthor.Text;
-                    _currentBook.Count = TboxCount.Text;
+                    _currentBook.Count = int.Parse(TboxCount.Text);
                     _currentBook.Date_Vipusk = DateTime.Parse(DPDateVihoda.Text);
 
                     if (_imageBooks != null)

@@ -16,7 +16,11 @@
 
         </Grid.RowDefinitions>
 
-        <Image Source="LogoAndImages/Images/tarjei-skaarsmoen-library-render-01-fixed-lightroom-export (1).jpg" Grid.Row="1" Stretch="Fill" Grid.RowSpan="2"/>
+        <Image Source="\LogoAndImages\Images\MainFone1.png" Grid.Row="1" Stretch="Fill" Grid.RowSpan="2">
+            <Image.BitmapEffect>
+                <BlurBitmapEffect Radius="0"/>
+            </Image.BitmapEffect>
+        </Image>
 
         <Grid Grid.Row="0">
             <Grid.Background>
@@ -29,7 +33,8 @@
 
         <Image Source="LogoAndImages\Logo\BibliaC.jpg" HorizontalAlignment="Left" Height="auto" Width="auto"/>
 
-        <TextBlock Text="{Binding ElementName=MainFrame, Path=Content.Title}" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource TBlockGlav}"/>
+        <TextBlock Text="{Binding ElementName=MainFrame, Path=Content.Title}" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource TBlock19ABP}" 
+                   FontSize="25" Foreground="GhostWhite"/>
 
         <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Grid.Row="1"/>
 

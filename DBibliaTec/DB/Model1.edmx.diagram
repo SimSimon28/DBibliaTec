@@ -5,15 +5,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="25bc5a622a53442389cbc6b4809f9002" Name="Diagram1">
-        <EntityTypeShape EntityType="BIbliaModel.Book" Width="1.5" PointX="3" PointY="10.375" />
-        <EntityTypeShape EntityType="BIbliaModel.Category" Width="1.5" PointX="0.75" PointY="10.125" />
-        <EntityTypeShape EntityType="BIbliaModel.Client" Width="1.5" PointX="3" PointY="6.25" />
-        <EntityTypeShape EntityType="BIbliaModel.Formular" Width="1.5" PointX="5.25" PointY="1" />
-        <EntityTypeShape EntityType="BIbliaModel.Gender" Width="1.5" PointX="0.75" PointY="7" />
-        <EntityTypeShape EntityType="BIbliaModel.Genre" Width="1.5" PointX="0.75" PointY="12.5" />
-        <EntityTypeShape EntityType="BIbliaModel.Personal" Width="1.5" PointX="3" PointY="1" />
-        <EntityTypeShape EntityType="BIbliaModel.Role" Width="1.5" PointX="0.75" PointY="1.5" />
-        <EntityTypeShape EntityType="BIbliaModel.sysdiagram" Width="1.5" PointX="5.75" PointY="4.75" />
+        <EntityTypeShape EntityType="BIbliaModel.Book" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="BIbliaModel.Category" Width="1.5" PointX="0.75" PointY="2" />
+        <EntityTypeShape EntityType="BIbliaModel.Client" Width="1.5" PointX="3" PointY="8.625" />
+        <EntityTypeShape EntityType="BIbliaModel.Formular" Width="1.5" PointX="5.25" PointY="1.5" />
+        <EntityTypeShape EntityType="BIbliaModel.Gender" Width="1.5" PointX="0.75" PointY="9.375" />
+        <EntityTypeShape EntityType="BIbliaModel.Genre" Width="1.5" PointX="0.75" PointY="6" />
+        <EntityTypeShape EntityType="BIbliaModel.Personal" Width="1.5" PointX="3" PointY="12.5" />
+        <EntityTypeShape EntityType="BIbliaModel.Role" Width="1.5" PointX="0.75" PointY="13.125" />
+        <EntityTypeShape EntityType="BIbliaModel.sysdiagram" Width="1.5" PointX="2.75" PointY="5.75" />
         <AssociationConnector Association="BIbliaModel.FK_Books_Category" />
         <AssociationConnector Association="BIbliaModel.FK_Books_Genre" />
         <AssociationConnector Association="BIbliaModel.FK_Clients_Gender" />

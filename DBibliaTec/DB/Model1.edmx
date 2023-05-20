@@ -15,7 +15,7 @@
           <Property Name="NAuthor" Type="nvarchar" MaxLength="50" />
           <Property Name="OAuthor" Type="nvarchar" MaxLength="50" />
           <Property Name="Genre" Type="int" />
-          <Property Name="Count" Type="nvarchar" MaxLength="50" />
+          <Property Name="Count" Type="int" />
           <Property Name="Category" Type="int" />
           <Property Name="Date_Vipusk" Type="date" />
           <Property Name="ImageBook" Type="image" />
@@ -295,7 +295,7 @@
           <Property Name="NAuthor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="OAuthor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Genre" Type="Int32" />
-          <Property Name="Count" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Count" Type="Int32" />
           <Property Name="Category" Type="Int32" />
           <Property Name="Date_Vipusk" Type="DateTime" Precision="0" />
           <Property Name="ImageBook" Type="Binary" MaxLength="Max" FixedLength="false" />

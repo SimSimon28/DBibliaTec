@@ -59,5 +59,10 @@ namespace DBibliaTec.Pages.Others
         {
             NavigationService.Navigate(new Pages.Others.OBibliaInfo());
         }
+
+        private void RatingBook_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new Pages.Others.TopBooks());
+        }
     }
 }

@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:DBibliaTec.Pages.Add"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="1024"
+      d:DesignHeight="1080" d:DesignWidth="1920"
       Title="Добавление/редактирование формуляра" Loaded="Page_Loaded">
 
     <Grid>
@@ -15,7 +15,7 @@
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 5">
                         <TextBlock Text="Читатель " Style="{StaticResource TBlock19ABP}" Margin="5 0 0 0" HorizontalAlignment="Left"/>
-                        <ComboBox x:Name="CboxReader"  Width="320" SelectedValuePath="ID" Style="{StaticResource CBox19ABP}">
+                        <ComboBox x:Name="CboxReader"  Width="320" SelectedValuePath="ID" Style="{DynamicResource CBoxTem}" Foreground="{StaticResource BrushBlueLight}" FontSize="19" FontFamily="Roboto">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock>
@@ -34,7 +34,7 @@
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 5">
                         <TextBlock Text="Кто создал формуляр" Style="{StaticResource TBlock19ABP}" Margin="0 0 5 0"/>
-                        <ComboBox x:Name="CboxId_personala" Width="320" SelectedValuePath="ID" Style="{StaticResource CBox19ABP}">
+                        <ComboBox Style="{DynamicResource CBoxTem}" x:Name="CboxId_personala" Width="320" SelectedValuePath="ID" Foreground="{StaticResource BrushBlueLight}" FontFamily="Roboto" FontSize="19">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock>
@@ -53,7 +53,8 @@
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 5">
                         <TextBlock Text="Дата выдачи книги" Style="{StaticResource TBlock19ABP}" Margin="0 0 5 0"/>
-                        <DatePicker x:Name="TboxDateVid" Width="320" Height="40" Style="{StaticResource DP19ABP}">
+                        <DatePicker x:Name="TboxDateVid" Width="320" Style="{DynamicResource DPSdBook}" Background="{StaticResource BrushBlueLightTest}"
+                                    BorderBrush="{StaticResource MainColor}">
                             <DatePicker.Resources>
                                 <Style TargetType="{x:Type Border}">
                                     <Setter Property="CornerRadius" Value="5"/>
@@ -64,18 +65,12 @@
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 5">
                         <TextBlock Text="Дата сдачи книги" Style="{StaticResource TBlock19ABP}" Margin="0 0 5 0"/>
-                        <DatePicker x:Name="TboxDateSdachi" Width="320" Style="{StaticResource DP19ABP}">
-                            <DatePicker.Resources>
-                                <Style TargetType="{x:Type Border}">
-                                    <Setter Property="CornerRadius" Value="5"/>
-                                </Style>
-                            </DatePicker.Resources>
-                        </DatePicker>
+                        <DatePicker Style="{DynamicResource DPSdBook}" x:Name="TboxDateSdachi" Width="320" Background="{StaticResource BrushBlueLightTest}" BorderBrush="{StaticResource MainColor}"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 5">
                         <TextBlock Text="Выбранные книги" Style="{StaticResource TBlock19ABP}" Margin="0 0 5 0"/>
-                        <ListBox x:Name="LboxBookVziat" Width="320" Height="217" SelectionMode="Single" DisplayMemberPath="Name" SelectedItem="{Binding SelectedBook}"
+                        <ListBox x:Name="LboxBookVziat" Width="320" Height="217" SelectionMode="Single" DisplayMemberPath="Name" SelectedItem="{Binding SelectedBook}" BorderBrush="{StaticResource BrushBlueLightTest}"
                         ItemsSource="{Binding SelectedBooks}"  Style="{StaticResource LBox19ABP}" Background="{StaticResource MainColor}" Foreground="{StaticResource BrushBlueLight}">
                             <ListBox.Resources>
                                 <Style TargetType="Border">
@@ -112,6 +107,7 @@
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                 <Button Width="100" Height="30" Margin="10 5" VerticalContentAlignment="Center" Content="Добавить" Style="{StaticResource ButtonBlueTest1}" x:Name="AddButton" Click="AddButton_Click"/>
                 <Button Width="100" Height="30" Margin="10 5" VerticalContentAlignment="Center" Content="Удалить" Style="{StaticResource ButtonBlueTest1}" x:Name="DelButton" Click="DelButton_Click"/>
+                <Button Width="100" Height="30" Margin="10 5" VerticalContentAlignment="Center" Content="Поиск" Style="{StaticResource ButtonBlueTest1}" x:Name="SearchButton" Click="SearchButton_Click"/>
             </StackPanel>
                 </StackPanel>
             </GroupBox>

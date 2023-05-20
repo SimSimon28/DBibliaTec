@@ -63,8 +63,6 @@ namespace DBibliaTec.Pages.Add
             SelectedBooks = new ObservableCollection<Book>(books); 
         }
 
-        
-
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             var errorMessage = ErrorCheck();
@@ -132,6 +130,11 @@ namespace DBibliaTec.Pages.Add
         {
             SelectedBooks.Remove(SelectedBook);
         }
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            var DesForm = new Pages.Others.AdvancedBookSearchWindow();
+            DesForm.ShowDialog();
+        }
 
         private void ButtonSpisokBook_Click(object sender, RoutedEventArgs e)
         {
@@ -169,6 +172,7 @@ namespace DBibliaTec.Pages.Add
         }
 
         #endregion
+
 
     }
 }

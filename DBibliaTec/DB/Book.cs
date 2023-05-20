@@ -26,7 +26,7 @@ namespace DBibliaTec.DB
         public string NAuthor { get; set; }
         public string OAuthor { get; set; }
         public Nullable<int> Genre { get; set; }
-        public string Count { get; set; }
+        public Nullable<int> Count { get; set; }
         public Nullable<int> Category { get; set; }
         public Nullable<System.DateTime> Date_Vipusk { get; set; }
         public byte[] ImageBook { get; set; }
