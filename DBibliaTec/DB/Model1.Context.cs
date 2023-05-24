@@ -27,12 +27,16 @@ namespace DBibliaTec.DB
     
         public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<ClassificIzdat> ClassificIzdats { get; set; }
         public virtual DbSet<Client> Clients { get; set; }
         public virtual DbSet<Formular> Formulars { get; set; }
         public virtual DbSet<Gender> Genders { get; set; }
         public virtual DbSet<Genre> Genres { get; set; }
+        public virtual DbSet<Izdatel> Izdatels { get; set; }
         public virtual DbSet<Personal> Personals { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<VidDeitIzdat> VidDeitIzdats { get; set; }
+        public virtual DbSet<VidIzdat> VidIzdats { get; set; }
     }
 }

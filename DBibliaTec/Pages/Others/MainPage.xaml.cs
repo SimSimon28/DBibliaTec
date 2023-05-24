@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace DBibliaTec.Pages.Others
 {
-    /// <summary>
-    /// Логика взаимодействия для MainPage.xaml
-    /// </summary>
     public partial class MainPage : Page
     {
         public MainPage()
@@ -63,6 +60,16 @@ namespace DBibliaTec.Pages.Others
         private void RatingBook_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             NavigationService.Navigate(new Pages.Others.TopBooks());
+        }
+
+        private void BFIzdatAdd_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+           NavigationService.Navigate(new Pages.Add.AddIzdatPage());
+        }
+
+        private void BSpisokIzdat_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new Pages.Lists.SpisokIzdatPage());
         }
     }
 }

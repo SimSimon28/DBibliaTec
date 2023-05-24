@@ -15,12 +15,10 @@
             <!--#region Brushs and Colors-->
             <Brush x:Key="GridBackGr1">#EC3E24</Brush>
             <Brush x:Key="GridBackGr2">#870604</Brush>
+            
             <Brush x:Key="MainColor">#0C056D</Brush>
             <Brush x:Key="BrushBlueLight">#C6C3EA</Brush>
             <Brush x:Key="BrushBlueLightTest">#524B9E</Brush>
-
-            <Color x:Key="GridConfirmGr1">#085E17</Color>
-            <Color x:Key="GridConfirmGr2">#9DDBA2</Color>
 
             <Color x:Key="GridBackGr1Color">#EC3E24</Color>
             <Color x:Key="GridBackGr2Color">#870604</Color>
@@ -93,69 +91,6 @@
                                 <Trigger Property="IsEnabled" Value="False">
                                     <Setter Property="Opacity" TargetName="grid" Value="0.25"/>
                                 </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-
-            <Style x:Key="ButtonConfirm" TargetType="Button">
-                <Setter Property="FontSize" Value="15"/>
-                <Setter Property="FontFamily" Value="Roboto"/>
-                <Setter Property="FontWeight" Value="Bold"/>
-                <Setter Property="Foreground" Value="FloralWhite"/>
-                <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                <Setter Property="VerticalContentAlignment" Value="Center"/>
-                <Setter Property="Padding" Value="1"/>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Grid x:Name="grid">
-                                <Border x:Name="border" CornerRadius="8" BorderThickness="2">
-                                    <Border.Background>
-                                        <RadialGradientBrush GradientOrigin="0.496,1.052">
-                                            <RadialGradientBrush.RelativeTransform>
-                                                <TransformGroup>
-                                                    <ScaleTransform CenterX="0.5" CenterY="0.5" 
-                                                            ScaleX="1.5" ScaleY="1.5"/>
-                                                    <TranslateTransform X="0.02" Y="0.3"/>
-                                                </TransformGroup>
-                                            </RadialGradientBrush.RelativeTransform>
-                                            <GradientStop Offset="1" Color="{StaticResource GridConfirmGr2}"/>
-                                            <GradientStop Offset="0.3" Color="{StaticResource GridConfirmGr1}"/>
-                                        </RadialGradientBrush>
-                                    </Border.Background>
-
-                                    <ContentPresenter HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        TextElement.FontWeight="Bold">
-                                    </ContentPresenter>
-                                </Border>
-                            </Grid>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsPressed" Value="True">
-                                    <Setter Property="Background" TargetName="border">
-                                        <Setter.Value>
-                                            <RadialGradientBrush GradientOrigin="0.496,1.052">
-                                                <RadialGradientBrush.RelativeTransform>
-                                                    <TransformGroup>
-                                                        <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="1.5" ScaleY="1.5"/>
-                                                        <TranslateTransform X="0.02" Y="0.3"/>
-                                                    </TransformGroup>
-                                                </RadialGradientBrush.RelativeTransform>
-                                                <GradientStop Color="#00000000" Offset="1"/>
-                                                <GradientStop Color="#FF303030" Offset="0.3"/>
-                                            </RadialGradientBrush>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Trigger>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="BorderBrush" TargetName="border" Value="#A6CDAB"/>
-                                </Trigger>
-                                <Trigger Property="IsEnabled" Value="False">
-                                    <Setter Property="Opacity" TargetName="grid" Value="0.25"/>
-                                </Trigger>
-
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>
@@ -351,6 +286,27 @@
             <!--#endregion-->
         
             <!--#region Стиль для списка формуляров и для многих ещё-->
+            
+            <Style x:Key="LVstyle" TargetType="ListViewItem">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ListViewItem">
+                            <Border x:Name="Bord" Margin="5" CornerRadius="35" Background="Transparent" BorderThickness="1">
+                                <ContentPresenter />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter TargetName="Bord" Property="Background" Value="LightBlue"/>
+                                    <Setter TargetName="Bord" Property="BorderBrush" Value="Blue"/>
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="Bord" Property="Background" Value="LightBlue"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
 
             <Style x:Key="TBlock14SF" TargetType="TextBlock">
                 <Setter Property="FontSize" Value="14"/>
@@ -455,6 +411,15 @@
                 <Setter Property="BorderThickness" Value="1"/>
                 <Setter Property="BorderBrush" Value="{StaticResource BrushBlueLightTest}"/>
             </Style>
+
+            <Style x:Key="TBox19AIP" TargetType="TextBox">
+                <Setter Property="FontSize" Value="19"/>
+                <Setter Property="FontFamily" Value="Roboto"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Foreground" Value="{StaticResource BrushBlueLight}"/>
+                <Setter Property="Background" Value="{StaticResource MainColor}"/>
+            </Style>
+
             <Style x:Key="PBox19ABP" TargetType="PasswordBox">
                 <Setter Property="FontSize" Value="19"/>
                 <Setter Property="FontFamily" Value="Roboto"/>
@@ -486,86 +451,6 @@
                 <Setter Property="BorderThickness" Value="1"/>
             </Style>
             <!--#endregion-->
-        
-            <Style x:Key="TBlockGlav" TargetType="TextBlock">
-                <Setter Property="FontSize" Value="20"/>
-                <Setter Property="FontFamily" Value="Comic Sans MS"/>
-                <Setter Property="FontWeight" Value="Bold"/>
-                <Setter Property="Foreground" Value="White"/>
-            </Style>
-
-            <Style x:Key="DatePicker15" TargetType="DatePicker">
-                <Setter Property="FontSize" Value="18"/>
-                <Setter Property="FontFamily" Value="Comic Sans MS"/>
-                <Setter Property="FontWeight" Value="Bold"/>
-            </Style>
-
-            <Style x:Key="LBox15" TargetType="ListBox">
-                <Setter Property="FontSize" Value="18"/>
-                <Setter Property="FontFamily" Value="Comic Sans MS"/>
-                <Setter Property="FontWeight" Value="Bold"/>
-            </Style>
-
-            <Style x:Key="LBox15Main" TargetType="ListBox">
-                <Setter Property="FontSize" Value="18"/>
-                <Setter Property="FontWeight" Value="Bold"/>
-            </Style>
-
-            <Style x:Key="Header15" TargetType="DataGridColumnHeader">
-                <Setter Property="FontSize" Value="14"/>
-                <Setter Property="FontFamily" Value="Comic Sans MS"/>
-                <Setter Property="FontWeight" Value="Bold"/>
-            </Style>
-
-            <Style x:Key="HeaderR15" TargetType="DataGridRowHeader">
-                <Setter Property="FontSize" Value="14"/>
-                <Setter Property="FontFamily" Value="Comic Sans MS"/>
-                <Setter Property="FontWeight" Value="Bold"/>
-            </Style>
-
-            <Style x:Key="TButton" TargetType="Button">
-                <Setter Property="FontSize" Value="18"/>
-                <Setter Property="FontFamily" Value="Comic Sans MS"/>
-                <Setter Property="FontWeight" Value="Bold"/>
-            </Style>
-
-            <Style x:Key="TBlock15" TargetType="TextBlock">
-                <Setter Property="FontSize" Value="18"/>
-                <Setter Property="FontFamily" Value="Comic Sans MS"/>
-                <Setter Property="FontWeight" Value="Bold"/>
-                <Setter Property="Foreground" Value="White"/>
-            </Style>
-
-            <Style x:Key="TBlock15White" TargetType="TextBlock">
-                <Setter Property="FontSize" Value="18"/>
-                <Setter Property="FontFamily" Value="Comic Sans MS"/>
-                <Setter Property="FontWeight" Value="Bold"/>
-                <Setter Property="Foreground" Value="White"/>
-            </Style>
-
-            <Style x:Key="Cbox15" TargetType="ComboBox">
-                <Setter Property="FontSize" Value="18"/>
-                <Setter Property="FontFamily" Value="Comic Sans MS"/>
-                <Setter Property="FontWeight" Value="Bold"/>
-            </Style>
-
-            <Style x:Key="TBox15" TargetType="TextBox">
-                <Setter Property="FontSize" Value="15"/>
-                <Setter Property="FontFamily" Value="Comic Sans MS"/>
-                <Setter Property="FontWeight" Value="Bold"/>
-            </Style>
-
-            <Style x:Key="CBox" TargetType="ComboBox">
-                <Setter Property="FontSize" Value="15"/>
-                <Setter Property="FontFamily" Value="Comic Sans MS"/>
-                <Setter Property="FontWeight" Value="Bold"/>
-            </Style>
-
-            <Style x:Key="PBox15" TargetType="PasswordBox">
-                <Setter Property="FontSize" Value="15"/>
-                <Setter Property="FontFamily" Value="Comic Sans MS"/>
-                <Setter Property="FontWeight" Value="Bold"/>
-            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

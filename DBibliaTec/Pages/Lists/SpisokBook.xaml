@@ -18,7 +18,7 @@
 
         </Grid.RowDefinitions>
 
-        <GroupBox Height="96" HorizontalAlignment="Stretch" Grid.RowSpan="2" Header="Поиск" Style="{StaticResource GBSF}" Margin="10 5 10 10">
+        <Border Height="96" HorizontalAlignment="Stretch" Grid.RowSpan="2"  Style="{StaticResource GBSF}" Margin="10 5 10 10">
             <StackPanel Orientation="Horizontal">
                 <StackPanel HorizontalAlignment="Left">
                     <TextBlock Style="{StaticResource TBlock14SF}" HorizontalAlignment="Left" Margin="10 5 0 0" Text="По названию"/>
@@ -70,9 +70,9 @@
                     </ComboBox>
                 </StackPanel>
             </StackPanel>
-        </GroupBox>
+        </Border>
 
-        <ListView Grid.Row="2" Name="LView" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <ListView Grid.Row="2" ItemContainerStyle="{StaticResource LVstyle}" Name="LView" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
@@ -80,8 +80,8 @@
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Border BorderBrush="{StaticResource BrushBlueLightTest}" BorderThickness="1" Background="{Binding NalColor}" CornerRadius="10">
-                        <Grid>
+                    <Border BorderBrush="{StaticResource BrushBlueLightTest}" BorderThickness="1" Background="{Binding NalColor}" Margin="5" CornerRadius="45">
+                        <Grid Margin="5">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="100"/>
                                 <ColumnDefinition Width="*"/>
@@ -89,7 +89,7 @@
                             
                             <Image Source="{Binding ImageBook}"/>
 
-                            <StackPanel Width="400" Height="200" Grid.Column="1" Margin="10">
+                            <StackPanel Width="400" Height="210" Grid.Column="1" Margin="10">
 
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="{Binding NameS}" Style="{StaticResource TBlock16SB}" Margin="5 10 0 0"/>
@@ -111,6 +111,10 @@
 
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="{Binding Category1.Categorys}" Style="{StaticResource TBlock16SB}" Margin="5 0 0 0"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Izdatel1.Izdatels}" Style="{StaticResource TBlock16SB}" Margin="5 0 0 0" Width="220"/>
                                 </StackPanel>
 
                                 <StackPanel Orientation="Horizontal">

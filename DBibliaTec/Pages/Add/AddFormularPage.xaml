@@ -9,7 +9,7 @@
       Title="Добавление/редактирование формуляра" Loaded="Page_Loaded">
 
     <Grid>
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 40 0 0">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 20 0 0">
             <Border BorderThickness="0.5" BorderBrush="{StaticResource BrushBlueLightTest}" Background="{StaticResource BrushBlueLight}" CornerRadius="10">
                 <StackPanel Margin="10 10">
 
@@ -88,12 +88,13 @@
 
         </StackPanel>
 
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="10 10">
 
-            <GroupBox BorderThickness="0.5" BorderBrush="GhostWhite" Header="Список книг" Style="{StaticResource GBABP}" Margin="10 10" Background="{StaticResource BrushBlueLightTest}">
+            <Border BorderThickness="0.5" BorderBrush="GhostWhite"
+                      Margin="10 10" Background="{StaticResource BrushBlueLightTest}" CornerRadius="10">
                 <StackPanel>
-
-            <StackPanel>
+                    <TextBlock Text="Список книг" Margin="34 10 0 0" Style="{StaticResource TBlock16SB}" Foreground="{StaticResource BrushBlueLight}"></TextBlock>
+                    <StackPanel>
                 <ListBox Width="290" Height="350" Margin="10 10" x:Name="LBoxView" DisplayMemberPath="Name" 
                     SelectedItem="{Binding SelectedBook}" Style="{StaticResource LBox19ABP}" Background="{StaticResource BrushBlueLight}" Foreground="{StaticResource MainColor}">
                     <ListBox.Resources>
@@ -110,20 +111,30 @@
                 <Button Width="100" Height="30" Margin="10 5" VerticalContentAlignment="Center" Content="Поиск" Style="{StaticResource ButtonBlueTest1}" x:Name="SearchButton" Click="SearchButton_Click"/>
             </StackPanel>
                 </StackPanel>
-            </GroupBox>
+            </Border>
 
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Margin="20 20" Height="150">
+            <Border BorderThickness="2" CornerRadius="10" BorderBrush="{StaticResource BrushBlueLightTest}" Background="{StaticResource MainColor}">
+                <Expander IsExpanded="True" Header="Списки" Margin="10 10" 
+                          Style="{StaticResource EXMain}" Width="200" Height="100" Background="{StaticResource BrushBlueLight}"
+                          Foreground="{StaticResource MainColor}">
+                <Grid>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+                            <Button Name="ButtonSpisokBook" Content="Список книг" Style="{StaticResource ButtonBlueTest1}" 
+                                        Width="170" Height="30" Click="ButtonSpisokBook_Click" FontSize="16"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+                            <Button Name="ButtonSpisokClients" Content="Список клиентов" Style="{StaticResource ButtonBlueTest1}" 
+                                            Width="170" Height="30" Click="ButtonSpisokClients_Click" Margin="0 0 0 0" FontSize="16"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </Expander>
+            </Border>
         </StackPanel>
-
-        <StackPanel HorizontalAlignment="Right" Margin="20 20">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
-                <Button Name="ButtonSpisokBook" Content="Список книг" Style="{StaticResource ButtonBlueTest1}" 
-                        Width="170" Height="30" Click="ButtonSpisokBook_Click" FontSize="16"/>
-            </StackPanel>
-
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
-                    <Button Name="ButtonSpisokClients" Content="Список клиентов" Style="{StaticResource ButtonBlueTest1}" 
-                            Width="170" Height="30" Click="ButtonSpisokClients_Click" Margin="0 10 0 0" FontSize="16"/>
-                </StackPanel>
-            </StackPanel>
     </Grid>
 </Page>

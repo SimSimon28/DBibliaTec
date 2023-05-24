@@ -12,25 +12,26 @@ namespace DBibliaTec.DB
     using System;
     using System.Collections.Generic;
     
-    public partial class Client
+    public partial class Izdatel
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Client()
+        public Izdatel()
         {
-            this.Formulars = new HashSet<Formular>();
+            this.Books = new HashSet<Book>();
         }
     
         public int ID { get; set; }
-        public string Familiya { get; set; }
-        public string Name { get; set; }
-        public string Otchestvo { get; set; }
+        public string Name_izdat { get; set; }
         public string Phone { get; set; }
-        public Nullable<int> Age { get; set; }
-        public Nullable<System.DateTime> Date_rojd { get; set; }
-        public Nullable<int> Gender { get; set; }
+        public string Adress { get; set; }
+        public Nullable<int> VidIzdatel { get; set; }
+        public Nullable<int> ClassificIzdat { get; set; }
+        public Nullable<int> VidDeitIzdat { get; set; }
     
-        public virtual Gender Gender1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Formular> Formulars { get; set; }
+        public virtual ICollection<Book> Books { get; set; }
+        public virtual ClassificIzdat ClassificIzdat1 { get; set; }
+        public virtual VidDeitIzdat VidDeitIzdat1 { get; set; }
+        public virtual VidIzdat VidIzdat { get; set; }
     }
 }

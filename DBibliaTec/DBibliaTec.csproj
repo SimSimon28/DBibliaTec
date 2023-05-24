@@ -77,11 +77,15 @@
     <Compile Include="Classes\BookClasses.cs" />
     <Compile Include="Classes\CategoryClasses.cs" />
     <Compile Include="Classes\GenreClasses.cs" />
+    <Compile Include="Classes\IzdatelClasses.cs" />
     <Compile Include="Classes\NalClasses.cs" />
     <Compile Include="DB\Book.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DB\Category.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\ClassificIzdat.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DB\Client.cs">
@@ -94,6 +98,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DB\Genre.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Izdatel.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DB\Model1.Context.cs">
@@ -120,6 +127,12 @@
     <Compile Include="DB\sysdiagram.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB\VidDeitIzdat.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\VidIzdat.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="LogoAndImages\Images\ImageAge\AgeClass.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -137,6 +150,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Pages\Add\AddIzdatPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Lists\SpisokBook.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -148,6 +165,10 @@
     <Page Include="Pages\Lists\SpisokFormularPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Lists\SpisokIzdatPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Others\AdvancedBookSearchWindow.xaml">
       <SubType>Designer</SubType>
@@ -196,6 +217,9 @@
     <Compile Include="Pages\Add\AddFormularPage.xaml.cs">
       <DependentUpon>AddFormularPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Add\AddIzdatPage.xaml.cs">
+      <DependentUpon>AddIzdatPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Lists\SpisokBook.xaml.cs">
       <DependentUpon>SpisokBook.xaml</DependentUpon>
     </Compile>
@@ -204,6 +228,9 @@
     </Compile>
     <Compile Include="Pages\Lists\SpisokFormularPage.xaml.cs">
       <DependentUpon>SpisokFormularPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Lists\SpisokIzdatPage.xaml.cs">
+      <DependentUpon>SpisokIzdatPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Others\AdvancedBookSearchWindow.xaml.cs">
       <DependentUpon>AdvancedBookSearchWindow.xaml</DependentUpon>

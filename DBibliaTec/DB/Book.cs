@@ -21,6 +21,7 @@ namespace DBibliaTec.DB
         }
     
         public int ID { get; set; }
+        public Nullable<int> InventNumber { get; set; }
         public string Name { get; set; }
         public string FAuthor { get; set; }
         public string NAuthor { get; set; }
@@ -30,9 +31,12 @@ namespace DBibliaTec.DB
         public Nullable<int> Category { get; set; }
         public Nullable<System.DateTime> Date_Vipusk { get; set; }
         public byte[] ImageBook { get; set; }
+        public Nullable<int> Raiting { get; set; }
+        public Nullable<int> Izdatel { get; set; }
     
         public virtual Category Category1 { get; set; }
         public virtual Genre Genre1 { get; set; }
+        public virtual Izdatel Izdatel1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Formular> Formulars { get; set; }
     }

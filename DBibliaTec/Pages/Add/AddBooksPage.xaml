@@ -27,8 +27,19 @@
                                     </TextBox.Resources>
                                 </TextBox>
                     </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
+                                <TextBlock Text="Инвентарный номер:" Style="{StaticResource TBlock19ABP}"/>
+                                <TextBox x:Name="TboxInventNum" Style="{StaticResource TBox19ABP}" Width="200" 
+                             Margin="10 0 0 0" CaretBrush="GhostWhite">
+                                    <TextBox.Resources>
+                                        <Style TargetType="{x:Type Border}">
+                                            <Setter Property="CornerRadius" Value="10"/>
+                                        </Style>
+                                    </TextBox.Resources>
+                                </TextBox>
+                            </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
                         <TextBlock Text="Фамилия автора:" Style="{StaticResource TBlock19ABP}"/>
                                 <TextBox x:Name="TboxFAthor" Style="{StaticResource TBox19ABP}" Width="200" 
                              Margin="10 0 0 0" CaretBrush="GhostWhite">
@@ -65,36 +76,49 @@
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
-                        <TextBlock Text="Жанр:" Style="{StaticResource TBlock19ABP}" Margin="10 0 0 0"/>
-                                <ComboBox x:Name="CboxGenre" Style="{StaticResource CBoxTem}" Width="200" 
-                              DisplayMemberPath="Name" SelectedValuePath="ID" Margin="10 0 0 0" Foreground="{StaticResource BrushBlueLight}" FontSize="19" FontFamily="Roboto">
+                        <TextBlock Text="Кол-во:" Style="{StaticResource TBlock19ABP}"/>
+                        <TextBox x:Name="TboxCount" Style="{StaticResource TBox19ABP}" Width="200" 
+                        Margin="10 0 0 0" CaretBrush="GhostWhite">
+                            <TextBox.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="10"/>
+                                </Style>
+                            </TextBox.Resources>
+                        </TextBox>
+                    </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
+                                <TextBlock Text="Издатель:" Style="{StaticResource TBlock19ABP}"/>
+                                <ComboBox x:Name="CboxIzdat" Style="{StaticResource CBoxTem}" Width="200" 
+                        DisplayMemberPath="Name_izdat" SelectedValuePath="ID" Margin="10 0 0 0" Foreground="{StaticResource BrushBlueLight}" FontSize="19" FontFamily="Roboto">
                                     <ComboBox.Resources>
                                         <Style TargetType="{x:Type Border}">
                                             <Setter Property="CornerRadius" Value="10"/>
                                         </Style>
                                     </ComboBox.Resources>
                                 </ComboBox>
-                    </StackPanel>
+                            </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
-                        <TextBlock Text="Кол-во:" Style="{StaticResource TBlock19ABP}"/>
-                                <TextBox x:Name="TboxCount" Style="{StaticResource TBox19ABP}" Width="200" 
-                             Margin="10 0 0 0" CaretBrush="GhostWhite">
-                                    <TextBox.Resources>
-                                        <Style TargetType="{x:Type Border}">
-                                            <Setter Property="CornerRadius" Value="10"/>
-                                        </Style>
-                                    </TextBox.Resources>
-                                </TextBox>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
+                        <TextBlock Text="Жанр:" Style="{StaticResource TBlock19ABP}" Margin="10 0 0 0"/>
+                        <ComboBox x:Name="CboxGenre" Style="{StaticResource CBoxTem}" Width="200" 
+                        DisplayMemberPath="Name" SelectedValuePath="ID" Margin="10 0 0 0" Foreground="{StaticResource BrushBlueLight}" FontSize="19" FontFamily="Roboto">
+                            <ComboBox.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="10"/>
+                                </Style>
+                            </ComboBox.Resources>
+                        </ComboBox>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
                         <TextBlock Text="Категория:" Style="{StaticResource TBlock19ABP}"/>
+                        
                         <ComboBox x:Name="CboxCategory" Style="{StaticResource CBoxTem}" Width="200" 
-                              DisplayMemberPath="Name" SelectedValuePath="ID" Margin="10 0 0 0" Foreground="{StaticResource BrushBlueLight}" FontSize="19" FontFamily="Roboto"/>
+                                  DisplayMemberPath="Name" SelectedValuePath="ID" Margin="10 0 0 0" Foreground="{StaticResource BrushBlueLight}" FontSize="19" FontFamily="Roboto"/>
                     </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
                         <TextBlock Text="Дата выпуска:" Style="{StaticResource TBlock19ABP}"/>
                                 <DatePicker x:Name="DPDateVihoda" Style="{StaticResource DPSdBook}" Width="200" Margin="10 0 0 0" 
                                             Background="{StaticResource BrushBlueLightTest}" BorderBrush="{StaticResource MainColor}">

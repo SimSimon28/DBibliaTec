@@ -16,25 +16,14 @@
 
         </Grid.RowDefinitions>
 
-        <Image Source="\LogoAndImages\Images\MainFone1.png" Grid.Row="1" Stretch="Fill" Grid.RowSpan="2">
+        <Image Source="\LogoAndImages\Images\MainFone1.png" Grid.Row="0" Stretch="Fill" Grid.RowSpan="3">
             <Image.BitmapEffect>
                 <BlurBitmapEffect Radius="0"/>
             </Image.BitmapEffect>
         </Image>
 
-        <Grid Grid.Row="0">
-            <Grid.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="{StaticResource Main}" Offset="0.6"/>
-                    <GradientStop Color="#FFF4EDED" Offset="0"/>
-                </LinearGradientBrush>
-            </Grid.Background>
-        </Grid>
-
-        <Image Source="LogoAndImages\Logo\BibliaC.jpg" HorizontalAlignment="Left" Height="auto" Width="auto"/>
-
-        <TextBlock Text="{Binding ElementName=MainFrame, Path=Content.Title}" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource TBlock19ABP}" 
-                   FontSize="25" Foreground="GhostWhite"/>
+        <TextBlock Text="{Binding ElementName=MainFrame, Path=Content.Title}" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource TBlock19ABP}"
+                   FontSize="40" FontWeight="Bold" Foreground="{StaticResource MainColor}" Margin="30 0 0 0"/>
 
         <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Grid.Row="1"/>
 

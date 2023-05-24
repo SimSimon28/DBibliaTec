@@ -96,5 +96,15 @@ namespace DBibliaTec.Pages.Others
         {
             UpBook();
         }
+
+        private void AddBook_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DelBook_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

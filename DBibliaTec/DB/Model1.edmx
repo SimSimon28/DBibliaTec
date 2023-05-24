@@ -10,6 +10,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InventNumber" Type="int" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="FAuthor" Type="nvarchar" MaxLength="50" />
           <Property Name="NAuthor" Type="nvarchar" MaxLength="50" />
@@ -19,8 +20,17 @@
           <Property Name="Category" Type="int" />
           <Property Name="Date_Vipusk" Type="date" />
           <Property Name="ImageBook" Type="image" />
+          <Property Name="Raiting" Type="int" />
+          <Property Name="Izdatel" Type="int" />
         </EntityType>
         <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ClassificIzdat">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -39,7 +49,6 @@
           <Property Name="Age" Type="int" />
           <Property Name="Date_rojd" Type="date" />
           <Property Name="Gender" Type="int" />
-          <Property Name="Photo" Type="image" />
         </EntityType>
         <EntityType Name="Formular_Books">
           <Key>
@@ -73,6 +82,18 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Izdatel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_izdat" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Adress" Type="nvarchar" MaxLength="50" />
+          <Property Name="VidIzdatel" Type="int" />
+          <Property Name="ClassificIzdat" Type="int" />
+          <Property Name="VidDeitIzdat" Type="int" />
+        </EntityType>
         <EntityType Name="Personal">
           <Key>
             <PropertyRef Name="ID" />
@@ -102,6 +123,20 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="VidDeitIzdat">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="VidIzdat">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <Association Name="FK_Books_Category">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
           <End Role="Books" Type="Self.Books" Multiplicity="*" />
@@ -123,6 +158,18 @@
             </Principal>
             <Dependent Role="Books">
               <PropertyRef Name="Genre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Books_Izdatel">
+          <End Role="Izdatel" Type="Self.Izdatel" Multiplicity="0..1" />
+          <End Role="Books" Type="Self.Books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Izdatel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Books">
+              <PropertyRef Name="Izdatel" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -186,6 +233,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Izdatel_ClassificIzdat">
+          <End Role="ClassificIzdat" Type="Self.ClassificIzdat" Multiplicity="0..1" />
+          <End Role="Izdatel" Type="Self.Izdatel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassificIzdat">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Izdatel">
+              <PropertyRef Name="ClassificIzdat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Izdatel_VidDeitIzdat">
+          <End Role="VidDeitIzdat" Type="Self.VidDeitIzdat" Multiplicity="0..1" />
+          <End Role="Izdatel" Type="Self.Izdatel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VidDeitIzdat">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Izdatel">
+              <PropertyRef Name="VidDeitIzdat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Izdatel_VidIzdat">
+          <End Role="VidIzdat" Type="Self.VidIzdat" Multiplicity="0..1" />
+          <End Role="Izdatel" Type="Self.Izdatel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VidIzdat">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Izdatel">
+              <PropertyRef Name="VidIzdatel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Personal_Role">
           <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
           <End Role="Personal" Type="Self.Personal" Multiplicity="*" />
@@ -201,20 +284,28 @@
         <EntityContainer Name="Хранилище BIbliaModelContainer">
           <EntitySet Name="Books" EntityType="Self.Books" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClassificIzdat" EntityType="Self.ClassificIzdat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Formular_Books" EntityType="Self.Formular_Books" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Formulars" EntityType="Self.Formulars" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Genre" EntityType="Self.Genre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Izdatel" EntityType="Self.Izdatel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Personal" EntityType="Self.Personal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VidDeitIzdat" EntityType="Self.VidDeitIzdat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VidIzdat" EntityType="Self.VidIzdat" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Books_Category" Association="Self.FK_Books_Category">
             <End Role="Category" EntitySet="Category" />
             <End Role="Books" EntitySet="Books" />
           </AssociationSet>
           <AssociationSet Name="FK_Books_Genre" Association="Self.FK_Books_Genre">
             <End Role="Genre" EntitySet="Genre" />
+            <End Role="Books" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Books_Izdatel" Association="Self.FK_Books_Izdatel">
+            <End Role="Izdatel" EntitySet="Izdatel" />
             <End Role="Books" EntitySet="Books" />
           </AssociationSet>
           <AssociationSet Name="FK_Clients_Gender" Association="Self.FK_Clients_Gender">
@@ -237,6 +328,18 @@
             <End Role="Personal" EntitySet="Personal" />
             <End Role="Formulars" EntitySet="Formulars" />
           </AssociationSet>
+          <AssociationSet Name="FK_Izdatel_ClassificIzdat" Association="Self.FK_Izdatel_ClassificIzdat">
+            <End Role="ClassificIzdat" EntitySet="ClassificIzdat" />
+            <End Role="Izdatel" EntitySet="Izdatel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Izdatel_VidDeitIzdat" Association="Self.FK_Izdatel_VidDeitIzdat">
+            <End Role="VidDeitIzdat" EntitySet="VidDeitIzdat" />
+            <End Role="Izdatel" EntitySet="Izdatel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Izdatel_VidIzdat" Association="Self.FK_Izdatel_VidIzdat">
+            <End Role="VidIzdat" EntitySet="VidIzdat" />
+            <End Role="Izdatel" EntitySet="Izdatel" />
+          </AssociationSet>
           <AssociationSet Name="FK_Personal_Role" Association="Self.FK_Personal_Role">
             <End Role="Role" EntitySet="Role" />
             <End Role="Personal" EntitySet="Personal" />
@@ -249,13 +352,17 @@
         <EntityContainer Name="BIbliaEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Books" EntityType="BIbliaModel.Book" />
           <EntitySet Name="Categories" EntityType="BIbliaModel.Category" />
+          <EntitySet Name="ClassificIzdats" EntityType="BIbliaModel.ClassificIzdat" />
           <EntitySet Name="Clients" EntityType="BIbliaModel.Client" />
           <EntitySet Name="Formulars" EntityType="BIbliaModel.Formular" />
           <EntitySet Name="Genders" EntityType="BIbliaModel.Gender" />
           <EntitySet Name="Genres" EntityType="BIbliaModel.Genre" />
+          <EntitySet Name="Izdatels" EntityType="BIbliaModel.Izdatel" />
           <EntitySet Name="Personals" EntityType="BIbliaModel.Personal" />
           <EntitySet Name="Roles" EntityType="BIbliaModel.Role" />
           <EntitySet Name="sysdiagrams" EntityType="BIbliaModel.sysdiagram" />
+          <EntitySet Name="VidDeitIzdats" EntityType="BIbliaModel.VidDeitIzdat" />
+          <EntitySet Name="VidIzdats" EntityType="BIbliaModel.VidIzdat" />
           <AssociationSet Name="FK_Books_Category" Association="BIbliaModel.FK_Books_Category">
             <End Role="Category" EntitySet="Categories" />
             <End Role="Book" EntitySet="Books" />
@@ -263,6 +370,14 @@
           <AssociationSet Name="FK_Books_Genre" Association="BIbliaModel.FK_Books_Genre">
             <End Role="Genre" EntitySet="Genres" />
             <End Role="Book" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Books_Izdatel" Association="BIbliaModel.FK_Books_Izdatel">
+            <End Role="Izdatel" EntitySet="Izdatels" />
+            <End Role="Book" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Izdatel_ClassificIzdat" Association="BIbliaModel.FK_Izdatel_ClassificIzdat">
+            <End Role="ClassificIzdat" EntitySet="ClassificIzdats" />
+            <End Role="Izdatel" EntitySet="Izdatels" />
           </AssociationSet>
           <AssociationSet Name="FK_Clients_Gender" Association="BIbliaModel.FK_Clients_Gender">
             <End Role="Gender" EntitySet="Genders" />
@@ -275,6 +390,14 @@
           <AssociationSet Name="FK_Formulars_Personal" Association="BIbliaModel.FK_Formulars_Personal">
             <End Role="Personal" EntitySet="Personals" />
             <End Role="Formular" EntitySet="Formulars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Izdatel_VidDeitIzdat" Association="BIbliaModel.FK_Izdatel_VidDeitIzdat">
+            <End Role="VidDeitIzdat" EntitySet="VidDeitIzdats" />
+            <End Role="Izdatel" EntitySet="Izdatels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Izdatel_VidIzdat" Association="BIbliaModel.FK_Izdatel_VidIzdat">
+            <End Role="VidIzdat" EntitySet="VidIzdats" />
+            <End Role="Izdatel" EntitySet="Izdatels" />
           </AssociationSet>
           <AssociationSet Name="FK_Personal_Role" Association="BIbliaModel.FK_Personal_Role">
             <End Role="Role" EntitySet="Roles" />
@@ -290,6 +413,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InventNumber" Type="Int32" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="FAuthor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NAuthor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -299,8 +423,11 @@
           <Property Name="Category" Type="Int32" />
           <Property Name="Date_Vipusk" Type="DateTime" Precision="0" />
           <Property Name="ImageBook" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Raiting" Type="Int32" />
+          <Property Name="Izdatel" Type="Int32" />
           <NavigationProperty Name="Category1" Relationship="BIbliaModel.FK_Books_Category" FromRole="Book" ToRole="Category" />
           <NavigationProperty Name="Genre1" Relationship="BIbliaModel.FK_Books_Genre" FromRole="Book" ToRole="Genre" />
+          <NavigationProperty Name="Izdatel1" Relationship="BIbliaModel.FK_Books_Izdatel" FromRole="Book" ToRole="Izdatel" />
           <NavigationProperty Name="Formulars" Relationship="BIbliaModel.Formular_Books" FromRole="Book" ToRole="Formular" />
         </EntityType>
         <EntityType Name="Category">
@@ -310,6 +437,14 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Books" Relationship="BIbliaModel.FK_Books_Category" FromRole="Category" ToRole="Book" />
+        </EntityType>
+        <EntityType Name="ClassificIzdat">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Izdatels" Relationship="BIbliaModel.FK_Izdatel_ClassificIzdat" FromRole="ClassificIzdat" ToRole="Izdatel" />
         </EntityType>
         <EntityType Name="Client">
           <Key>
@@ -323,7 +458,6 @@
           <Property Name="Age" Type="Int32" />
           <Property Name="Date_rojd" Type="DateTime" Precision="0" />
           <Property Name="Gender" Type="Int32" />
-          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Gender1" Relationship="BIbliaModel.FK_Clients_Gender" FromRole="Client" ToRole="Gender" />
           <NavigationProperty Name="Formulars" Relationship="BIbliaModel.FK_Formulars_Clients" FromRole="Client" ToRole="Formular" />
         </EntityType>
@@ -355,6 +489,22 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Books" Relationship="BIbliaModel.FK_Books_Genre" FromRole="Genre" ToRole="Book" />
+        </EntityType>
+        <EntityType Name="Izdatel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_izdat" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Adress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VidIzdatel" Type="Int32" />
+          <Property Name="ClassificIzdat" Type="Int32" />
+          <Property Name="VidDeitIzdat" Type="Int32" />
+          <NavigationProperty Name="Books" Relationship="BIbliaModel.FK_Books_Izdatel" FromRole="Izdatel" ToRole="Book" />
+          <NavigationProperty Name="ClassificIzdat1" Relationship="BIbliaModel.FK_Izdatel_ClassificIzdat" FromRole="Izdatel" ToRole="ClassificIzdat" />
+          <NavigationProperty Name="VidDeitIzdat1" Relationship="BIbliaModel.FK_Izdatel_VidDeitIzdat" FromRole="Izdatel" ToRole="VidDeitIzdat" />
+          <NavigationProperty Name="VidIzdat" Relationship="BIbliaModel.FK_Izdatel_VidIzdat" FromRole="Izdatel" ToRole="VidIzdat" />
         </EntityType>
         <EntityType Name="Personal">
           <Key>
@@ -388,6 +538,22 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
+        <EntityType Name="VidDeitIzdat">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Izdatels" Relationship="BIbliaModel.FK_Izdatel_VidDeitIzdat" FromRole="VidDeitIzdat" ToRole="Izdatel" />
+        </EntityType>
+        <EntityType Name="VidIzdat">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Izdatels" Relationship="BIbliaModel.FK_Izdatel_VidIzdat" FromRole="VidIzdat" ToRole="Izdatel" />
+        </EntityType>
         <Association Name="FK_Books_Category">
           <End Type="BIbliaModel.Category" Role="Category" Multiplicity="0..1" />
           <End Type="BIbliaModel.Book" Role="Book" Multiplicity="*" />
@@ -409,6 +575,30 @@
             </Principal>
             <Dependent Role="Book">
               <PropertyRef Name="Genre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Books_Izdatel">
+          <End Type="BIbliaModel.Izdatel" Role="Izdatel" Multiplicity="0..1" />
+          <End Type="BIbliaModel.Book" Role="Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Izdatel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="Izdatel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Izdatel_ClassificIzdat">
+          <End Type="BIbliaModel.ClassificIzdat" Role="ClassificIzdat" Multiplicity="0..1" />
+          <End Type="BIbliaModel.Izdatel" Role="Izdatel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassificIzdat">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Izdatel">
+              <PropertyRef Name="ClassificIzdat" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -448,6 +638,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Izdatel_VidDeitIzdat">
+          <End Type="BIbliaModel.VidDeitIzdat" Role="VidDeitIzdat" Multiplicity="0..1" />
+          <End Type="BIbliaModel.Izdatel" Role="Izdatel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VidDeitIzdat">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Izdatel">
+              <PropertyRef Name="VidDeitIzdat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Izdatel_VidIzdat">
+          <End Type="BIbliaModel.VidIzdat" Role="VidIzdat" Multiplicity="0..1" />
+          <End Type="BIbliaModel.Izdatel" Role="Izdatel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VidIzdat">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Izdatel">
+              <PropertyRef Name="VidIzdatel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Personal_Role">
           <End Type="BIbliaModel.Role" Role="Role" Multiplicity="0..1" />
           <End Type="BIbliaModel.Personal" Role="Personal" Multiplicity="*" />
@@ -473,6 +687,8 @@
           <EntitySetMapping Name="Books">
             <EntityTypeMapping TypeName="BIbliaModel.Book">
               <MappingFragment StoreEntitySet="Books">
+                <ScalarProperty Name="Izdatel" ColumnName="Izdatel" />
+                <ScalarProperty Name="Raiting" ColumnName="Raiting" />
                 <ScalarProperty Name="ImageBook" ColumnName="ImageBook" />
                 <ScalarProperty Name="Date_Vipusk" ColumnName="Date_Vipusk" />
                 <ScalarProperty Name="Category" ColumnName="Category" />
@@ -482,6 +698,7 @@
                 <ScalarProperty Name="NAuthor" ColumnName="NAuthor" />
                 <ScalarProperty Name="FAuthor" ColumnName="FAuthor" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="InventNumber" ColumnName="InventNumber" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -494,10 +711,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ClassificIzdats">
+            <EntityTypeMapping TypeName="BIbliaModel.ClassificIzdat">
+              <MappingFragment StoreEntitySet="ClassificIzdat">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Clients">
             <EntityTypeMapping TypeName="BIbliaModel.Client">
               <MappingFragment StoreEntitySet="Clients">
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
                 <ScalarProperty Name="Date_rojd" ColumnName="Date_rojd" />
                 <ScalarProperty Name="Age" ColumnName="Age" />
@@ -536,6 +760,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Izdatels">
+            <EntityTypeMapping TypeName="BIbliaModel.Izdatel">
+              <MappingFragment StoreEntitySet="Izdatel">
+                <ScalarProperty Name="VidDeitIzdat" ColumnName="VidDeitIzdat" />
+                <ScalarProperty Name="ClassificIzdat" ColumnName="ClassificIzdat" />
+                <ScalarProperty Name="VidIzdatel" ColumnName="VidIzdatel" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Name_izdat" ColumnName="Name_izdat" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Personals">
             <EntityTypeMapping TypeName="BIbliaModel.Personal">
               <MappingFragment StoreEntitySet="Personal">
@@ -565,6 +802,22 @@
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VidDeitIzdats">
+            <EntityTypeMapping TypeName="BIbliaModel.VidDeitIzdat">
+              <MappingFragment StoreEntitySet="VidDeitIzdat">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VidIzdats">
+            <EntityTypeMapping TypeName="BIbliaModel.VidIzdat">
+              <MappingFragment StoreEntitySet="VidIzdat">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

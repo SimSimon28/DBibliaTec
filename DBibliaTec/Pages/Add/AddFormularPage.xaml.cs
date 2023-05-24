@@ -59,7 +59,8 @@ namespace DBibliaTec.Pages.Add
             LBoxView.ItemsSource = App.Context.Books.ToList();
 
 
-             var books = _currentFormular.Books.ToList();
+            var books = _currentFormular.Books.ToList();
+
             SelectedBooks = new ObservableCollection<Book>(books); 
         }
 

@@ -36,8 +36,6 @@
                   IsReadOnly="True" BorderThickness="0" Style="{StaticResource DGSF}">
             <DataGrid.Resources>
                 <ContextMenu  x:Key="CtxMenu">
-                    <MenuItem Header="Копировать"
-                              Command="Copy"/>
                     <MenuItem Name="MainClickEdit" Header="Редактировать" Click="MainClickEdit_Click"/>
                     <MenuItem Name="MainClickDel" Header="Удалить" Click="MainClickDel_Click"/>
                     <MenuItem Name="MainClickDescription" Header="Подробности..." Click="MainClickDescription_Click"/>
