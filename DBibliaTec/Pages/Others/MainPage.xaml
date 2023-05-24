@@ -9,108 +9,113 @@
       Title="Главная">
 
     <Grid>
-        <StackPanel Orientation="Horizontal">
-            <Border BorderBrush="DarkBlue" BorderThickness="2" CornerRadius="5 5 5 5">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10 10">
-                    <Border BorderBrush="Blue" BorderThickness="2" CornerRadius="5 5 5 5">
-                <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
-                            <StackPanel.Background>
-                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                    <GradientStop Color="#FF0B0C1B"/>
-                                    <GradientStop Color="#FF7178DE" Offset="1"/>
-                                </LinearGradientBrush>
-                            </StackPanel.Background>
+
+        <Border BorderBrush="DarkBlue" HorizontalAlignment="Left" BorderThickness="2" CornerRadius="5 5 5 5">
+            <Grid HorizontalAlignment="Left" Margin="10 10">
+                <Border BorderBrush="Blue" BorderThickness="2" CornerRadius="5 5 5 5">
+                    
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF0B0C1B"/>
+                            <GradientStop Color="#FF7178DE" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel HorizontalAlignment="Left" VerticalAlignment="Stretch">
+
+
                             <Expander IsExpanded="True" Header="Список страниц" Margin="10 10" Style="{StaticResource EXMain}" Width="300">
                                 <Grid>
-                                    <ScrollViewer VerticalScrollBarVisibility="Auto" Height="470">
                                     <StackPanel Margin="5 5">
-                                <Expander IsExpanded="True" Header="Списки" Style="{StaticResource EXMain}" Width="300">
+
+                                        <Expander IsExpanded="True" Header="Списки" Style="{StaticResource EXMain}" Width="300">
                                             <Grid>
                                                 <StackPanel Margin="5 5">
-                                            <Button Width="300" Padding="5" Height="40" Style="{StaticResource BMain}" HorizontalContentAlignment="Left" x:Name="BSpisokClients" MouseDoubleClick="BSpisokClients_MouseDoubleClick">
-                                                <StackPanel Orientation="Horizontal">
-                                                    <Image Source="\Icons\Clients.png" Width="20" Height="20"/>
-                                                    <TextBlock Text="Список клиентов" Style="{StaticResource TBMain}"/>
+                                                    <Button Width="300" Padding="5" Height="40" Style="{StaticResource BMain}" HorizontalContentAlignment="Left" x:Name="BSpisokClients" MouseDoubleClick="BSpisokClients_MouseDoubleClick">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <Image Source="\Icons\Clients.png" Width="20" Height="20"/>
+                                                            <TextBlock Text="Список клиентов" Style="{StaticResource TBMain}"/>
+                                                        </StackPanel>
+                                                    </Button>
+                                                    <Button Width="300" Padding="5" Height="40" Style="{StaticResource BMain}" HorizontalContentAlignment="Left" x:Name="BSpisokBooks" MouseDoubleClick="BSpisokBooks_MouseDoubleClick">
+                                                        <StackPanel Orientation="Horizontal" >
+                                                            <Image Source="\Icons\Clients.png" Width="20" Height="20"/>
+                                                            <TextBlock Text="Список книг"/>
+                                                        </StackPanel>
+                                                    </Button>
+                                                    <Button Width="300" Padding="5" Height="40" Style="{StaticResource BMain}" HorizontalContentAlignment="Left" x:Name="BSpisokFormulars" MouseDoubleClick="BSpisokFormulars_MouseDoubleClick">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <Image Source="\Icons\Clients.png" Width="20" Height="20"/>
+                                                            <TextBlock Text="Список формуляров"/>
+                                                        </StackPanel>
+                                                    </Button>
+                                                    <Button Width="300" Padding="5" Height="40" Style="{StaticResource BMain}" HorizontalContentAlignment="Left" x:Name="BSpisokIzdat" MouseDoubleClick="BSpisokIzdat_MouseDoubleClick">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <Image Source="\Icons\Clients.png" Width="20" Height="20"/>
+                                                            <TextBlock Text="Список издателей"/>
+                                                        </StackPanel>
+                                                    </Button>
                                                 </StackPanel>
-                                            </Button>
-                                            <Button Width="300" Padding="5" Height="40" Style="{StaticResource BMain}" HorizontalContentAlignment="Left" x:Name="BSpisokBooks" MouseDoubleClick="BSpisokBooks_MouseDoubleClick">
-                                                <StackPanel Orientation="Horizontal" >
-                                                    <Image Source="\Icons\Clients.png" Width="20" Height="20"/>
-                                                    <TextBlock Text="Список книг"/>
+                                            </Grid>
+                                        </Expander>
+                                        <Expander IsExpanded="True" Header="Добавление" Style="{StaticResource EXMain}" Width="300">
+                                            <Grid>
+                                                <StackPanel Margin="5 5">
+                                                    <Button Width="300" Padding="5" Height="40" Style="{StaticResource BMain}" HorizontalContentAlignment="Left" x:Name="BClientsAdd" MouseDoubleClick="BClientsAdd_MouseDoubleClick">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <Image Source="\Icons\Clients.png" Width="20" Height="20"/>
+                                                            <TextBlock Text="Добавление клиентов"/>
+                                                        </StackPanel>
+                                                    </Button>
+                                                    <Button Width="300" Padding="5" Height="40" Style="{StaticResource BMain}" HorizontalContentAlignment="Left" x:Name="BBooksAdd" MouseDoubleClick="BBooksAdd_MouseDoubleClick">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <Image Source="\Icons\Clients.png" Width="20" Height="20"/>
+                                                            <TextBlock Text="Добавление книг"/>
+                                                        </StackPanel>
+                                                    </Button>
+                                                    <Button Width="300" Padding="5" Height="40" Style="{StaticResource BMain}" HorizontalContentAlignment="Left" x:Name="BFormularsAdd" MouseDoubleClick="BFormularsAdd_MouseDoubleClick">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <Image Source="\Icons\Clients.png" Width="20" Height="20"/>
+                                                            <TextBlock Text="Добавление формуляров"/>
+                                                        </StackPanel>
+                                                    </Button>
+                                                    <Button Width="300" Padding="5" Height="40" Style="{StaticResource BMain}" HorizontalContentAlignment="Left" x:Name="BIzdatAdd" MouseDoubleClick="BFIzdatAdd_MouseDoubleClick">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <Image Source="\Icons\Clients.png" Width="20" Height="20"/>
+                                                            <TextBlock Text="Добавление издателей"/>
+                                                        </StackPanel>
+                                                    </Button>
                                                 </StackPanel>
-                                            </Button>
-                                            <Button Width="300" Padding="5" Height="40" Style="{StaticResource BMain}" HorizontalContentAlignment="Left" x:Name="BSpisokFormulars" MouseDoubleClick="BSpisokFormulars_MouseDoubleClick">
-                                                <StackPanel Orientation="Horizontal">
-                                                    <Image Source="\Icons\Clients.png" Width="20" Height="20"/>
-                                                    <TextBlock Text="Список формуляров"/>
+                                            </Grid>
+                                        </Expander>
+                                        <Expander IsExpanded="False" Header="Информация" Style="{StaticResource EXMain}" Width="300">
+                                            <Grid>
+                                                <StackPanel Margin="5 5">
+                                                    <Button Width="300" Padding="5" Height="40" Style="{StaticResource BMain}" HorizontalContentAlignment="Left" x:Name="BInfo" MouseDoubleClick="BInfo_MouseDoubleClick">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <Image Source="\Icons\Clients.png" Width="20" Height="20"/>
+                                                            <TextBlock Text="О библиотеке"/>
+                                                        </StackPanel>
+                                                    </Button>
+                                                    <Button Width="300" Padding="5" Height="40" Style="{StaticResource BMain}" HorizontalContentAlignment="Left" x:Name="RatingBook" 
+                                                MouseDoubleClick="RatingBook_MouseDoubleClick">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <Image Source="\Icons\Clients.png" Width="20" Height="20"/>
+                                                            <TextBlock Text="Топ книг"/>
+                                                        </StackPanel>
+                                                    </Button>
                                                 </StackPanel>
-                                            </Button>
-                                            <Button Width="300" Padding="5" Height="40" Style="{StaticResource BMain}" HorizontalContentAlignment="Left" x:Name="BSpisokIzdat" MouseDoubleClick="BSpisokIzdat_MouseDoubleClick">
-                                                <StackPanel Orientation="Horizontal">
-                                                    <Image Source="\Icons\Clients.png" Width="20" Height="20"/>
-                                                    <TextBlock Text="Список издателей"/>
-                                                </StackPanel>
-                                            </Button>
-                                        </StackPanel>
-                                    </Grid>
-                                </Expander>
-                                <Expander IsExpanded="True" Header="Добавление" Style="{StaticResource EXMain}" Width="300">
-                                    <Grid>
-                                        <StackPanel Margin="5 5">
-                                            <Button Width="300" Padding="5" Height="40" Style="{StaticResource BMain}" HorizontalContentAlignment="Left" x:Name="BClientsAdd" MouseDoubleClick="BClientsAdd_MouseDoubleClick">
-                                                <StackPanel Orientation="Horizontal">
-                                                    <Image Source="\Icons\Clients.png" Width="20" Height="20"/>
-                                                    <TextBlock Text="Добавление клиентов"/>
-                                                </StackPanel>
-                                            </Button>
-                                            <Button Width="300" Padding="5" Height="40" Style="{StaticResource BMain}" HorizontalContentAlignment="Left" x:Name="BBooksAdd" MouseDoubleClick="BBooksAdd_MouseDoubleClick">
-                                                <StackPanel Orientation="Horizontal">
-                                                    <Image Source="\Icons\Clients.png" Width="20" Height="20"/>
-                                                    <TextBlock Text="Добавление книг"/>
-                                                </StackPanel>
-                                            </Button>
-                                            <Button Width="300" Padding="5" Height="40" Style="{StaticResource BMain}" HorizontalContentAlignment="Left" x:Name="BFormularsAdd" MouseDoubleClick="BFormularsAdd_MouseDoubleClick">
-                                                <StackPanel Orientation="Horizontal">
-                                                    <Image Source="\Icons\Clients.png" Width="20" Height="20"/>
-                                                    <TextBlock Text="Добавление формуляров"/>
-                                                </StackPanel>
-                                            </Button>
-                                            <Button Width="300" Padding="5" Height="40" Style="{StaticResource BMain}" HorizontalContentAlignment="Left" x:Name="BIzdatAdd" MouseDoubleClick="BFIzdatAdd_MouseDoubleClick">
-                                                <StackPanel Orientation="Horizontal">
-                                                    <Image Source="\Icons\Clients.png" Width="20" Height="20"/>
-                                                    <TextBlock Text="Добавление издателей"/>
-                                                </StackPanel>
-                                            </Button>
-                                        </StackPanel>
-                                    </Grid>
-                                </Expander>
-                                <Expander IsExpanded="False" Header="Информация" Style="{StaticResource EXMain}" Width="300">
-                                    <Grid>
-                                        <StackPanel Margin="5 5">
-                                            <Button Width="300" Padding="5" Height="40" Style="{StaticResource BMain}" HorizontalContentAlignment="Left" x:Name="BInfo" MouseDoubleClick="BInfo_MouseDoubleClick">
-                                                <StackPanel Orientation="Horizontal">
-                                                    <Image Source="\Icons\Clients.png" Width="20" Height="20"/>
-                                                    <TextBlock Text="О библиотеке"/>
-                                                </StackPanel>
-                                            </Button>
-                                            <Button Width="300" Padding="5" Height="40" Style="{StaticResource BMain}" HorizontalContentAlignment="Left" x:Name="RatingBook" 
-                                                    MouseDoubleClick="RatingBook_MouseDoubleClick">
-                                                <StackPanel Orientation="Horizontal">
-                                                    <Image Source="\Icons\Clients.png" Width="20" Height="20"/>
-                                                    <TextBlock Text="Топ книг"/>
-                                                </StackPanel>
-                                            </Button>
-                                        </StackPanel>
-                                    </Grid>
-                                </Expander>
-                            </StackPanel>
-                            </ScrollViewer>
-                        </Grid>
-                    </Expander>
-                </StackPanel>
-                    </Border>
-                </StackPanel>
-            </Border>
-        </StackPanel>
+                                            </Grid>
+                                        </Expander>
+                                    </StackPanel>
+                                </Grid>
+                            </Expander>
+                    </StackPanel>
+                        </ScrollViewer>
+                </Border>
+            </Grid>
+        </Border>
+
     </Grid>
 </Page>

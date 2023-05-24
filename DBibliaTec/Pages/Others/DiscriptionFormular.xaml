@@ -98,7 +98,7 @@
 
                         <ListBox BorderThickness="0" DisplayMemberPath="Name" x:Name="LBoxVziat"
                                  HorizontalAlignment="Left" Width="275"  Height="105" Background="Transparent" Style="{StaticResource LBoxOF}" 
-                                 SelectedItem="{Binding SelectedBook}"  ItemsSource="{Binding SelectedBooks}">
+                                 SelectedItem="{Binding SelectedBookR}"  ItemsSource="{Binding SelectedBooks}">
                             <ListBox.ItemContainerStyle>
                                 <Style TargetType="ListBoxItem">
                                     <Setter Property="Focusable" Value="False" />
@@ -131,22 +131,22 @@
 
         <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="1">
             <StackPanel Margin="10 10">
-                <Button Width="130" Height="30" Style="{StaticResource ButtonConfirm}" Content="Редактировать" Name="EditButton" Click="EditButton_Click"/>
-                <Button Width="130" Height="30" Style="{StaticResource ButtonDelete}" Content="Удалить" Name="DelteButton" Margin="0 5 0 0" Click="DelteButton_Click"/>
+                <Button Width="130" Height="30" Style="{StaticResource ButtonBlueTest1}" Content="Редактировать" Name="EditButton" Click="EditButton_Click"/>
+                <Button Width="130" Height="30" Style="{StaticResource ButtonBlueTest1}" Content="Удалить" Name="DelteButton" Margin="0 5 0 0" Click="DelteButton_Click"/>
             </StackPanel>
         </StackPanel>
         <StackPanel Margin="10 10" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="1">
             <StackPanel Orientation="Vertical" HorizontalAlignment="Right">
-                <Button Width="30" Height="30" Style="{StaticResource ButtonConfirm}" Name="AddBooks" Margin="0 0 40 0" Click="AddBooks_Click" Visibility="Hidden">
+                <Button Width="30" Height="30" Style="{StaticResource ButtonBlueTest1}" Name="AddBooks" Margin="0 0 40 0" Click="AddBooks_Click" Visibility="Hidden">
                     <Image Source="\Icons\Add.png"/>
                 </Button>
-                <Button Width="30" Height="30" Style="{StaticResource ButtonDelete}" Name="DeleteBook" Margin="0 5 40 0" Click="DeleteBook_Click" Visibility="Hidden">
+                <Button Width="30" Height="30" Style="{StaticResource ButtonBlueTest1}" Name="DeleteBook" Margin="0 5 40 0" Click="DeleteBook_Click" Visibility="Hidden">
                     <Image Source="\Icons\Delete.png"/>
                 </Button>
             </StackPanel>
             <StackPanel Orientation="Vertical">
-                <Button Width="130" Height="30" Style="{StaticResource ButtonConfirm}" Content="Сохранить" Name="SaveButton" Visibility="Hidden" Click="SaveButton_Click"/>
-                <Button Width="130" Height="30" Style="{StaticResource ButtonDelete}" Content="Отменить" Name="CancelButton" Margin="0 5 0 0" Visibility="Hidden" Click="CancelButton_Click"/>
+                <Button Width="130" Height="30" Style="{StaticResource ButtonBlueTest1}" Content="Сохранить" Name="SaveButton" Visibility="Hidden" Click="SaveButton_Click"/>
+                <Button Width="130" Height="30" Style="{StaticResource ButtonBlueTest1}" Content="Отменить" Name="CancelButton" Margin="0 5 0 0" Visibility="Hidden" Click="CancelButton_Click"/>
             </StackPanel>
         </StackPanel>
         
@@ -154,7 +154,7 @@
             <GroupBox BorderThickness="0.5" BorderBrush="GhostWhite" Margin="7 0 0 0" Header="Список книг"  Style="{StaticResource GBOF}" Grid.Row="1">
                 <StackPanel Margin="10 10" HorizontalAlignment="Left" VerticalAlignment="Bottom">
                     <ListBox BorderThickness="0" DisplayMemberPath="Name" x:Name="LBoxView"
-                                 HorizontalAlignment="Left" Width="275"  Height="105" Background="Transparent" Style="{StaticResource LBoxOF}" SelectedItem="{Binding SelectedBook}"/>
+                                 HorizontalAlignment="Left" Width="275"  Height="105" Background="Transparent" Style="{StaticResource LBoxOF}" SelectedItem="{Binding SelectedBookL}"/>
                 </StackPanel>
             </GroupBox>
         </StackPanel>

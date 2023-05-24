@@ -1,7 +1,10 @@
 ﻿using DBibliaTec.DB;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -18,9 +21,24 @@ namespace DBibliaTec.Pages.Others
 {
     public partial class AdvancedBookSearchWindow : Window
     {
-        public AdvancedBookSearchWindow()
+
+        private ObservableCollection<Book> selectedBooks;
+        public ObservableCollection<Book> SelectedBooks { get => selectedBooks; set => Set(ref selectedBooks, value); }
+
+        private ObservableCollection<Book> confirmedSelectedBooks;
+        public ObservableCollection<Book> ConfirmedSelectedBooks { get => confirmedSelectedBooks; set => Set(ref confirmedSelectedBooks, value); }
+
+        private Book selectedBookL;
+        public Book SelectedBookL { get => selectedBookL; set => Set(ref selectedBookL, value); }
+        private Book selectedBookR;
+        public Book SelectedBookR { get => selectedBookR; set => Set(ref selectedBookR, value); }
+
+        public AdvancedBookSearchWindow(ObservableCollection<Book> selectedBooks)
         {
             InitializeComponent();
+            DataContext = this;
+            SelectedBooks = new ObservableCollection<Book>();
+            ConfirmedSelectedBooks = selectedBooks;
 
             // Для вкладки "Все" чтобы отображать все категории
             List<Category> categ = new List<Category>
@@ -33,7 +51,6 @@ namespace DBibliaTec.Pages.Others
 
             ComboNal.SelectedIndex = 0;
 
-            DataContext = this;
         }
 
         private void UpBook()
@@ -69,7 +86,9 @@ namespace DBibliaTec.Pages.Others
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            foreach (var book in SelectedBooks)
+                ConfirmedSelectedBooks.Add(book);
+            Close();
         }
 
         private void ComboNal_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -99,12 +118,45 @@ namespace DBibliaTec.Pages.Others
 
         private void AddBook_Click(object sender, RoutedEventArgs e)
         {
-
+            if (SelectedBooks.Count > 0)
+            {
+                bool equal = false;
+                foreach (var item in SelectedBooks.ToList())
+                {
+                    if (item.ID == SelectedBookL.ID)
+                    {
+                        equal = true;
+                        break;
+                    }
+                }
+                if (!equal)
+                    SelectedBooks.Add(SelectedBookL);
+            }
+            else SelectedBooks.Add(SelectedBookL);
         }
 
         private void DelBook_Click(object sender, RoutedEventArgs e)
         {
-
+            SelectedBooks.Remove(SelectedBookR);
         }
+
+
+        #region INPC
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string PropertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
+        }
+
+        protected virtual bool Set<T>(ref T field, T value, [CallerMemberName] string PropertyName = null)
+        {
+            if (Equals(field, value)) return false;
+            field = value;
+            OnPropertyChanged(PropertyName);
+            return true;
+        }
+
+        #endregion
     }
 }

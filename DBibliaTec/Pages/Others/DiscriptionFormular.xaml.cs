@@ -18,8 +18,11 @@ namespace DBibliaTec.Pages.Others
         private ObservableCollection<Book> selectedBooks;
         public ObservableCollection<Book> SelectedBooks { get => selectedBooks; set => Set(ref selectedBooks, value); }
 
-        private Book selectedBook;
-        public Book SelectedBook { get => selectedBook; set => Set(ref selectedBook, value); }
+     
+        private Book selectedBookL;
+        public Book SelectedBookL { get => selectedBookL; set => Set(ref selectedBookL, value); }
+        private Book selectedBookR;
+        public Book SelectedBookR { get => selectedBookR; set => Set(ref selectedBookR, value); }
 
         private Formular currentFormular;
         public Formular CurrentFormular { get => currentFormular; set => Set(ref currentFormular, value); }
@@ -132,6 +135,7 @@ namespace DBibliaTec.Pages.Others
                 SpisokBooks.Visibility = Visibility.Hidden;
                 AddBooks.Visibility = Visibility.Hidden;
                 DeleteBook.Visibility = Visibility.Hidden;
+
                 MessageBox.Show("Успешно изменено", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Close();
             }
@@ -162,7 +166,7 @@ namespace DBibliaTec.Pages.Others
 
         private void AddBooks_Click(object sender, RoutedEventArgs e)
         {
-            SelectedBooks.Add(SelectedBook);
+            SelectedBooks.Add(SelectedBookL);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -172,7 +176,7 @@ namespace DBibliaTec.Pages.Others
 
         private void DeleteBook_Click(object sender, RoutedEventArgs e)
         {
-            SelectedBooks.Remove(SelectedBook);
+            SelectedBooks.Remove(SelectedBookR);
         }
     }
 }

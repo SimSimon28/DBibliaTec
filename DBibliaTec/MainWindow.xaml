@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DBibliaTec"
         FontFamily="Roboto"
-        mc:Ignorable="d"
-        Title="МАУК «Кунгурская ЦБС»" MinHeight="450" MinWidth="1024">
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        Title="МАУК «Кунгурская ЦБС»" MinHeight="700" MinWidth="1024">
     <Grid>
         <Grid.RowDefinitions>
 

@@ -125,7 +125,7 @@ namespace DBibliaTec.Pages.Add
                 .FirstOrDefault(p => Convert.ToString(p.InventNumber) == TboxInventNum.Text.ToLower());
             if (bookDB != null)
                 errorBuilder.AppendLine("Такой инвентарный номер уже есть в базе");
-            if (string.IsNullOrWhiteSpace(TboxInventNum.Text))
+            if (string.IsNullOrWhiteSpace(TboxInventNum.Text) || !int.TryParse(TboxInventNum.Text, out int i))
                 errorBuilder.AppendLine("Инвентарный номер обязателен для заполнения");
 
             if (string.IsNullOrWhiteSpace(TboxNameBook.Text))
@@ -141,7 +141,7 @@ namespace DBibliaTec.Pages.Add
                 errorBuilder.AppendLine("Фамилия автора обязательна для заполнения");
             if (string.IsNullOrWhiteSpace(TboxNAuthor.Text))
                 errorBuilder.AppendLine("Имя автора обязательно для заполнения");
-            if (string.IsNullOrWhiteSpace(TboxCount.Text))
+            if (string.IsNullOrWhiteSpace(TboxCount.Text) || !int.TryParse(TboxCount.Text, out int ui))
                 errorBuilder.AppendLine("Отчество автора обязательно для заполнения");
             if (string.IsNullOrWhiteSpace(DPDateVihoda.Text))
                 errorBuilder.AppendLine("Дата выпуска книги обязательна для заполнения");

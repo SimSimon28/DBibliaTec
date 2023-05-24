@@ -22,8 +22,12 @@ namespace DBibliaTec.Pages.Add
         private ObservableCollection<Book> selectedBooks;
         public ObservableCollection<Book> SelectedBooks { get => selectedBooks; set => Set(ref selectedBooks, value); }
 
-        private Book selectedBook;
-        public Book SelectedBook { get => selectedBook; set => Set(ref selectedBook, value); }
+        private Book selectedBookL;
+        public Book SelectedBookL { get => selectedBookL; set => Set(ref selectedBookL, value); }
+        private Book selectedBookR;
+        public Book SelectedBookR { get => selectedBookR; set => Set(ref selectedBookR, value); }
+
+
 
         public AddFormularPage()
         {
@@ -82,9 +86,9 @@ namespace DBibliaTec.Pages.Add
                         ID_Personals = Convert.ToInt32(CboxId_personala.SelectedValue),
                         Date_Vidachi = DateTime.Parse(TboxDateVid.Text),
                         Date_Sdachi = DateTime.Parse(TboxDateSdachi.Text),
-                        Books = SelectedBooks
-
+                        Books = SelectedBooks,
                     };
+
                     App.Context.Formulars.Add(formular);
                     App.Context.SaveChanges();
                 }
@@ -125,15 +129,36 @@ namespace DBibliaTec.Pages.Add
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            SelectedBooks.Add(SelectedBook);
+            try
+            {
+                if (SelectedBooks.Count > 0)
+                {
+                    bool equal = false;
+                    foreach (var item in SelectedBooks.ToList())
+                    {                      
+                        if (item.ID == SelectedBookL.ID)
+                        {
+                            equal = true;
+                            break;
+                        }
+                    }
+                    if (!equal)
+                        SelectedBooks.Add(SelectedBookL);
+                }
+                else SelectedBooks.Add(SelectedBookL);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         private void DelButton_Click(object sender, RoutedEventArgs e)
         {
-            SelectedBooks.Remove(SelectedBook);
+            SelectedBooks.Remove(SelectedBookR);
         }
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
-            var DesForm = new Pages.Others.AdvancedBookSearchWindow();
+            var DesForm = new Pages.Others.AdvancedBookSearchWindow(SelectedBooks);
             DesForm.ShowDialog();
         }
 
