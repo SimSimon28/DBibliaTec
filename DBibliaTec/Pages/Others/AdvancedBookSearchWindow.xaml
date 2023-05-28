@@ -200,7 +200,7 @@
                             Width="100" Height="30" Margin="5 0 0 0" Click="DelBook_Click"/>
             </WrapPanel>
             
-            <Button x:Name="AddButton"  Style="{StaticResource ButtonBlueTest1}" Content="Добавить" FontSize="16"
+            <Button x:Name="AddButton"  Style="{StaticResource ButtonBlueTest1}" Content="Сохранить" FontSize="16"
                     Width="100" Height="30" HorizontalAlignment="Right" Grid.Column="1" Margin="10 0" Click="AddButton_Click"/>
         </Grid>
 

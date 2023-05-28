@@ -5,10 +5,116 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:DBibliaTec.Pages.Others"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="1080" d:DesignWidth="1920"
       Title="О библиотеке">
 
     <Grid>
-        
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20" Orientation="Horizontal">
+            <Border Background="{StaticResource BrushBlueLight}" CornerRadius="10" Width="200" Height="170">
+                <Grid>
+                    <StackPanel>
+                        <TextBlock TextAlignment="Center" Text="Мы в ВК: https://vk.com/biblio_kungur" TextWrapping="Wrap" VerticalAlignment="Center" Margin="10" Style="{StaticResource TBlock19ABP}" FontSize="14"/>
+                    </StackPanel>
+                    <StackPanel VerticalAlignment="Bottom" Margin="10">
+                        <Image Source="\LogoAndImages\Images\QR_VK.png" Width="110"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0 30 0 0">
+            <StackPanel Margin="5">
+            </StackPanel>
+            <StackPanel Margin="5">
+                <Button Style="{StaticResource ButtonBlueTestHyper}" Width="120" Height="40" FontSize="14">
+                    <Grid>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="\Icons\VK.png" Width="40"/>
+                            <TextBlock VerticalAlignment="Center" Margin="5 0 0 0">
+                                    <Hyperlink NavigateUri="http://kungurbiblio.perm.muzkult.ru">
+                                        Наш сайт
+                                    </Hyperlink>
+                            </TextBlock>
+                        </StackPanel>
+                    </Grid>
+                </Button>
+            </StackPanel>
+            <StackPanel Margin="5">
+                <Button Style="{StaticResource ButtonBlueTest1}" Width="140" Height="40" FontSize="14" Margin="20 0 0 0" Click="Button_Click">
+                    <Grid Margin="1">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="\Icons\VK.png" Width="40"/>
+                            <TextBlock Text="Мы на карте" VerticalAlignment="Center" Margin="5 0 0 0"/>
+                        </StackPanel>
+                    </Grid>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+            <StackPanel>
+                <TextBox Style="{StaticResource TBox19ABP}" Text="Центральная городская библиотека имени Кирилла Тимофеевича Хлебникова в городе Кунгуре – одна из старейших в Российской империи, она была открыта 16 апреля 1840 г.
+Началом ее послужило завещание известного путешественника Кирилла Тимофеевича Хлебникова, в котором он передавал свое личное собрание книг городу с целью открытия публичной библиотеки. В завещании он писал: «Я надеюсь, что кунгурское общество не будет невнимательно к желанию моему способствовать образованию нового поколения моих сограждан…». 
+Полное название библиотеки: Муниципальное бюджетное учреждение культуры «Централизованная библиотечная система города Кунгура» (МБУК «ЦБС г. Кунгура»). " 
+                         TextWrapping="Wrap" Margin="10" Padding="20" TextAlignment="Center" Width="700" IsReadOnly="{Binding IsReadOnly}">
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="25"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+                <TextBox Text="Адрес библиотеки: К.Т. Хлебникова Пермский край (617470) Пермский край, г. Кунгура, ул. Гоголя, 40." 
+                         Style="{StaticResource TBox19ABP}" Padding="5" TextWrapping="Wrap" TextAlignment="Center" Width="700" IsReadOnly="{Binding IsReadOnly}">
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 10 10">
+            <StackPanel Margin="5">
+                <TextBox Text="Сязаться с нами" Style="{StaticResource TBox19ABP}" IsReadOnly="{Binding IsReadOnly}" 
+                         Height="30" VerticalContentAlignment="Center" HorizontalAlignment="Center">
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+            </StackPanel>
+            <StackPanel Margin="5">
+                <TextBox Text="Телефон: 8 (34271) 2-45-44" Style="{StaticResource TBox19ABP}" IsReadOnly="{Binding IsReadOnly}"
+                         Height="30" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14">
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+            </StackPanel>
+            <StackPanel Margin="5">
+                <TextBox Text="Email: biblio-kungur@mail.ru" Style="{StaticResource TBox19ABP}" IsReadOnly="{Binding IsReadOnly}"
+                         Height="30" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14">
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+            </StackPanel>
+            <StackPanel Margin="5">
+                <TextBox Text="Директор: Матвеева Светлана Ивановна" Style="{StaticResource TBox19ABP}" IsReadOnly="{Binding IsReadOnly}"
+                         Height="30" VerticalContentAlignment="Center" FontSize="14">
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+            </StackPanel>
+            <StackPanel Margin="10">
+                <Image Source="\LogoAndImages\Images\min_kult.jpg" Width="200"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>

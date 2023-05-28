@@ -186,6 +186,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Others\MapPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Others\OBibliaInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -243,6 +247,9 @@
     </Compile>
     <Compile Include="Pages\Others\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Others\MapPage.xaml.cs">
+      <DependentUpon>MapPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Others\OBibliaInfo.xaml.cs">
       <DependentUpon>OBibliaInfo.xaml</DependentUpon>
@@ -308,6 +315,10 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="LogoAndImages\Images\QR_VK.png" />
+    <Resource Include="LogoAndImages\Images\Ya.Map.png" />
+    <Resource Include="LogoAndImages\Images\min_kult.jpg" />
+    <Resource Include="Icons\VK.png" />
     <Resource Include="LogoAndImages\Images\MainFone1.png" />
     <Resource Include="Icons\Delete.png" />
     <Resource Include="Icons\Add.png" />

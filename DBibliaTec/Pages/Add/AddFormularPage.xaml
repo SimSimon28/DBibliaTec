@@ -14,7 +14,7 @@
             <Border BorderThickness="0.5" BorderBrush="GhostWhite"
                       Margin="10 10" Background="{StaticResource BrushBlueLightTest}" CornerRadius="10">
                 <StackPanel>
-                    <TextBlock Text="Список книг" Margin="34 10 0 0" Style="{StaticResource TBlock16SB}" Foreground="{StaticResource BrushBlueLight}"></TextBlock>
+                    <TextBlock Text="Быстрый поиск книги" Margin="34 10 0 0" Style="{StaticResource TBlock16SB}" Foreground="{StaticResource BrushBlueLight}"></TextBlock>
                     <StackPanel>
                         <ListBox Width="290" Height="350" Margin="10 10" x:Name="LBoxView" DisplayMemberPath="Name" 
                     SelectedItem="{Binding SelectedBookL}" Style="{StaticResource LBox19ABP}" Background="{StaticResource BrushBlueLight}" Foreground="{StaticResource MainColor}">
@@ -29,7 +29,7 @@
                     <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                         <Button Width="100" Height="30" Margin="10 5" VerticalContentAlignment="Center" Content="Добавить" Style="{StaticResource ButtonBlueTest1}" x:Name="AddButton" Click="AddButton_Click"/>
                         <Button Width="100" Height="30" Margin="10 5" VerticalContentAlignment="Center" Content="Удалить" Style="{StaticResource ButtonBlueTest1}" x:Name="DelButton" Click="DelButton_Click"/>
-                        <Button Width="100" Height="30" Margin="10 5" VerticalContentAlignment="Center" Content="Поиск" Style="{StaticResource ButtonBlueTest1}" x:Name="SearchButton" Click="SearchButton_Click"/>
+                        <Button Width="100" Height="30" Margin="10 5" VerticalContentAlignment="Center" Content="Улучш. Поиск" Style="{StaticResource ButtonBlueTest1}" x:Name="SearchButton" Click="SearchButton_Click"/>
                     </StackPanel>
                 </StackPanel>
             </Border>
@@ -42,12 +42,14 @@
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 5">
                         <TextBlock Text="Читатель " Style="{StaticResource TBlock19ABP}" Margin="5 0 0 0" HorizontalAlignment="Left"/>
-                        <ComboBox x:Name="CboxReader"  Width="320" SelectedValuePath="ID" Style="{DynamicResource CBoxTem}" Foreground="{StaticResource BrushBlueLight}" FontSize="19" FontFamily="Roboto">
+                        <ComboBox x:Name="CboxReader"  Width="320" SelectedValuePath="ID" Style="{DynamicResource CBoxTem}" 
+                                  Foreground="{StaticResource BrushBlueLight}" FontSize="19" FontFamily="Roboto">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock>
                                         <TextBlock.Text>
-                                            <MultiBinding StringFormat="{}{0} {1} {2}">
+                                            <MultiBinding StringFormat="{}{0} {1} {2} {3}">
+                                                <Binding Path="ID"/>
                                                 <Binding Path="Familiya"/>
                                                 <Binding Path="Name"/>
                                                 <Binding Path="Otchestvo"/>
@@ -97,8 +99,10 @@
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 5">
                         <TextBlock Text="Выбранные книги" Style="{StaticResource TBlock19ABP}" Margin="0 0 5 0"/>
-                        <ListBox x:Name="LboxBookVziat" Width="320" Height="217" SelectionMode="Single" DisplayMemberPath="Name" SelectedItem="{Binding SelectedBookR}" BorderBrush="{StaticResource BrushBlueLightTest}"
-                        ItemsSource="{Binding SelectedBooks}"  Style="{StaticResource LBox19ABP}" Background="{StaticResource MainColor}" Foreground="{StaticResource BrushBlueLight}">
+                        <ListBox x:Name="LboxBookVziat" Width="320" Height="217" SelectionMode="Single" 
+                                 DisplayMemberPath="Name" SelectedItem="{Binding SelectedBookR}" BorderBrush="{StaticResource BrushBlueLightTest}"
+                                 ItemsSource="{Binding SelectedBooks}"  Style="{StaticResource LBox19ABP}" Background="{StaticResource MainColor}" 
+                                 Foreground="{StaticResource BrushBlueLight}">
                             <ListBox.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="CornerRadius" Value="10"/>

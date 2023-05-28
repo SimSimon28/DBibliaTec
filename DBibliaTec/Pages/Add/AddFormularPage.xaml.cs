@@ -24,6 +24,7 @@ namespace DBibliaTec.Pages.Add
 
         private Book selectedBookL;
         public Book SelectedBookL { get => selectedBookL; set => Set(ref selectedBookL, value); }
+
         private Book selectedBookR;
         public Book SelectedBookR { get => selectedBookR; set => Set(ref selectedBookR, value); }
 
