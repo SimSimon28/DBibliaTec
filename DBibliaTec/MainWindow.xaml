@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DBibliaTec"
-        FontFamily="Roboto"
+        FontFamily="Roboto" WindowState="Maximized"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         Title="МАУК «Кунгурская ЦБС»" MinHeight="700" MinWidth="1024">
     <Grid>
@@ -27,6 +27,11 @@
 
         <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Grid.Row="1"/>
 
+        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Margin="90 0">
+            <TextBlock x:Name="GlTimer" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="SessionTimer" />
+        </StackPanel>
+        
         <Button x:Name="Back" Style="{StaticResource ButtonExit}" HorizontalAlignment="Right" Width="80" Height="50" Margin="5 5" Click="Back_Click">
             <Image Source="Icons/Back.png"/>
         </Button>

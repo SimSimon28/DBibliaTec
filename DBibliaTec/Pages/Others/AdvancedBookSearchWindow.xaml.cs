@@ -25,9 +25,6 @@ namespace DBibliaTec.Pages.Others
         private ObservableCollection<Book> selectedBooks;
         public ObservableCollection<Book> SelectedBooks { get => selectedBooks; set => Set(ref selectedBooks, value); }
 
-        private ObservableCollection<Book> confirmedSelectedBooks;
-        public ObservableCollection<Book> ConfirmedSelectedBooks { get => confirmedSelectedBooks; set => Set(ref confirmedSelectedBooks, value); }
-
         private Book selectedBookL;
         public Book SelectedBookL { get => selectedBookL; set => Set(ref selectedBookL, value); }
         private Book selectedBookR;
@@ -38,7 +35,7 @@ namespace DBibliaTec.Pages.Others
             InitializeComponent();
             DataContext = this;
             SelectedBooks = new ObservableCollection<Book>();
-            ConfirmedSelectedBooks = selectedBooks;
+            SelectedBooks = selectedBooks;
 
             // Для вкладки "Все" чтобы отображать все категории
             List<Category> categ = new List<Category>
@@ -86,8 +83,6 @@ namespace DBibliaTec.Pages.Others
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            foreach (var book in SelectedBooks)
-                ConfirmedSelectedBooks.Add(book);
             Close();
         }
 
