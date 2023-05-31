@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Schema;
 
 namespace DBibliaTec.Pages.Lists
 {
@@ -43,6 +44,15 @@ namespace DBibliaTec.Pages.Lists
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            //var listFormProsr = App.Context.Formulars.Where(p => p.Date_Sdachi < DateTime.Now).ToList();
+
+            //foreach (var formular in listFormProsr)
+            //{
+            //    formular.StatusRed = "#E84545";
+            //    formular.Status = 2;
+            //}
+            //App.Context.SaveChanges();
+
             UpdateFormular();
         }
 
@@ -58,6 +68,10 @@ namespace DBibliaTec.Pages.Lists
             if (MessageBox.Show($"Вы уверены что хотите удалить формуляр: номер {currentFormular.ID} ", "Внимание",
                 MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
+                foreach (var book in currentFormular.Books)
+                {
+                    book.Count += 1;
+                }    
                 App.Context.Formulars.Remove(currentFormular);
                 App.Context.SaveChanges();
                 UpdateFormular();

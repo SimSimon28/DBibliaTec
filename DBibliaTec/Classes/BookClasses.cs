@@ -19,6 +19,17 @@ namespace DBibliaTec.DB
             }
         }
 
+        public string InventS
+        {
+            get
+            {
+                if (InventNumber == InventNumber)
+                    return $"Инвентарный номер: {InventNumber}";
+                else
+                    return "";
+            }
+        }
+
         public string FIO
         {
             get

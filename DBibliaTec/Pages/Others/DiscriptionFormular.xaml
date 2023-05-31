@@ -29,9 +29,10 @@
             <Image Source="\Icons\Back.png" Width="40" Height="31" HorizontalAlignment="Center"/>
         </Button>
 
-        <TextBlock Text="{Binding CurrentFormular.Client.Familiya,StringFormat={}Информация о текущем формуляре {0}}" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource TBMain}"/>
+        <TextBlock Text="{Binding CurrentFormular.Client.Familiya,StringFormat={}Информация о текущем формуляре {0}}" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource TBMain}" Foreground="GhostWhite" FontSize="18"/>
 
-        <Image Source="/LogoAndImages/Images/tarjei-skaarsmoen-library-render-01-fixed-lightroom-export (1).jpg" Grid.Row="1" Stretch="Fill" Grid.RowSpan="2"/>
+        <Image Source="\LogoAndImages\Images\DescripFrame.png" Grid.Row="1" Stretch="Fill" Grid.RowSpan="2"/>
 
 
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="1" Margin="10 10">
@@ -96,12 +97,25 @@
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10 5 0 0">
 
-                        <ListBox BorderThickness="0" DisplayMemberPath="Name" x:Name="LBoxVziat"
+                        <ListBox BorderThickness="0"  x:Name="LBoxVziat"
                                  HorizontalAlignment="Left" Width="275"  Height="105" Background="Transparent" Style="{StaticResource LBoxOF}" 
-                                 SelectedItem="{Binding SelectedBookR}"  ItemsSource="{Binding SelectedBooks}">
+                                 SelectedItem="{Binding SelectedBookR}" ItemsSource="{Binding SelectedBooks}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock>
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0}; Н-ие: {1} Издат.: {2}">
+                                                <Binding Path="ID"/>
+                                                <Binding Path="Name"/>
+                                                <Binding Path="Izdatel1.Name_izdat"/>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
                             <ListBox.ItemContainerStyle>
                                 <Style TargetType="ListBoxItem">
-                                    <Setter Property="Focusable" Value="False" />
+                                    <Setter Property="Focusable" Value="True" />
                                 </Style>
                             </ListBox.ItemContainerStyle>
                         </ListBox>
@@ -139,6 +153,9 @@
             <StackPanel Orientation="Vertical" HorizontalAlignment="Right">
                 <Button Width="30" Height="30" Style="{StaticResource ButtonBlueTest1}" Name="AddBooks" Margin="0 0 40 0" Click="AddBooks_Click" Visibility="Hidden">
                     <Image Source="\Icons\Add.png"/>
+                </Button>        
+                <Button Width="30" Height="30" Style="{StaticResource ButtonBlueTest1}" Name="AddVanceBooks" Margin="0 0 40 0" Click="AddVanceBooks_Click" Visibility="Hidden">
+                    <Image Source="\Icons\AddVanceSearch.png"/>
                 </Button>
                 <Button Width="30" Height="30" Style="{StaticResource ButtonBlueTest1}" Name="DeleteBook" Margin="0 5 40 0" Click="DeleteBook_Click" Visibility="Hidden">
                     <Image Source="\Icons\Delete.png"/>
@@ -151,10 +168,26 @@
         </StackPanel>
         
         <StackPanel  Margin="10 10" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="1" x:Name="SpisokBooks" Visibility="Hidden">
-            <GroupBox BorderThickness="0.5" BorderBrush="GhostWhite" Margin="7 0 0 0" Header="Список книг"  Style="{StaticResource GBOF}" Grid.Row="1">
+            <GroupBox BorderThickness="0.5" BorderBrush="GhostWhite" Margin="7 0 0 0" Header="Список книг"  Style="{StaticResource GBOF}" 
+                      Grid.Row="1" Background="#472199">
                 <StackPanel Margin="10 10" HorizontalAlignment="Left" VerticalAlignment="Bottom">
-                    <ListBox BorderThickness="0" DisplayMemberPath="Name" x:Name="LBoxView"
-                                 HorizontalAlignment="Left" Width="275"  Height="105" Background="Transparent" Style="{StaticResource LBoxOF}" SelectedItem="{Binding SelectedBookL}"/>
+                    <ListBox BorderThickness="0" x:Name="LBoxView"
+                                 HorizontalAlignment="Left" Width="275"  Height="105" Background="Transparent" 
+                                 Style="{StaticResource LBoxOF}" SelectedItem="{Binding SelectedBookL}" Foreground="White">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0}; Н-ие: {1} Издат.: {2}">
+                                            <Binding Path="ID"/>
+                                            <Binding Path="Name"/>
+                                            <Binding Path="Izdatel1.Name_izdat"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                 </StackPanel>
             </GroupBox>
         </StackPanel>

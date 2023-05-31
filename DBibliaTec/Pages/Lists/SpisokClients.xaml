@@ -18,10 +18,12 @@
 
         </Grid.RowDefinitions>
         
-        <GroupBox Height="95" HorizontalAlignment="Stretch" Grid.RowSpan="2" Header="Поиск" Style="{StaticResource GBSF}" Margin="10 5 10 10">
+        <Border Height="95" HorizontalAlignment="Stretch" Grid.RowSpan="2" Background="{StaticResource BrushBlueLightTest}" 
+                BorderBrush="{StaticResource MainColor}" Margin="10 5 10 10" CornerRadius="10" BorderThickness="3">
             <StackPanel Orientation="Horizontal">
                 <StackPanel HorizontalAlignment="Left" Orientation="Vertical">
-                    <TextBlock Style="{StaticResource TBlock14SF}" HorizontalAlignment="Left" Margin="10 5 0 0" Text="По ФИО читателя"/>
+                    <TextBlock Style="{StaticResource TBlock14SF}" HorizontalAlignment="Left" Margin="10 5 0 0" 
+                               Text="По ФИО читателя" FontWeight="Bold"/>
                     <TextBox x:Name="TboxSerch" Width="150" Height="30" Margin="10 5 0 0" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                              TextChanged="TboxSerch_TextChanged" Style="{StaticResource TBox15SF}" HorizontalAlignment="Left" CaretBrush="{StaticResource BrushBlueLight}">
                         <TextBox.Resources>
@@ -32,7 +34,7 @@
                     </TextBox>
                 </StackPanel>
             </StackPanel>
-        </GroupBox>
+        </Border>
 
         <DataGrid Grid.Row="2" x:Name="DGFormulars" AutoGenerateColumns="False"
                   IsReadOnly="True" Style="{StaticResource DGSF}" CellStyle="{StaticResource DGCellsSF}">
@@ -51,6 +53,7 @@
 
             <DataGrid.Columns>
 
+                <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="*" HeaderStyle="{StaticResource DGColumnHeaderSF}" CellStyle="{StaticResource DGCellsSF}"/>
                 <DataGridTextColumn Header="Имя" Binding="{Binding Name}" Width="*" HeaderStyle="{StaticResource DGColumnHeaderSF}" CellStyle="{StaticResource DGCellsSF}"/>
                 <DataGridTextColumn Header="Фамилия" Binding="{Binding Familiya}" Width="*" HeaderStyle="{StaticResource DGColumnHeaderSF}" CellStyle="{StaticResource DGCellsSF}"/>
                 <DataGridTextColumn Header="Отчество" Binding="{Binding Otchestvo}" Width="*" HeaderStyle="{StaticResource DGColumnHeaderSF}" CellStyle="{StaticResource DGCellsSF}"/>
@@ -60,6 +63,6 @@
         </DataGrid>
 
         <Button Grid.Row="3" x:Name="BtnAdd" HorizontalAlignment="Right" Height="30" Width="100" Click="BtnAdd_Click" 
-                Margin="10 0" Background ="LightGreen" Style="{StaticResource ButtonBlueTest1}" Content="Добавить"/>
+                Margin="10 0" Background ="LightGreen" Style="{StaticResource ButtonBlueTest1}" Content="Добавить" FontSize="16"/>
     </Grid>
 </Page>

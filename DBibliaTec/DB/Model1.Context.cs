@@ -33,8 +33,10 @@ namespace DBibliaTec.DB
         public virtual DbSet<Gender> Genders { get; set; }
         public virtual DbSet<Genre> Genres { get; set; }
         public virtual DbSet<Izdatel> Izdatels { get; set; }
+        public virtual DbSet<News> News { get; set; }
         public virtual DbSet<Personal> Personals { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<Status> Status { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<VidDeitIzdat> VidDeitIzdats { get; set; }
         public virtual DbSet<VidIzdat> VidIzdats { get; set; }

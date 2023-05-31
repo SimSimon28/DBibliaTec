@@ -67,6 +67,7 @@
           <Property Name="ID_Personals" Type="int" />
           <Property Name="Date_Vidachi" Type="date" />
           <Property Name="Date_Sdachi" Type="date" />
+          <Property Name="Status" Type="int" />
         </EntityType>
         <EntityType Name="Gender">
           <Key>
@@ -94,6 +95,16 @@
           <Property Name="ClassificIzdat" Type="int" />
           <Property Name="VidDeitIzdat" Type="int" />
         </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Theme" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+          <Property Name="DateAdd" Type="date" />
+        </EntityType>
         <EntityType Name="Personal">
           <Key>
             <PropertyRef Name="ID" />
@@ -112,6 +123,13 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -233,6 +251,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Formulars_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="Formulars" Type="Self.Formulars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Formulars">
+              <PropertyRef Name="Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Izdatel_ClassificIzdat">
           <End Role="ClassificIzdat" Type="Self.ClassificIzdat" Multiplicity="0..1" />
           <End Role="Izdatel" Type="Self.Izdatel" Multiplicity="*" />
@@ -291,8 +321,10 @@
           <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Genre" EntityType="Self.Genre" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Izdatel" EntityType="Self.Izdatel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Personal" EntityType="Self.Personal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VidDeitIzdat" EntityType="Self.VidDeitIzdat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VidIzdat" EntityType="Self.VidIzdat" Schema="dbo" store:Type="Tables" />
@@ -328,6 +360,10 @@
             <End Role="Personal" EntitySet="Personal" />
             <End Role="Formulars" EntitySet="Formulars" />
           </AssociationSet>
+          <AssociationSet Name="FK_Formulars_Status" Association="Self.FK_Formulars_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Formulars" EntitySet="Formulars" />
+          </AssociationSet>
           <AssociationSet Name="FK_Izdatel_ClassificIzdat" Association="Self.FK_Izdatel_ClassificIzdat">
             <End Role="ClassificIzdat" EntitySet="ClassificIzdat" />
             <End Role="Izdatel" EntitySet="Izdatel" />
@@ -358,8 +394,10 @@
           <EntitySet Name="Genders" EntityType="BIbliaModel.Gender" />
           <EntitySet Name="Genres" EntityType="BIbliaModel.Genre" />
           <EntitySet Name="Izdatels" EntityType="BIbliaModel.Izdatel" />
+          <EntitySet Name="News" EntityType="BIbliaModel.News" />
           <EntitySet Name="Personals" EntityType="BIbliaModel.Personal" />
           <EntitySet Name="Roles" EntityType="BIbliaModel.Role" />
+          <EntitySet Name="Status" EntityType="BIbliaModel.Status" />
           <EntitySet Name="sysdiagrams" EntityType="BIbliaModel.sysdiagram" />
           <EntitySet Name="VidDeitIzdats" EntityType="BIbliaModel.VidDeitIzdat" />
           <EntitySet Name="VidIzdats" EntityType="BIbliaModel.VidIzdat" />
@@ -389,6 +427,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Formulars_Personal" Association="BIbliaModel.FK_Formulars_Personal">
             <End Role="Personal" EntitySet="Personals" />
+            <End Role="Formular" EntitySet="Formulars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Formulars_Status" Association="BIbliaModel.FK_Formulars_Status">
+            <End Role="Status" EntitySet="Status" />
             <End Role="Formular" EntitySet="Formulars" />
           </AssociationSet>
           <AssociationSet Name="FK_Izdatel_VidDeitIzdat" Association="BIbliaModel.FK_Izdatel_VidDeitIzdat">
@@ -470,8 +512,10 @@
           <Property Name="ID_Personals" Type="Int32" />
           <Property Name="Date_Vidachi" Type="DateTime" Precision="0" />
           <Property Name="Date_Sdachi" Type="DateTime" Precision="0" />
+          <Property Name="Status" Type="Int32" />
           <NavigationProperty Name="Client" Relationship="BIbliaModel.FK_Formulars_Clients" FromRole="Formular" ToRole="Client" />
           <NavigationProperty Name="Personal" Relationship="BIbliaModel.FK_Formulars_Personal" FromRole="Formular" ToRole="Personal" />
+          <NavigationProperty Name="Status1" Relationship="BIbliaModel.FK_Formulars_Status" FromRole="Formular" ToRole="Status" />
           <NavigationProperty Name="Books" Relationship="BIbliaModel.Formular_Books" FromRole="Formular" ToRole="Book" />
         </EntityType>
         <EntityType Name="Gender">
@@ -506,6 +550,16 @@
           <NavigationProperty Name="VidDeitIzdat1" Relationship="BIbliaModel.FK_Izdatel_VidDeitIzdat" FromRole="Izdatel" ToRole="VidDeitIzdat" />
           <NavigationProperty Name="VidIzdat" Relationship="BIbliaModel.FK_Izdatel_VidIzdat" FromRole="Izdatel" ToRole="VidIzdat" />
         </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Theme" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="DateAdd" Type="DateTime" Precision="0" />
+        </EntityType>
         <EntityType Name="Personal">
           <Key>
             <PropertyRef Name="ID" />
@@ -527,6 +581,14 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Personals" Relationship="BIbliaModel.FK_Personal_Role" FromRole="Role" ToRole="Personal" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Formulars" Relationship="BIbliaModel.FK_Formulars_Status" FromRole="Status" ToRole="Formular" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -638,6 +700,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Formulars_Status">
+          <End Type="BIbliaModel.Status" Role="Status" Multiplicity="0..1" />
+          <End Type="BIbliaModel.Formular" Role="Formular" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Formular">
+              <PropertyRef Name="Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Izdatel_VidDeitIzdat">
           <End Type="BIbliaModel.VidDeitIzdat" Role="VidDeitIzdat" Multiplicity="0..1" />
           <End Type="BIbliaModel.Izdatel" Role="Izdatel" Multiplicity="*" />
@@ -736,6 +810,7 @@
           <EntitySetMapping Name="Formulars">
             <EntityTypeMapping TypeName="BIbliaModel.Formular">
               <MappingFragment StoreEntitySet="Formulars">
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Date_Sdachi" ColumnName="Date_Sdachi" />
                 <ScalarProperty Name="Date_Vidachi" ColumnName="Date_Vidachi" />
                 <ScalarProperty Name="ID_Personals" ColumnName="ID_Personals" />
@@ -773,6 +848,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="BIbliaModel.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="DateAdd" ColumnName="DateAdd" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Theme" ColumnName="Theme" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Personals">
             <EntityTypeMapping TypeName="BIbliaModel.Personal">
               <MappingFragment StoreEntitySet="Personal">
@@ -789,6 +875,14 @@
           <EntitySetMapping Name="Roles">
             <EntityTypeMapping TypeName="BIbliaModel.Role">
               <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="BIbliaModel.Status">
+              <MappingFragment StoreEntitySet="Status">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>

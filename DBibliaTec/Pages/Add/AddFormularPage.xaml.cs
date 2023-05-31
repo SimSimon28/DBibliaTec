@@ -28,7 +28,7 @@ namespace DBibliaTec.Pages.Add
         private Book selectedBookR;
         public Book SelectedBookR { get => selectedBookR; set => Set(ref selectedBookR, value); }
 
-
+        private List<Book> listCurBook;
 
         public AddFormularPage()
         {
@@ -45,6 +45,9 @@ namespace DBibliaTec.Pages.Add
         public AddFormularPage(DB.Formular formular)
         {
             InitializeComponent();
+
+            listCurBook = formular.Books.ToList();
+
             DataContext = this;
 
             _currentFormular = formular;
@@ -81,6 +84,10 @@ namespace DBibliaTec.Pages.Add
             {
                 if (_currentFormular == null)
                 {
+                    foreach (var book in _currentFormular.Books)
+                    {
+                        book.Count -= 1;
+                    }
                     var formular = new DB.Formular
                     {
                         ID_Clients = Convert.ToInt32(CboxReader.SelectedValue),
@@ -89,12 +96,24 @@ namespace DBibliaTec.Pages.Add
                         Date_Sdachi = DateTime.Parse(TboxDateSdachi.Text),
                         Books = SelectedBooks,
                     };
-
                     App.Context.Formulars.Add(formular);
                     App.Context.SaveChanges();
                 }
                 else
                 {
+                    var booksEx1 = listCurBook.Except(SelectedBooks);
+                    var booksEx2 = SelectedBooks.Except(listCurBook);
+        
+                    foreach (var book in booksEx1)
+                    {
+                        book.Count += 1;
+                    }
+
+                    foreach (var book in booksEx2)
+                    {
+                        book.Count -= 1;
+                    }
+
                     _currentFormular.ID_Clients = Convert.ToInt32(CboxReader.SelectedValue);
                     _currentFormular.ID_Personals = Convert.ToInt32(CboxId_personala.SelectedValue);
                     _currentFormular.Date_Vidachi = DateTime.Parse(TboxDateVid.Text);
@@ -130,6 +149,8 @@ namespace DBibliaTec.Pages.Add
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
+            if (selectedBookL == null || SelectedBookL.Count <= 0)
+                return;
             try
             {
                 if (SelectedBooks.Count > 0)
@@ -144,9 +165,14 @@ namespace DBibliaTec.Pages.Add
                         }
                     }
                     if (!equal)
+                    { 
                         SelectedBooks.Add(SelectedBookL);
+                    }
                 }
-                else SelectedBooks.Add(SelectedBookL);
+                else
+                {
+                    SelectedBooks.Add(SelectedBookL);
+                }
             }
             catch (Exception ex)
             {

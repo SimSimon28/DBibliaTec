@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:DBibliaTec.Pages.Lists"
+      xmlns:cv="clr-namespace:DBibliaTec.Classes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Список формуляров" Loaded="Page_Loaded">
@@ -16,10 +17,11 @@
             <RowDefinition Height="50"/>
 
         </Grid.RowDefinitions>
-        <GroupBox Height="95" HorizontalAlignment="Stretch" Grid.RowSpan="2" Header="Поиск" Style="{StaticResource GBSF}" Margin="10 5 10 10">
+        <Border Height="95" HorizontalAlignment="Stretch" Grid.RowSpan="2" Background="{StaticResource BrushBlueLightTest}" 
+                Margin="10 5 10 10" CornerRadius="10" BorderThickness="3" BorderBrush="{StaticResource MainColor}">
             <StackPanel>
                 <StackPanel HorizontalAlignment="Left">
-                    <TextBlock Style="{StaticResource TBlock14SF}" HorizontalAlignment="Left" Margin="10 5 0 0" Text="По ФИО читателя"/>
+                    <TextBlock Style="{StaticResource TBlock14SF}" HorizontalAlignment="Left" Margin="10 5 0 0" Text="По ФИО читателя" FontWeight="Bold"/>
                     <TextBox x:Name="TboxSerch" Width="150" Height="30" Margin="10 5 0 0" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                              TextChanged="TboxSerch_TextChanged" Style="{StaticResource TBox15SF}" HorizontalAlignment="Left" CaretBrush="{StaticResource BrushBlueLight}">
                         <TextBox.Resources>
@@ -30,7 +32,7 @@
                     </TextBox>
                 </StackPanel>
             </StackPanel>
-        </GroupBox>
+        </Border>
 
         <DataGrid Grid.Row="2" x:Name="DGFormulars" AutoGenerateColumns="False"
                   IsReadOnly="True" BorderThickness="0" Style="{StaticResource DGSF}">
@@ -55,11 +57,12 @@
                 <DataGridTextColumn Header="Отчество" Binding="{Binding Client.Otchestvo}" Width="*" HeaderStyle="{StaticResource DGColumnHeaderSF}" CellStyle="{StaticResource DGCellsSF}"/>
                 <DataGridTextColumn Header="Дата выдачи книги" Binding="{Binding Date_Vidachi, StringFormat={}{0:dd.MM.yyyy}}" Width="*" HeaderStyle="{StaticResource DGColumnHeaderSF}" CellStyle="{StaticResource DGCellsSF}"/>
                 <DataGridTextColumn Header="Дата сдачи книги" Binding="{Binding Date_Sdachi, StringFormat={}{0:dd.MM.yyyy}}" Width="*" HeaderStyle="{StaticResource DGColumnHeaderSF}" CellStyle="{StaticResource DGCellsSF}"/>
+                <DataGridTextColumn Header="Статус" Binding="{Binding Status1.Name}" Width="*" HeaderStyle="{StaticResource DGColumnHeaderSF}" Foreground="{Binding Status, Converter={cv:ColorClassesStatus}}"/>
 
             </DataGrid.Columns>
         </DataGrid>
 
         <Button Grid.Row="3" x:Name="BtnAdd" HorizontalAlignment="Right" Height="30" Width="100" Click="BtnAdd_Click" 
-                Margin="10 0" Style="{StaticResource ButtonBlueTest1}" Content="Добавить"/>
+                Margin="10 0" Style="{StaticResource ButtonBlueTest1}" Content="Добавить" FontSize="16"/>
     </Grid>
 </Page>

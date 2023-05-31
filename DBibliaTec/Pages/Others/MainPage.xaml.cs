@@ -20,6 +20,14 @@ namespace DBibliaTec.Pages.Others
         public MainPage()
         {
             InitializeComponent();
+            UpdateMain();
+        }
+
+        public void UpdateMain()
+        {
+            var mains = App.Context.News.ToList();
+
+            LView.ItemsSource = mains;
         }
 
         private void BSpisokFormulars_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -57,11 +65,6 @@ namespace DBibliaTec.Pages.Others
             NavigationService.Navigate(new Pages.Others.OBibliaInfo());
         }
 
-        private void RatingBook_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            NavigationService.Navigate(new Pages.Others.TopBooks());
-        }
-
         private void BFIzdatAdd_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
            NavigationService.Navigate(new Pages.Add.AddIzdatPage());
@@ -70,6 +73,35 @@ namespace DBibliaTec.Pages.Others
         private void BSpisokIzdat_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             NavigationService.Navigate(new Pages.Lists.SpisokIzdatPage());
+        }
+
+        private void BNewsAdd_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new Pages.Add.AddNewsPage());
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            var currentNews = (sender as Button).DataContext as DB.News;
+
+            if (MessageBox.Show($"Вы уверены что хотите удалить новость?: ", "Внимание",
+                MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                App.Context.News.Remove(currentNews);
+                App.Context.SaveChanges();
+                UpdateMain();
+            }
+        }
+
+        private void ChengeButton_Click(object sender, RoutedEventArgs e)
+        {
+            var currentNews = (sender as Button).DataContext as DB.News;
+            NavigationService.Navigate(new Pages.Add.AddNewsPage(currentNews));
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateMain();
         }
     }
 }

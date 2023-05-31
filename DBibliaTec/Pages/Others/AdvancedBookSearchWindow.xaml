@@ -15,7 +15,8 @@
 
         </Grid.RowDefinitions>
 
-        <GroupBox Height="96" HorizontalAlignment="Stretch"  Header="Поиск" Style="{StaticResource GBSF}" Margin="10 5 10 10">
+        <Border Height="96" HorizontalAlignment="Stretch" Background="{StaticResource BrushBlueLightTest}" 
+                CornerRadius="10" Margin="10 5 10 10" BorderThickness="3" BorderBrush="{StaticResource MainColor}">
             <StackPanel Orientation="Horizontal">
                 <StackPanel HorizontalAlignment="Left">
                     <TextBlock Style="{StaticResource TBlock14SF}" HorizontalAlignment="Left" Margin="10 5 0 0" Text="По названию"/>
@@ -29,14 +30,14 @@
                     </TextBox>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Left">
-                    <TextBlock Margin="5 5 0 0" Text="По категории"/>
+                    <TextBlock Margin="5 5 0 0" Text="По категории" Style="{StaticResource TBlock14SF}"/>
                     <ComboBox Margin="5" Width="150" Name="ComboSortBy3" SelectionChanged="ComboSortBy3_SelectionChanged" Style="{StaticResource CBoxTem}"
                       SelectedValuePath="ID" DisplayMemberPath="Name" SelectedIndex="0" Foreground="{StaticResource BrushBlueLight}" FontSize="19" FontFamily="Roboto" BorderThickness="2">
 
                     </ComboBox>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Left">
-                    <TextBlock Margin="5 5 0 0" Text="По ФИО автора"/>
+                    <TextBlock Margin="5 5 0 0" Text="По ФИО автора" Style="{StaticResource TBlock14SF}"/>
                     <TextBox Margin="5"  Width="250" Height="30" Name="TboxSAuthor" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                              TextChanged="TboxSAuthor_TextChanged" Style="{StaticResource TBox19SB}" HorizontalAlignment="Left" CaretBrush="{StaticResource BrushBlueLight}">
                         <TextBox.Resources>
@@ -47,7 +48,7 @@
                     </TextBox>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Left">
-                    <TextBlock Margin="10 5 0 0" Text="По жанру"/>
+                    <TextBlock Margin="10 5 0 0" Text="По жанру" Style="{StaticResource TBlock14SF}"/>
                     <TextBox Margin="5"  Width="150" Height="30" Name="TboxSGenre" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                              TextChanged="TboxSGenre_TextChanged" Style="{StaticResource TBox19SB}" HorizontalAlignment="Left" CaretBrush="{StaticResource BrushBlueLight}">
                         <TextBox.Resources>
@@ -58,7 +59,7 @@
                     </TextBox>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Left">
-                    <TextBlock Margin="10 5 0 0" Text="Наличие"/>
+                    <TextBlock Margin="10 5 0 0" Text="Наличие" Style="{StaticResource TBlock14SF}"/>
                     <ComboBox x:Name="ComboNal" Margin="5" Width="150" SelectionChanged="ComboNal_SelectionChanged" Style="{StaticResource CBoxTem}"
                     Foreground="{StaticResource BrushBlueLight}" FontSize="19" FontFamily="Roboto" BorderThickness="2">
                         <ComboBoxItem Content="Все"/>
@@ -67,7 +68,7 @@
                     </ComboBox>
                 </StackPanel>
             </StackPanel>
-        </GroupBox>
+        </Border>
 
         <Grid Margin="10 0" Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -76,7 +77,7 @@
             </Grid.ColumnDefinitions>
 
             <ListView Name="LView" Margin="5 0" SelectedItem="{Binding SelectedBookL}" Background="Transparent" 
-                      ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
@@ -133,7 +134,7 @@
             </ListView>
 
             <ListView Grid.Column="1" ItemsSource="{Binding SelectedBooks}" SelectedItem="{Binding SelectedBookR}" 
-                      Margin="5 0" x:Name="LViewBookVziat" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                      Margin="5 0" x:Name="LViewBookVziat" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
@@ -177,6 +178,10 @@
 
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Text="{Binding Izdatel1.Izdatels}" Style="{StaticResource TBlock16SB}" Margin="5 0 0 0" Width="220"/>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding InventS}" Style="{StaticResource TBlock16SB}" Margin="5 0 0 0"/>
                                     </StackPanel>
 
                                     <StackPanel Orientation="Horizontal">

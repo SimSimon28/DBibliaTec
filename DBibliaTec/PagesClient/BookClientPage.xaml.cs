@@ -1,7 +1,6 @@
 ﻿using DBibliaTec.DB;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -17,25 +16,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DBibliaTec.Pages.Others
+namespace DBibliaTec.PagesClient
 {
-    public partial class AdvancedBookSearchWindow : Window
+    /// <summary>
+    /// Логика взаимодействия для BookClientPage.xaml
+    /// </summary>
+    public partial class BookClientPage : Page
     {
-
-        private ObservableCollection<Book> selectedBooks;
-        public ObservableCollection<Book> SelectedBooks { get => selectedBooks; set => Set(ref selectedBooks, value); }
-
-        private Book selectedBookL;
-        public Book SelectedBookL { get => selectedBookL; set => Set(ref selectedBookL, value); }
-        private Book selectedBookR;
-        public Book SelectedBookR { get => selectedBookR; set => Set(ref selectedBookR, value); }
-
-        public AdvancedBookSearchWindow(ObservableCollection<Book> selectedBooks)
+        public BookClientPage()
         {
             InitializeComponent();
-            DataContext = this;
-            SelectedBooks = new ObservableCollection<Book>();
-            SelectedBooks = selectedBooks;
 
             // Для вкладки "Все" чтобы отображать все категории
             List<Category> categ = new List<Category>
@@ -45,9 +35,13 @@ namespace DBibliaTec.Pages.Others
             categ.AddRange(App.Context.Categories.ToList());
 
             ComboSortBy3.ItemsSource = categ;
-
             ComboNal.SelectedIndex = 0;
+        }
 
+        // Строка для прогрузки страницы
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpBook();
         }
 
         private void UpBook()
@@ -81,12 +75,21 @@ namespace DBibliaTec.Pages.Others
             LView.ItemsSource = book;
         }
 
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        // Чек наличия книг
+        private void CheckBox_CheckChanged(object sender, RoutedEventArgs e)
         {
-            Close();
+            UpBook();
         }
 
-        private void ComboNal_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        // Кнопка добавление контрактов
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            var currentBook = (sender as Button).DataContext as DB.Book;
+            NavigationService.Navigate(new Pages.Add.AddBooksPage());
+        }
+
+        // Комбобокс сортировки цены
+        private void ComboSortBy_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             UpBook();
         }
@@ -96,12 +99,13 @@ namespace DBibliaTec.Pages.Others
             UpBook();
         }
 
-        private void TboxSAuthor_TextChanged(object sender, TextChangedEventArgs e)
+        // Поиск 
+        private void TboxSerch_TextChanged(object sender, TextChangedEventArgs e)
         {
             UpBook();
         }
 
-        private void TboxSerch_TextChanged(object sender, TextChangedEventArgs e)
+        private void TboxSAuthor_TextChanged(object sender, TextChangedEventArgs e)
         {
             UpBook();
         }
@@ -111,44 +115,10 @@ namespace DBibliaTec.Pages.Others
             UpBook();
         }
 
-        private void AddBook_Click(object sender, RoutedEventArgs e)
+        private void ComboNal_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (selectedBookL == null || SelectedBookL.Count <= 0)
-                return;
-            try
-            {
-                if (SelectedBooks.Count > 0)
-                {
-                    bool equal = false;
-                    foreach (var item in SelectedBooks.ToList())
-                    {
-                        if (item.ID == SelectedBookL.ID)
-                        {
-                            equal = true;
-                            break;
-                        }
-                    }
-                    if (!equal)
-                    {
-                        SelectedBooks.Add(SelectedBookL);
-                    }
-                }
-                else
-                {
-                    SelectedBooks.Add(SelectedBookL);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            UpBook();
         }
-
-        private void DelBook_Click(object sender, RoutedEventArgs e)
-        {
-            SelectedBooks.Remove(SelectedBookR);
-        }
-
 
         #region INPC
         public event PropertyChangedEventHandler PropertyChanged;
@@ -165,6 +135,7 @@ namespace DBibliaTec.Pages.Others
             OnPropertyChanged(PropertyName);
             return true;
         }
+
 
         #endregion
     }

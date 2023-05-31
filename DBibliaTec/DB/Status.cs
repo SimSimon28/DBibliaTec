@@ -12,25 +12,18 @@ namespace DBibliaTec.DB
     using System;
     using System.Collections.Generic;
     
-    public partial class Formular
+    public partial class Status
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Formular()
+        public Status()
         {
-            this.Books = new HashSet<Book>();
+            this.Formulars = new HashSet<Formular>();
         }
     
         public int ID { get; set; }
-        public Nullable<int> ID_Clients { get; set; }
-        public Nullable<int> ID_Personals { get; set; }
-        public Nullable<System.DateTime> Date_Vidachi { get; set; }
-        public Nullable<System.DateTime> Date_Sdachi { get; set; }
-        public Nullable<int> Status { get; set; }
+        public string Name { get; set; }
     
-        public virtual Client Client { get; set; }
-        public virtual Personal Personal { get; set; }
-        public virtual Status Status1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Book> Books { get; set; }
+        public virtual ICollection<Formular> Formulars { get; set; }
     }
 }

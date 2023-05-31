@@ -14,7 +14,7 @@ namespace DBibliaTec.DB
             get
             {
                 if (Name == Name)
-                    return $"Котегория: {Name}";
+                    return $"Категория: {Name}";
                 else
                     return "";
             }

@@ -16,13 +16,26 @@
                 <StackPanel>
                     <TextBlock Text="Быстрый поиск книги" Margin="34 10 0 0" Style="{StaticResource TBlock16SB}" Foreground="{StaticResource BrushBlueLight}"></TextBlock>
                     <StackPanel>
-                        <ListBox Width="290" Height="350" Margin="10 10" x:Name="LBoxView" DisplayMemberPath="Name" 
+                        <ListBox Width="290" Height="350" Margin="10 10" x:Name="LBoxView" 
                     SelectedItem="{Binding SelectedBookL}" Style="{StaticResource LBox19ABP}" Background="{StaticResource BrushBlueLight}" Foreground="{StaticResource MainColor}">
                             <ListBox.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="CornerRadius" Value="10"/>
                                 </Style>
                             </ListBox.Resources>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock>
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0} Н-ие: {1} Издат.: {2}">
+                                                <Binding Path="ID"/>
+                                                <Binding Path="Name"/>
+                                                <Binding Path="Izdatel1.Name_izdat"/>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
                         </ListBox>
                     </StackPanel>
 

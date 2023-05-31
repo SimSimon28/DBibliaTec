@@ -1,6 +1,7 @@
 ﻿using DBibliaTec.DB;
 using DBibliaTec.Pages.Lists;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -17,7 +18,6 @@ namespace DBibliaTec.Pages.Others
 
         private ObservableCollection<Book> selectedBooks;
         public ObservableCollection<Book> SelectedBooks { get => selectedBooks; set => Set(ref selectedBooks, value); }
-
      
         private Book selectedBookL;
         public Book SelectedBookL { get => selectedBookL; set => Set(ref selectedBookL, value); }
@@ -30,9 +30,14 @@ namespace DBibliaTec.Pages.Others
         private bool isReadOnly;
         public bool IsReadOnly { get => isReadOnly; set => Set(ref isReadOnly, value); }
 
+        private List<Book> listCurBook;
+
         public DiscriptionFormular(Formular formular)
         {
             InitializeComponent();
+
+            listCurBook = formular.Books.ToList();
+
             DataContext = this;
 
             isReadOnly = true;
@@ -71,6 +76,7 @@ namespace DBibliaTec.Pages.Others
             SaveButton.Visibility = Visibility.Visible;
             SpisokBooks.Visibility = Visibility.Visible;
             AddBooks.Visibility = Visibility.Visible;
+            AddVanceBooks.Visibility = Visibility.Visible;
             DeleteBook.Visibility = Visibility.Visible;
         }
         private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -83,6 +89,7 @@ namespace DBibliaTec.Pages.Others
             SpisokBooks.Visibility = Visibility.Hidden;
             AddBooks.Visibility = Visibility.Hidden;
             DeleteBook.Visibility = Visibility.Hidden;
+            AddVanceBooks.Visibility = Visibility.Hidden;
         }
 
 
@@ -118,6 +125,19 @@ namespace DBibliaTec.Pages.Others
             {
                 if (currentFormular != null)
                 {
+                    var booksEx1 = listCurBook.Except(SelectedBooks);
+                    var booksEx2 = SelectedBooks.Except(listCurBook);
+
+                    foreach (var book in booksEx1)
+                    {
+                        book.Count += 1;
+                    }
+
+                    foreach (var book in booksEx2)
+                    {
+                        book.Count -= 1;
+                    }
+
                     currentFormular.Client.Familiya = TBlockFamiliya.Text;
                     currentFormular.Client.Name = TBlockName.Text;
                     currentFormular.Client.Otchestvo = TBlockOtchestvo.Text;
@@ -134,6 +154,7 @@ namespace DBibliaTec.Pages.Others
                 SaveButton.Visibility = Visibility.Hidden;
                 SpisokBooks.Visibility = Visibility.Hidden;
                 AddBooks.Visibility = Visibility.Hidden;
+                AddVanceBooks.Visibility = Visibility.Hidden;
                 DeleteBook.Visibility = Visibility.Hidden;
 
                 MessageBox.Show("Успешно изменено", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -166,7 +187,35 @@ namespace DBibliaTec.Pages.Others
 
         private void AddBooks_Click(object sender, RoutedEventArgs e)
         {
-            SelectedBooks.Add(SelectedBookL);
+            if (selectedBookL == null || SelectedBookL.Count <= 0)
+                return;
+            try
+            {
+                if (SelectedBooks.Count > 0)
+                {
+                    bool equal = false;
+                    foreach (var item in SelectedBooks.ToList())
+                    {
+                        if (item.ID == SelectedBookL.ID)
+                        {
+                            equal = true;
+                            break;
+                        }
+                    }
+                    if (!equal)
+                    {
+                        SelectedBooks.Add(SelectedBookL);
+                    }
+                }
+                else
+                {
+                    SelectedBooks.Add(SelectedBookL);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -177,6 +226,12 @@ namespace DBibliaTec.Pages.Others
         private void DeleteBook_Click(object sender, RoutedEventArgs e)
         {
             SelectedBooks.Remove(SelectedBookR);
+        }
+
+        private void AddVanceBooks_Click(object sender, RoutedEventArgs e)
+        {
+            var DesForm = new Pages.Others.AdvancedBookSearchWindow(SelectedBooks);
+            DesForm.ShowDialog();
         }
     }
 }

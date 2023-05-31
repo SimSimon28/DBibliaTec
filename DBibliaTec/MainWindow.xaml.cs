@@ -16,9 +16,6 @@ using System.Windows.Threading;
 
 namespace DBibliaTec
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         private TimeSpan sessionTime = new TimeSpan(0, 0, 0);
@@ -27,7 +24,7 @@ namespace DBibliaTec
         {
             InitializeComponent();
             Timer();
-            MainFrame.Navigate(new Pages.Others.Avtorization());
+            MainFrame.Navigate(new PagesClient.MainPageClient());
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)

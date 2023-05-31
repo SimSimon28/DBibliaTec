@@ -32,6 +32,7 @@
 
             <Style x:Key="PBAutorization" TargetType="PasswordBox">
                 <Setter Property="FontSize" Value="19"/>
+                <Setter Property="FontWeight" Value="Bold"/>
                 <Setter Property="FontFamily" Value="Roboto"/>
                 <Setter Property="Foreground" Value="{StaticResource MainColor}"/>
                 <Setter Property="Background" Value="{StaticResource BrushBlueLight}"/>
@@ -284,6 +285,7 @@
             <Style x:Key="TBlock16SB" TargetType="TextBlock">
                 <Setter Property="FontSize" Value="19"/>
                 <Setter Property="FontFamily" Value="Roboto"/>
+                <Setter Property="FontWeight" Value="Bold"/>
                 <Setter Property="Foreground" Value="{StaticResource MainColor}"/>
             </Style>
 
@@ -303,15 +305,7 @@
                 <Setter Property="Foreground" Value="{StaticResource BrushBlueLight}"/>
                 <Setter Property="Background" Value="{DynamicResource MainColor}"/>
                 <Setter Property="BorderBrush" Value="{StaticResource BrushBlueLight}"/>
-            </Style>
-
-            <Style x:Key="CheckBox19SB" TargetType="CheckBox">
-                <Setter Property="BorderThickness" Value="1"/>
-                <Setter Property="Foreground" Value="{StaticResource BrushBlueLight}"/>
-                <Setter Property="Background" Value="{DynamicResource MainColor}"/>
-                <Setter Property="BorderBrush" Value="{StaticResource BrushBlueLight}"/>
-            </Style>
-
+            </Style> 
 
             <!--#endregion-->
 
@@ -330,6 +324,7 @@
                 <Setter Property="FontSize" Value="14"/>
                 <Setter Property="FontFamily" Value="Roboto"/>
                 <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Foreground" Value="White"/>
                 <Setter Property="Foreground" Value="White"/>
             </Style>
 
@@ -373,6 +368,7 @@
             <Style x:Key="TBlock14SF" TargetType="TextBlock">
                 <Setter Property="FontSize" Value="14"/>
                 <Setter Property="FontFamily" Value="Roboto"/>
+                <Setter Property="FontWeight" Value="Bold"/>
                 <Setter Property="Foreground" Value="{StaticResource BrushBlueLight}"/>
             </Style>
 
@@ -386,22 +382,6 @@
                 <Setter Property="BorderBrush" Value="{StaticResource BrushBlueLight}"/>
             </Style>
 
-            <Style x:Key="GBSF" TargetType="GroupBox">
-                <Setter Property="FontSize" Value="14"/>
-                <Setter Property="FontFamily" Value="Roboto"/>
-                <Setter Property="FontWeight" Value="Bold"/>
-                <Setter Property="Foreground" Value="{StaticResource BrushBlueLight}"/>
-                <Setter Property="BorderBrush" Value="{StaticResource MainColor}"/>
-                <Setter Property="Background" Value="{StaticResource BrushBlueLightTest}"/>
-            </Style>
-            <Style x:Key="DGSF" TargetType="DataGrid">
-                <Setter Property="FontSize" Value="14"/>
-                <Setter Property="FontFamily" Value="Roboto"/>
-                <Setter Property="FontWeight" Value="Bold"/>
-                <Setter Property="Foreground" Value="White"/>
-                <Setter Property="Background" Value="Transparent"/>
-            </Style>
-        
             <Style x:Key="DGColumnHeaderSF" TargetType="DataGridColumnHeader">
                 <Setter Property="FontSize" Value="14"/>
                 <Setter Property="FontFamily" Value="Roboto"/>
@@ -417,6 +397,14 @@
                 <Setter Property="BorderBrush" Value="{StaticResource MainColor}"/>
                 <Setter Property="Background" Value="{StaticResource BrushBlueLight}"/>
             </Style>
+            
+            <Style x:Key="DGSF" TargetType="DataGrid">
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="FontFamily" Value="Roboto"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="CellStyle" Value="{StaticResource DGCellsSF}"/>
+            </Style>
             <!--#endregion-->
         
             <!--#region Стиль для главной страницы-->
@@ -424,43 +412,55 @@
             <Style x:Key="EXMain" TargetType="Expander">
                 <Setter Property="FontSize" Value="20"/>
                 <Setter Property="FontFamily" Value="Roboto"/>
-                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Foreground" Value="{StaticResource MainColor}"/>
+                <Setter Property="FontWeight" Value="Bold"/>
             </Style>
 
             <Style x:Key="BMain" TargetType="Button">
                 <Setter Property="FontSize" Value="20"/>
                 <Setter Property="FontFamily" Value="Roboto"/>
-                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Foreground" Value="{StaticResource MainColor}"/>
                 <Setter Property="Background" Value="Transparent"/>
                 <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="FontWeight" Value="Bold"/>
             </Style>
         
             <Style x:Key="TBMain" TargetType="TextBlock">
                 <Setter Property="FontSize" Value="20"/>
                 <Setter Property="FontFamily" Value="Roboto"/>
-                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Foreground" Value="{StaticResource MainColor}"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+            </Style>
+            
+            <Style x:Key="TBMain40News" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="40"/>
+                <Setter Property="FontFamily" Value="Roboto"/>
+                <Setter Property="Foreground" Value="{StaticResource BrushBlueLight}"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+            </Style>
+
+            <Style x:Key="TBMain19News" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="19"/>
+                <Setter Property="FontFamily" Value="Roboto"/>
+                <Setter Property="Foreground" Value="{StaticResource MainColor}"/>
+                <Setter Property="FontWeight" Value="Bold"/>
             </Style>
 
             <!--#endregion-->
 
             <!--#region Стиль для страниц добавления-->
-            <Style x:Key="GBABP" TargetType="GroupBox">
-                <Setter Property="FontSize" Value="14"/>
-                <Setter Property="FontFamily" Value="Roboto"/>
-                <Setter Property="FontWeight" Value="Bold"/>
-                <Setter Property="Foreground" Value="{StaticResource BrushBlueLightTest}"/>
-  
-            </Style>
 
             <Style x:Key="TBlock19ABP" TargetType="TextBlock">
                 <Setter Property="FontSize" Value="19"/>
                 <Setter Property="FontFamily" Value="Roboto"/>
+                <Setter Property="FontWeight" Value="Bold"/>
                 <Setter Property="Foreground" Value="{StaticResource MainColor}"/>
             </Style>
 
             <Style x:Key="DPTBox19ABP" TargetType="DatePickerTextBox">
                 <Setter Property="FontSize" Value="19"/>
                 <Setter Property="FontFamily" Value="Roboto"/>
+                <Setter Property="FontWeight" Value="Bold"/>
                 <Setter Property="Foreground" Value="{StaticResource MainColor}"/>
             </Style>
 
@@ -511,6 +511,16 @@
                 <Setter Property="Foreground" Value="White"/>
                 <Setter Property="Background" Value="Transparent"/>
                 <Setter Property="BorderThickness" Value="1"/>
+            </Style>
+
+            <Style x:Key="TboxAN19" TargetType="TextBox">
+                <Setter Property="FontSize" Value="19"/>
+                <Setter Property="FontFamily" Value="Roboto"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Foreground" Value="{StaticResource BrushBlueLight}"/>
+                <Setter Property="Background" Value="{StaticResource MainColor}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="BorderBrush" Value="{StaticResource BrushBlueLightTest}"/>
             </Style>
             <!--#endregion-->
         </ResourceDictionary>

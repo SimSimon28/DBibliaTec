@@ -1,0 +1,75 @@
+﻿<Page x:Class="DBibliaTec.Pages.Add.AddNewsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DBibliaTec.Pages.Add"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Добавление/Редактирование новостей">
+
+    <Grid>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+
+            <Border CornerRadius="10 10 10 10" BorderBrush="{StaticResource BrushBlueLightTest}" BorderThickness="3" Background="{StaticResource BrushBlueLight}">
+
+                <StackPanel Margin="30" HorizontalAlignment="Right">
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 0 0">
+                        <TextBlock Text="Название новости:" Style="{StaticResource TBlock19ABP}" VerticalAlignment="Center" FontWeight="Bold"/>
+                        <TextBox x:Name="TboxTitle" Style="{StaticResource TboxAN19}" Width="300" Height="30"
+                             Margin="10 0 0 0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                            <TextBox.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="10"/>
+                                </Style>
+                            </TextBox.Resources>
+                        </TextBox>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
+                        <TextBlock Text="Тема:" Style="{StaticResource TBlock19ABP}" VerticalAlignment="Center" FontWeight="Bold"/>
+                        <TextBox x:Name="TboxTheme" Style="{StaticResource TboxAN19}" Width="300" Height="30"
+                             Margin="10 0 0 0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                            <TextBox.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="10"/>
+                                </Style>
+                            </TextBox.Resources>
+                        </TextBox>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
+                        <TextBlock Text="Дата создания:" Style="{StaticResource TBlock19ABP}" VerticalAlignment="Center" FontWeight="Bold"/>
+                        <DatePicker x:Name="TboxDateAdd" Width="300" Style="{DynamicResource DPSdBook}" Background="{StaticResource BrushBlueLightTest}"
+                                    BorderBrush="{StaticResource MainColor}" Margin="10 0 0 0">
+                            <DatePicker.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                            </DatePicker.Resources>
+                        </DatePicker>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0 5 0 0" HorizontalAlignment="Right">
+                        <TextBlock Text="Описание:" Style="{StaticResource TBlock19ABP}" VerticalAlignment="Top" FontWeight="Bold"/>
+                        <TextBox x:Name="TboxDescription" Style="{StaticResource TboxAN19}" Width="300" Height="250"
+                             Margin="10 0 0 0" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible">
+                            <TextBox.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="10"/>
+                                </Style>
+                            </TextBox.Resources>
+                        </TextBox>
+                    </StackPanel>
+
+                    <Button x:Name="BtnSave" Content="Сохранить" HorizontalAlignment="Center" Margin="0 10 0 0" Click="BtnSave_Click" 
+                        Style="{StaticResource ButtonBlueTest1}" Width="100" Height="30"/>
+
+                </StackPanel>
+
+            </Border>
+
+        </StackPanel>
+    </Grid>
+</Page>

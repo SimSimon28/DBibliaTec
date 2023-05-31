@@ -19,12 +19,11 @@
         </Grid.RowDefinitions>
 
         <Border Height="95" HorizontalAlignment="Stretch" Grid.RowSpan="2" Margin="10 5 10 10" Background="{StaticResource BrushBlueLightTest}" 
-                CornerRadius="10" BorderThickness="2" BorderBrush="{StaticResource BrushBlueLight}">
+                CornerRadius="10" BorderThickness="3" BorderBrush="{StaticResource MainColor}" >
             <StackPanel Orientation="Vertical">
-                <TextBlock Text="Поиск" Style="{StaticResource TBlock16SB}" Foreground="{StaticResource BrushBlueLight}" Margin="10 5 0 0"/>
                 <StackPanel Orientation="Horizontal">
                 <StackPanel HorizontalAlignment="Left">
-                    <TextBlock Style="{StaticResource TBlock14SF}" HorizontalAlignment="Left" Margin="10 5 0 0" Text="По наименованию"/>
+                    <TextBlock Style="{StaticResource TBlock14SF}" HorizontalAlignment="Left" Margin="10 5 0 0" Text="По наименованию" FontWeight="Bold"/>
                     <TextBox x:Name="TboxSerch" Width="150" Height="30" Margin="10 5 0 0" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                              TextChanged="TboxSerch_TextChanged" Style="{StaticResource TBox19SB}" HorizontalAlignment="Left" CaretBrush="{StaticResource BrushBlueLight}">
                         <TextBox.Resources>
@@ -35,20 +34,20 @@
                     </TextBox>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Left">
-                    <TextBlock Margin="5 5 0 0" Text="По классификации" Style="{StaticResource TBlock14SF}"/>
+                    <TextBlock Margin="5 5 0 0" Text="По классификации" Style="{StaticResource TBlock14SF}" FontWeight="Bold"/>
                     <ComboBox Margin="5" Width="150" Name="CBClassific" SelectionChanged="CBClassific_SelectionChanged" Style="{StaticResource CBoxTem}"
                       SelectedValuePath="ID" DisplayMemberPath="Name" SelectedIndex="0" Foreground="{StaticResource BrushBlueLight}" FontSize="19" FontFamily="Roboto" BorderThickness="2">
 
                     </ComboBox>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Left">
-                    <TextBlock Margin="5 5 0 0" Text="По виду" Style="{StaticResource TBlock14SF}"/>
+                    <TextBlock Margin="5 5 0 0" Text="По виду" Style="{StaticResource TBlock14SF}" FontWeight="Bold"/>
                     <ComboBox Margin="5" Width="150" Name="CBVid" SelectionChanged="CBVid_SelectionChanged" Style="{StaticResource CBoxTem}"
                       SelectedValuePath="ID" DisplayMemberPath="Name" SelectedIndex="0" Foreground="{StaticResource BrushBlueLight}" FontSize="19" FontFamily="Roboto" BorderThickness="2">
                     </ComboBox>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Left">
-                    <TextBlock Margin="10 5 0 0" Text="По виду деятельности" Style="{StaticResource TBlock14SF}"/>
+                    <TextBlock Margin="10 5 0 0" Text="По виду деятельности" Style="{StaticResource TBlock14SF}" FontWeight="Bold"/>
                     <ComboBox Margin="5" Width="150" Name="CBVidDeit" SelectionChanged="CBVidDeit_SelectionChanged" Style="{StaticResource CBoxTem}"
                       SelectedValuePath="ID" DisplayMemberPath="Name" SelectedIndex="0" Foreground="{StaticResource BrushBlueLight}" FontSize="19" FontFamily="Roboto" BorderThickness="2">
                     </ComboBox>
@@ -85,6 +84,6 @@
         </DataGrid>
 
         <Button Grid.Row="3" x:Name="BtnAdd" HorizontalAlignment="Right" Height="30" Width="100" Click="BtnAdd_Click" 
-                Margin="10 0" Background ="LightGreen" Style="{StaticResource ButtonBlueTest1}" Content="Добавить"/>
+                Margin="10 0" Background ="LightGreen" Style="{StaticResource ButtonBlueTest1}" Content="Добавить" FontSize="16"/>
     </Grid>
 </Page>

@@ -31,25 +31,24 @@ namespace DBibliaTec.Pages.Add
             InitializeComponent();
             DataContext = this;
 
+            CboxCategory.ItemsSource = App.Context.Categories.ToList();
+            CboxGenre.ItemsSource = App.Context.Genres.ToList();
+            CboxIzdat.ItemsSource = App.Context.Izdatels.ToList();
+
             _currentBook = book;
             Title = "Редактировать данные о книге";
             TboxNameBook.Text = _currentBook.Name.ToString();
-            TboxInventNum.Text = _currentBook.InventNumber.ToString();
-            CboxCategory.Text = _currentBook.Category.ToString();
-            CboxGenre.Text = _currentBook.Genre.ToString();
+            CboxCategory.SelectedValue = _currentBook.Category;
+            CboxGenre.SelectedValue = _currentBook.Genre;
             TboxNAuthor.Text = _currentBook.NAuthor.ToString();
             TboxOAuthor.Text = _currentBook.OAuthor.ToString();
+            TboxInventNum.Text = _currentBook.InventNumber.ToString();
             TboxFAthor.Text = _currentBook.FAuthor.ToString();
             TboxCount.Text = _currentBook.Count.ToString();
             DPDateVihoda.Text = _currentBook.ToString();
-            CboxIzdat.Text = _currentBook.ToString();
+            CboxIzdat.SelectedValue = _currentBook.Izdatel;
 
-            CboxCategory.ItemsSource = App.Context.Books.ToList();
-            CboxGenre.ItemsSource = App.Context.Books.ToList();
-            CboxIzdat.ItemsSource = App.Context.Izdatels.ToList();
 
-            CboxCategory.ItemsSource = App.Context.Categories.ToList();
-            CboxGenre.ItemsSource = App.Context.Genres.ToList();
 
             if (_currentBook.ImageBook != null)
                 BooksImage.Source = (ImageSource)new ImageSourceConverter().ConvertFrom(_currentBook.ImageBook);
@@ -68,6 +67,8 @@ namespace DBibliaTec.Pages.Add
             {
                 if (_currentBook == null)
                 {
+                    try
+                    {
                     var book = new DB.Book
                     {
                         Category = Convert.ToInt32(CboxCategory.SelectedValue),
@@ -84,9 +85,17 @@ namespace DBibliaTec.Pages.Add
                     };
                     App.Context.Books.Add(book);
                     App.Context.SaveChanges();
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Инвентарный номер");
+                    }
                 }
                 else
                 {
+                    try
+                    {
+
                     _currentBook.Category = Convert.ToInt32(CboxCategory.SelectedValue);
                     _currentBook.Genre = Convert.ToInt32(CboxGenre.SelectedValue);
                     _currentBook.Name= TboxNameBook.Text;
@@ -102,6 +111,12 @@ namespace DBibliaTec.Pages.Add
                         _currentBook.ImageBook = _imageBooks;
 
                     App.Context.SaveChanges();
+                    }
+
+                    catch (Exception ex1)
+                    {
+                        MessageBox.Show(ex1.Message, "Перепроверьте данные");
+                    }
                 }
                 NavigationService.GoBack();
             }
@@ -121,10 +136,6 @@ namespace DBibliaTec.Pages.Add
         {
             var errorBuilder = new StringBuilder();
 
-            var bookDB = App.Context.Books.ToList()
-                .FirstOrDefault(p => Convert.ToString(p.InventNumber) == TboxInventNum.Text.ToLower());
-            if (bookDB != null)
-                errorBuilder.AppendLine("Такой инвентарный номер уже есть в базе");
             if (string.IsNullOrWhiteSpace(TboxInventNum.Text) || !int.TryParse(TboxInventNum.Text, out int i))
                 errorBuilder.AppendLine("Инвентарный номер обязателен для заполнения");
 
@@ -133,23 +144,32 @@ namespace DBibliaTec.Pages.Add
 
             if (string.IsNullOrWhiteSpace(CboxCategory.Text))
                 errorBuilder.AppendLine("Категория обязательна для заполнения");
+
             if (string.IsNullOrWhiteSpace(CboxGenre.Text))
                 errorBuilder.AppendLine("Выбор жанра обязателен для заполнения");
+
             if (string.IsNullOrWhiteSpace(CboxIzdat.Text))
                 errorBuilder.AppendLine("Выбор издателя обязателен для заполнения");
+
             if (string.IsNullOrWhiteSpace(TboxFAthor.Text))
                 errorBuilder.AppendLine("Фамилия автора обязательна для заполнения");
+
             if (string.IsNullOrWhiteSpace(TboxNAuthor.Text))
                 errorBuilder.AppendLine("Имя автора обязательно для заполнения");
+
             if (string.IsNullOrWhiteSpace(TboxCount.Text) || !int.TryParse(TboxCount.Text, out int ui))
                 errorBuilder.AppendLine("Отчество автора обязательно для заполнения");
+
             if (string.IsNullOrWhiteSpace(DPDateVihoda.Text))
                 errorBuilder.AppendLine("Дата выпуска книги обязательна для заполнения");
+
             if (errorBuilder.Length > 0)
 
                 errorBuilder.Insert(0, "Устраните следующие ошибки:\n");
 
             return errorBuilder.ToString();
         }
+
+        
     }
 }
