@@ -44,14 +44,14 @@ namespace DBibliaTec.Pages.Lists
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            //var listFormProsr = App.Context.Formulars.Where(p => p.Date_Sdachi < DateTime.Now).ToList();
+            var listFormProsr = App.Context.Formulars.Where(p => p.Date_Sdachi < DateTime.Now).ToList();
 
-            //foreach (var formular in listFormProsr)
-            //{
-            //    formular.StatusRed = "#E84545";
-            //    formular.Status = 2;
-            //}
-            //App.Context.SaveChanges();
+            foreach (var formular in listFormProsr)
+            {
+                formular.StatusRed = "#E84545";
+                formular.Status = 2;
+            }
+            App.Context.SaveChanges();
 
             UpdateFormular();
         }
