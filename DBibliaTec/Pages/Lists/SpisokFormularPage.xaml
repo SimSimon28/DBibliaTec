@@ -47,17 +47,24 @@
                 <Style TargetType="DataGridRow">
                     <Setter Property="ContextMenu" Value="{StaticResource CtxMenu}"/>
                 </Style>
+                
             </DataGrid.RowStyle>
 
             <DataGrid.Columns>
 
-                <DataGridTextColumn Header="Номер формуляра" Binding="{Binding ID}" Width="*" HeaderStyle="{StaticResource DGColumnHeaderSF}" CellStyle="{StaticResource DGCellsSF}"/>
-                <DataGridTextColumn Header="Фамилия" Binding="{Binding Client.Familiya}" Width="*" HeaderStyle="{StaticResource DGColumnHeaderSF}" CellStyle="{StaticResource DGCellsSF}"/>
-                <DataGridTextColumn Header="Имя" Binding="{Binding Client.Name}" Width="*" HeaderStyle="{StaticResource DGColumnHeaderSF}" CellStyle="{StaticResource DGCellsSF}"/>
-                <DataGridTextColumn Header="Отчество" Binding="{Binding Client.Otchestvo}" Width="*" HeaderStyle="{StaticResource DGColumnHeaderSF}" CellStyle="{StaticResource DGCellsSF}"/>
-                <DataGridTextColumn Header="Дата выдачи книги" Binding="{Binding Date_Vidachi, StringFormat={}{0:dd.MM.yyyy}}" Width="*" HeaderStyle="{StaticResource DGColumnHeaderSF}" CellStyle="{StaticResource DGCellsSF}"/>
-                <DataGridTextColumn Header="Дата сдачи книги" Binding="{Binding Date_Sdachi, StringFormat={}{0:dd.MM.yyyy}}" Width="*" HeaderStyle="{StaticResource DGColumnHeaderSF}" CellStyle="{StaticResource DGCellsSF}"/>
-                <DataGridTextColumn Header="Статус" Binding="{Binding Status1.Name}" Width="*" HeaderStyle="{StaticResource DGColumnHeaderSF}" Foreground="{Binding Status, Converter={cv:ColorClassesStatus}}"/>
+                <DataGridTextColumn Header="Номер формуляра" Binding="{Binding ID}" Width="*"/>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding Client.Familiya}" Width="*" />
+                <DataGridTextColumn Header="Имя" Binding="{Binding Client.Name}" Width="*" />
+                <DataGridTextColumn Header="Отчество" Binding="{Binding Client.Otchestvo}" Width="*" />
+                <DataGridTextColumn Header="Дата выдачи книги" Binding="{Binding Date_Vidachi, StringFormat={}{0:dd.MM.yyyy}}" Width="*" />
+                <DataGridTextColumn Header="Дата сдачи книги" Binding="{Binding Date_Sdachi, StringFormat={}{0:dd.MM.yyyy}}" Width="*" />
+                <DataGridTextColumn Header="Статус" Binding="{Binding Status1.Name}" Width="*">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell" BasedOn="{StaticResource DGCellsSF}">
+                            <Setter Property="Foreground" Value="{Binding Status, Converter={cv:ColorClassesStatus}}"/>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
 
             </DataGrid.Columns>
         </DataGrid>

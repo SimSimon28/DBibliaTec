@@ -1,10 +1,5 @@
-﻿using DBibliaTec.DB;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Markup;
 
@@ -14,9 +9,9 @@ namespace DBibliaTec.Classes
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is Status status)
+            if (value is int status)
             {
-                if (status.ID == 2)
+                if (status == 2)
                 {
                     return "Red";
                 }
