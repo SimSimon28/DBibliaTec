@@ -27,6 +27,7 @@
             <Color x:Key="ColorBlueLight">#C6C3EA</Color>
             <Color x:Key="ColorBlueLightTest">#524B9E</Color>
             <Color x:Key="Main">#0C056D</Color>
+            <Color x:Key="ButtonRedTest1">#F9461F</Color>
             <!--#endregion-->
         
             <!--#region Стиль для авторизации-->
@@ -60,7 +61,7 @@
                                                     <TranslateTransform X="0.02" Y="0.3"/>
                                                 </TransformGroup>
                                             </RadialGradientBrush.RelativeTransform>
-                                            <GradientStop Offset="1" Color="{StaticResource GridBackGr1Color}"/>
+                                            <GradientStop Offset="1" Color="{StaticResource ButtonRedTest1}"/>
                                             <GradientStop Offset="0.3" Color="{StaticResource GridBackGr2Color}"/>
                                         </RadialGradientBrush>
                                     </Border.Background>
