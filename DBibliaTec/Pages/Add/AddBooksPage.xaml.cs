@@ -10,9 +10,6 @@ using System.Windows.Navigation;
 
 namespace DBibliaTec.Pages.Add
 {
-    /// <summary>
-    /// Логика взаимодействия для AddBooksPage.xaml
-    /// </summary>
     public partial class AddBooksPage : Page
     {
         private DB.Book _currentBook = null;
@@ -30,13 +27,10 @@ namespace DBibliaTec.Pages.Add
         {
             InitializeComponent();
             DataContext = this;
-
-            CboxCategory.ItemsSource = App.Context.Categories.ToList();
-            CboxGenre.ItemsSource = App.Context.Genres.ToList();
-            CboxIzdat.ItemsSource = App.Context.Izdatels.ToList();
-
             _currentBook = book;
+
             Title = "Редактировать данные о книге";
+            DPDateVihoda.Text = _currentBook.Date_Vipusk.ToString();
             TboxNameBook.Text = _currentBook.Name.ToString();
             CboxCategory.SelectedValue = _currentBook.Category;
             CboxGenre.SelectedValue = _currentBook.Genre;
@@ -45,10 +39,11 @@ namespace DBibliaTec.Pages.Add
             TboxInventNum.Text = _currentBook.InventNumber.ToString();
             TboxFAthor.Text = _currentBook.FAuthor.ToString();
             TboxCount.Text = _currentBook.Count.ToString();
-            DPDateVihoda.Text = _currentBook.ToString();
             CboxIzdat.SelectedValue = _currentBook.Izdatel;
 
-
+            CboxCategory.ItemsSource = App.Context.Categories.ToList();
+            CboxGenre.ItemsSource = App.Context.Genres.ToList();
+            CboxIzdat.ItemsSource = App.Context.Izdatels.ToList();
 
             if (_currentBook.ImageBook != null)
                 BooksImage.Source = (ImageSource)new ImageSourceConverter().ConvertFrom(_currentBook.ImageBook);
@@ -96,6 +91,7 @@ namespace DBibliaTec.Pages.Add
                     try
                     {
 
+                    _currentBook.Date_Vipusk = DateTime.Parse(DPDateVihoda.Text);
                     _currentBook.Category = Convert.ToInt32(CboxCategory.SelectedValue);
                     _currentBook.Genre = Convert.ToInt32(CboxGenre.SelectedValue);
                     _currentBook.Name= TboxNameBook.Text;
@@ -105,7 +101,6 @@ namespace DBibliaTec.Pages.Add
                     _currentBook.OAuthor = TboxOAuthor.Text;
                     _currentBook.Count = int.Parse(TboxCount.Text);
                     _currentBook.Izdatel = Convert.ToInt32(CboxIzdat.SelectedValue);
-                    _currentBook.Date_Vipusk = DateTime.Parse(DPDateVihoda.Text);
 
                     if (_imageBooks != null)
                         _currentBook.ImageBook = _imageBooks;
@@ -169,7 +164,5 @@ namespace DBibliaTec.Pages.Add
 
             return errorBuilder.ToString();
         }
-
-        
     }
 }

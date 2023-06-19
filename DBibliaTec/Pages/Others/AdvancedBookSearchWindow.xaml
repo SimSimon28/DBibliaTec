@@ -8,12 +8,14 @@
         Title="Подробный поиск книг для заполнения формуляра" Height="600" Width="1024">
     <Grid>
         <Grid.RowDefinitions>
-            
+
             <RowDefinition Height="*"/>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="50"/>
 
         </Grid.RowDefinitions>
+
+        <Image Source="\LogoAndImages\Images\AddVanceSearchImage.png" Stretch="Fill" Grid.RowSpan="3"/>
 
         <Border Height="96" HorizontalAlignment="Stretch" Background="{StaticResource BrushBlueLightTest}" 
                 CornerRadius="10" Margin="10 5 10 10" BorderThickness="3" BorderBrush="{StaticResource MainColor}">
@@ -140,7 +142,7 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <ListView Grid.Column="1" ItemsSource="{Binding SelectedBooks}" SelectedItem="{Binding SelectedBookR}" 
+            <ListView Grid.Column="1" ItemsSource="{Binding SelectedBooks}" SelectedItem="{Binding SelectedBookR}" Background="Transparent"
                       Margin="5 0" x:Name="LViewBookVziat" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>

@@ -14,17 +14,19 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="60"/>
             <RowDefinition Height="50*"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="4*"/>
 
         </Grid.RowDefinitions>
 
         <Border Height="96" HorizontalAlignment="Stretch" Background="{StaticResource BrushBlueLightTest}" 
-                Grid.RowSpan="2" Margin="10 5 10 10" CornerRadius="10" BorderThickness="3" BorderBrush="{StaticResource MainColor}">
+                Grid.RowSpan="2" Margin="10 5 10 10" CornerRadius="10" BorderThickness="3" 
+                BorderBrush="{StaticResource MainColor}">
             <StackPanel Orientation="Horizontal">
                 <StackPanel HorizontalAlignment="Left">
                     <TextBlock Style="{StaticResource TBlock14SF}" FontWeight="Bold" HorizontalAlignment="Left" Margin="10 5 0 0" Text="По названию"/>
-                    <TextBox x:Name="TboxSerch" Width="150" Height="30" Margin="10 5 0 0" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                             TextChanged="TboxSerch_TextChanged" Style="{StaticResource TBox19SB}" HorizontalAlignment="Left" CaretBrush="{StaticResource BrushBlueLight}">
+                    <TextBox x:Name="TboxSerch" Width="150" Height="30" Margin="10 5 0 0" Grid.Row="1" HorizontalContentAlignment="Center" 
+                             VerticalContentAlignment="Center" TextChanged="TboxSerch_TextChanged" Style="{StaticResource TBox19SB}" 
+                             HorizontalAlignment="Left" CaretBrush="{StaticResource BrushBlueLight}">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
@@ -35,14 +37,16 @@
                 <StackPanel HorizontalAlignment="Left">
                     <TextBlock Margin="5 5 0 0" Text="По категории" Style="{StaticResource TBlock14SF}" FontWeight="Bold"/>
                     <ComboBox Margin="5" Width="150" Name="ComboSortBy3" SelectionChanged="ComboSortBy3_SelectionChanged" Style="{StaticResource CBoxTem}"
-                      SelectedValuePath="ID" DisplayMemberPath="Name" SelectedIndex="0" Foreground="{StaticResource BrushBlueLight}" FontSize="19" FontFamily="Roboto" BorderThickness="2">
+                      SelectedValuePath="ID" DisplayMemberPath="Name" SelectedIndex="0" Foreground="{StaticResource BrushBlueLight}" 
+                              FontSize="19" FontFamily="Roboto" BorderThickness="2">
                         
                     </ComboBox>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Left">
                     <TextBlock Margin="5 5 0 0" Text="По ФИО автора" Style="{StaticResource TBlock14SF}" FontWeight="Bold"/>
                     <TextBox Margin="5"  Width="250" Height="30" Name="TboxSAuthor" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                             TextChanged="TboxSAuthor_TextChanged" Style="{StaticResource TBox19SB}" HorizontalAlignment="Left" CaretBrush="{StaticResource BrushBlueLight}">
+                             TextChanged="TboxSAuthor_TextChanged" Style="{StaticResource TBox19SB}" HorizontalAlignment="Left" 
+                             CaretBrush="{StaticResource BrushBlueLight}">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
@@ -53,7 +57,8 @@
                 <StackPanel HorizontalAlignment="Left">
                     <TextBlock Margin="10 5 0 0" Text="По жанру" Style="{StaticResource TBlock14SF}" FontWeight="Bold"/>
                     <TextBox Margin="5"  Width="150" Height="30" Name="TboxSGenre" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                             TextChanged="TboxSGenre_TextChanged" Style="{StaticResource TBox19SB}" HorizontalAlignment="Left" CaretBrush="{StaticResource BrushBlueLight}">
+                             TextChanged="TboxSGenre_TextChanged" Style="{StaticResource TBox19SB}" HorizontalAlignment="Left" 
+                             CaretBrush="{StaticResource BrushBlueLight}">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>
@@ -91,7 +96,7 @@
                             
                             <Image Source="{Binding ImageBook}"/>
 
-                            <StackPanel Grid.Column="1" Margin="10">
+                            <StackPanel Grid.Column="1" Margin="10" Width="300" Height="250">
 
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="{Binding NameS}" Style="{StaticResource TBlock16SB}" Margin="5 10 0 0"/>
@@ -99,6 +104,9 @@
 
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="{Binding FIO}" Style="{StaticResource TBlock16SB}" Margin="5 0 0 0"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="{Binding NAuthor}" Style="{StaticResource TBlock16SB}" Margin="5 0 0 0"/>
                                     <TextBlock Text="{Binding OAuthor}" Style="{StaticResource TBlock16SB}" Margin="5 0 0 0" HorizontalAlignment="Right"/>
                                 </StackPanel>
@@ -128,8 +136,10 @@
                                 </StackPanel>
 
                                 <StackPanel Orientation="Horizontal">
-                                    <Button x:Name="ChengeButton" Style="{StaticResource ButtonBlueTest1}" Content="Редактирование" Margin="5 5" Click="ChengeButton_Click" Width="110" Height="30"/>
-                                    <Button x:Name="DeleteButton" Style="{StaticResource ButtonBlueTest1}"  Content="Удалить" Margin="5 5" Click="DeleteButton_Click" Width="60" Height="30"/>
+                                    <Button x:Name="ChengeButton" Style="{StaticResource ButtonBlueTest1}" Content="Редактирование" 
+                                            Margin="5 5" Click="ChengeButton_Click" Width="110" Height="30"/>
+                                    <Button x:Name="DeleteButton" Style="{StaticResource ButtonBlueTest1}"  Content="Удалить" 
+                                            Margin="5 5" Click="DeleteButton_Click" Width="60" Height="30"/>
                                 </StackPanel>
 
                             </StackPanel>

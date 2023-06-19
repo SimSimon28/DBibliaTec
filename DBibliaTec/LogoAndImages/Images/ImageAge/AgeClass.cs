@@ -18,22 +18,22 @@ namespace DBibliaTec.DB
             get
             {
                 if (Age >= 60 && Gender == 2)
-                    return new BitmapImage(new Uri("\\LogoAndImages\\Images\\ImageAge\\Babka.png", UriKind.Relative));
+                    return new BitmapImage(new Uri("\\LogoAndImages\\Images\\ImageAge\\Babushka.png", UriKind.Relative));
                 else
                     if (Age >= 65 && Gender == 1)
-                    return new BitmapImage(new Uri("\\LogoAndImages\\Images\\ImageAge\\DED.jpg", UriKind.Relative));
+                    return new BitmapImage(new Uri("\\LogoAndImages\\Images\\ImageAge\\Dedushka.png", UriKind.Relative));
                 else
                     if (Age >= 25 && Age <= 64 && Gender == 1)
-                    return new BitmapImage(new Uri("\\LogoAndImages\\Images\\ImageAge\\Muj.png", UriKind.Relative));
+                    return new BitmapImage(new Uri("\\LogoAndImages\\Images\\ImageAge\\Papa.png", UriKind.Relative));
                 else
                     if (Age >= 25 && Age <= 64 && Gender == 2)
-                    return new BitmapImage(new Uri("\\LogoAndImages\\Images\\ImageAge\\Jen.jpg", UriKind.Relative));
+                    return new BitmapImage(new Uri("\\LogoAndImages\\Images\\ImageAge\\Mama.png", UriKind.Relative));
                 else
                     if (Age <= 24 && Gender == 2)
-                    return new BitmapImage(new Uri("\\LogoAndImages\\Images\\ImageAge\\deva.jpg", UriKind.Relative));
+                    return new BitmapImage(new Uri("\\LogoAndImages\\Images\\ImageAge\\Devochka.png", UriKind.Relative));
                 else
                     if (Age <= 24 && Gender == 1)
-                    return new BitmapImage(new Uri("\\LogoAndImages\\Images\\ImageAge\\Mal.png", UriKind.Relative));
+                    return new BitmapImage(new Uri("\\LogoAndImages\\Images\\ImageAge\\Malchik.png", UriKind.Relative));
                 else
                     return null;
             }

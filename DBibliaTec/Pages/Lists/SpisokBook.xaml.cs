@@ -58,7 +58,9 @@ namespace DBibliaTec.Pages.Lists
 
             //Поиск по ФИО автора
 
-            book = book.Where(p => p.NAuthor.ToLower().Contains(TboxSAuthor.Text.ToLower()) || p.FAuthor.ToLower().Contains(TboxSAuthor.Text.ToLower()) || p.OAuthor.ToLower().Contains(TboxSAuthor.Text)).ToList();
+            book = book.Where(p => p.NAuthor.ToLower().Contains(TboxSAuthor.Text.ToLower()) || 
+            p.FAuthor.ToLower().Contains(TboxSAuthor.Text.ToLower()) || 
+            p.OAuthor.ToLower().Contains(TboxSAuthor.Text)).ToList();
 
             //Поиск по названию книги
 
@@ -95,7 +97,7 @@ namespace DBibliaTec.Pages.Lists
             UpBook();
         }
 
-        // Кнопка добавление контрактов
+        // Кнопка добавление книг
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             var currentBook = (sender as Button).DataContext as DB.Book;

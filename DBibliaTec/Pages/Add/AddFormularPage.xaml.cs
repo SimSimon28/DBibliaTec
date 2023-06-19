@@ -119,6 +119,12 @@ namespace DBibliaTec.Pages.Add
                     _currentFormular.Date_Vidachi = DateTime.Parse(TboxDateVid.Text);
                     _currentFormular.Date_Sdachi = DateTime.Parse(TboxDateSdachi.Text);
                     _currentFormular.Books = SelectedBooks;
+
+                    if (_currentFormular.Date_Sdachi > DateTime.Now)
+                    {
+                        _currentFormular.Status = 1;
+                    }
+
                     App.Context.SaveChanges();
                 }
                 NavigationService.GoBack();

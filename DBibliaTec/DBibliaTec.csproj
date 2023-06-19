@@ -345,6 +345,14 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="LogoAndImages\Images\ImageAge\Dedushka.png" />
+    <Resource Include="LogoAndImages\Images\ImageAge\Devochka.png" />
+    <Resource Include="LogoAndImages\Images\ImageAge\Malchik.png" />
+    <Resource Include="LogoAndImages\Images\ImageAge\Mama.png" />
+    <Resource Include="LogoAndImages\Images\ImageAge\Papa.png" />
+    <Resource Include="LogoAndImages\Images\ImageAge\Babushka.png" />
+    <Resource Include="LogoAndImages\Images\AddVanceSearchImage.png" />
+    <Resource Include="Icons\Info.png" />
     <Resource Include="LogoAndImages\Images\DescripFrame.png" />
     <Resource Include="Icons\AddVanceSearch.png" />
     <Resource Include="LogoAndImages\Images\QR_VK.png" />
@@ -361,12 +369,6 @@
     <Resource Include="Icons\Formulars.png" />
     <Resource Include="Icons\FormularsAdd.png" />
     <Resource Include="Family\LICENSE.txt" />
-    <Resource Include="LogoAndImages\Images\ImageAge\deva.jpg" />
-    <Resource Include="LogoAndImages\Images\ImageAge\Mal.png" />
-    <Resource Include="LogoAndImages\Images\ImageAge\Jen.jpg" />
-    <Resource Include="LogoAndImages\Images\ImageAge\Muj.png" />
-    <Resource Include="LogoAndImages\Images\ImageAge\DED.jpg" />
-    <Resource Include="LogoAndImages\Images\ImageAge\Babka.png" />
     <Resource Include="LogoAndImages\Images\tarjei-skaarsmoen-library-render-01-fixed-lightroom-export %281%29.jpg" />
   </ItemGroup>
   <ItemGroup>

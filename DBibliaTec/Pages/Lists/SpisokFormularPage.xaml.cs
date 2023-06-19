@@ -48,7 +48,6 @@ namespace DBibliaTec.Pages.Lists
 
             foreach (var formular in listFormProsr)
             {
-                formular.StatusRed = "#E84545";
                 formular.Status = 2;
             }
             App.Context.SaveChanges();

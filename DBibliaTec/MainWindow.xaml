@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DBibliaTec"
         FontFamily="Roboto"
-        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen" Icon="\LogoAndImages\Logo\BibliaC.jpg"
         Title="МАУК «Кунгурская ЦБС»" MinHeight="700" MinWidth="1024">
     <Grid>
         <Grid.RowDefinitions>
@@ -22,7 +22,8 @@
             </Image.BitmapEffect>
         </Image>
 
-        <TextBlock Text="{Binding ElementName=MainFrame, Path=Content.Title}" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource TBlock19ABP}"
+        <TextBlock Text="{Binding ElementName=MainFrame, Path=Content.Title}" HorizontalAlignment="Left" 
+                   VerticalAlignment="Center" Style="{StaticResource TBlock19ABP}"
                    FontSize="40" FontWeight="Bold" Foreground="{StaticResource MainColor}" Margin="30 0 0 0"/>
 
         <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Grid.Row="1"/>
@@ -32,7 +33,8 @@
             <TextBlock x:Name="SessionTimer" Style="{StaticResource TBMain19News}" FontSize="16"/>
         </StackPanel>
         
-        <Button x:Name="Back" Style="{StaticResource ButtonExit}" HorizontalAlignment="Right" Width="80" Height="50" Margin="5 5" Click="Back_Click">
+        <Button x:Name="Back" Style="{StaticResource ButtonExit}" HorizontalAlignment="Right" Width="80" 
+                Height="50" Margin="5 5" Click="Back_Click">
             <Image Source="Icons/Back.png"/>
         </Button>
     </Grid>

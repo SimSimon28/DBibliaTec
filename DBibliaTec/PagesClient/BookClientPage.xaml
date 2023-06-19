@@ -98,6 +98,9 @@
 
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="{Binding FIO}" Style="{StaticResource TBlock16SB}" Margin="5 0 0 0"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="{Binding NAuthor}" Style="{StaticResource TBlock16SB}" Margin="5 0 0 0"/>
                                     <TextBlock Text="{Binding OAuthor}" Style="{StaticResource TBlock16SB}" Margin="5 0 0 0" HorizontalAlignment="Right"/>
                                 </StackPanel>
@@ -107,7 +110,7 @@
                                 </StackPanel>
                                 
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding DateVipuska}" Style="{StaticResource TBlock16SB}" Margin="5 0 0 0" Width="220"/>
+                                    <TextBlock Text="{Binding DateVipuska}" Style="{StaticResource TBlock16SB}" Margin="5 0 0 0" Width="240"/>
                                 </StackPanel>
 
                                 <StackPanel Orientation="Horizontal">

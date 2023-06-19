@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:DBibliaTec.PagesClient"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="OBibliaInfoPage">
+      Title="О библиотеке">
 
     <Grid>
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20" Orientation="Horizontal">
